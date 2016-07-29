@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Filoblog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Filoblog">
+<meta property="og:url" content="http://filoxo.github.io/index.html">
+<meta property="og:site_name" content="Filoblog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Filoblog">
+  
+    <link rel="alternate" href="/atom.xml" title="Filoblog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Filoblog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://filoxo.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Install-zsh-on-Mac-without-homebrew" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/28/Install-zsh-on-Mac-without-homebrew/" class="article-date">
+  <time datetime="2016-07-29T05:38:05.000Z" itemprop="datePublished">2016-07-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/28/Install-zsh-on-Mac-without-homebrew/">Install zsh on Mac without homebrew</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>I’m not a big supporter of Homebrew. It just doesn’t solve any problems for me. I have only needed brew for <code>zsh</code> and maybe <code>node</code> (but for that I could use <a href="https://github.com/creationix/nvm" target="_blank" rel="external"><code>nvm</code></a> or <a href="https://github.com/tj/n" target="_blank" rel="external"><code>n</code></a>). I don’t want to install brew just for those when they can be set up easily. Seems like a lot of overhead just for one function. </p>
+<p>That said, I had a lot of trouble finding how to get <code>zsh</code> installed without <code>brew</code>. Seems like a lot of people have bought into it for what that it offers.</p>
+<p>So here’s how I installed <code>zsh</code> on my machine without brew.</p>
+<ol>
+<li>Get the source tarball (<code>zsh-*.tar.gz</code>) from <a href="http://zsh.sourceforge.net/Arc/source.html" target="_blank" rel="external">zsh.org</a></li>
+<li><p>Unpack the file</p>
+<pre><code>tar xzf zsh-5.2.tar.gz
+</code></pre></li>
+<li><p>Build the binary. This will install <code>zsh</code> under <code>/usr/local/bin/zsh</code></p>
+<pre><code>./configure &amp;&amp; make &amp;&amp; make test &amp;&amp; make install
+</code></pre><ul>
+<li>The version of <code>zsh</code> that ships on Mac machines is outdated, thus why its necessary to build the binary.</li>
+<li>You may get an error message saying <code>install: /usr/local/bin/zsh-5.2: Permission denied</code>. If so, you will need to <code>sudo make install</code> instead.</li>
+</ul>
+</li>
+<li><p>You now have <code>zsh</code> installed and working on your system. Begin configuring it by running <code>zsh</code> in your terminal; you’ll see a series of prompts to enable and disable features to your liking. </p>
+</li>
+<li><p>Next, you’ll want to also install <a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank" rel="external"><code>oh-my-zsh</code></a>. It makes zsh even more awesome by building in additional plugins and themes. This was the install script at the time of this writing. </p>
+<pre><code>sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;
+</code></pre><ul>
+<li>NOTE: you should read the contents of <code>install.sh</code> before directly piping it into your shell. Ya know, because security. </li>
+</ul>
+</li>
+<li><p>Customize your heart out! Become familiar with the themes and plugins now available to you. Enable those which you might use most.</p>
+</li>
+<li><p>Make sure everything works. I had exported some paths in my <code>~/.bash_profile</code> file, and needed to copy those over to <code>~/.zshrc</code>.</p>
+<ul>
+<li>For some reason, <code>nvm</code> was one of those things that I couldn’t get to work quite right. I tried adding the paths to the zsh profile, making sure <code>$NVM_DIR</code> was correctly set, etc. Reinstalling was the only way I got it to work again. </li>
+</ul>
+</li>
+<li><p>For these changes to persist, you’ll have to change your default shell. The easiest is to just access the setting through the UI. You could do this with a terminal command, so Google it. </p>
+<ul>
+<li>Open “System Preferences” </li>
+<li>Click on “Users &amp; Groups”</li>
+<li>Unlock the settings by clicking on the padlock and entering your password.</li>
+<li>CTRL + Click on your user and select “Advanced options…”</li>
+<li>Choose <code>/bin/zsh</code> from the <em>Login shell</em> dropdown</li>
+<li>Click OK to complete</li>
+</ul>
+</li>
+</ol>
+<p>##Bonus<br>Don’t let the fun end there. Here’s a few more things you can do to further refine your terminal to your liking. </p>
+<h4 id="Disable-‘last-login’-banner"><a href="#Disable-‘last-login’-banner" class="headerlink" title="Disable ‘last login’ banner"></a>Disable ‘last login’ banner</h4><p>When I open up the terminal I see a line at the top saying something like</p>
+<blockquote>
+<p>Last login: Mon Jan 1 12:00:00 on ttys004</p>
+</blockquote>
+<p>This information is not very relevant to me, so I’d rather not see it. Silence this message by simply creating a <code>.hushlogin</code> file.</p>
+<pre><code>touch ~/.hushlogin
+</code></pre><h4 id="Disable-the-user-banner"><a href="#Disable-the-user-banner" class="headerlink" title="Disable the user banner"></a>Disable the user banner</h4><p>You can disable the user banner by simply adding <code>DEFAULT_USER=&quot;yourusername&quot;</code> to your profile file.</p>
+<h4 id="Get-a-better-font"><a href="#Get-a-better-font" class="headerlink" title="Get a better font"></a>Get a better font</h4><p>I quickly became a fan of the Agnoster theme, but it required patched fonts (<a href="https://github.com/powerline/fonts" target="_blank" rel="external">Powerline fonts</a>) to be installed in order to display some of the special characters it uses (eg. git icons). I’m a fan of Source Code Pro, but I’ve also heard great things about Meslo, Inconsolata, and Terminus.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://filoxo.github.io/2016/07/28/Install-zsh-on-Mac-without-homebrew/" data-id="cir7bkc1g0001rpsopzmbhb2l" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Must-have-Apps-Cross-platform-edition" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/28/Must-have-Apps-Cross-platform-edition/" class="article-date">
+  <time datetime="2016-07-29T05:37:55.000Z" itemprop="datePublished">2016-07-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/28/Must-have-Apps-Cross-platform-edition/">Must-have Apps: Cross-platform edition</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>I believe that developers can benefit and learn from others’ favorite suite of tools. I’ll go over my favorite applications that help me be as efficient and quick while working on a Mac.</p>
+<h3 id="F-lux"><a href="#F-lux" class="headerlink" title="F.lux"></a>F.lux</h3><p><a href="https://justgetflux.com/" target="_blank" rel="external">F.lux</a> is a great example of cross-platform compatibility. It comes with presets that are fine enough for me, and is available for Mac, Windows, and Linux. I installed it on my two computers that I use regularly, one a Mac and the other running Windows. The peeps at F.lux have gone through a lot of research to set the foundation of why their application is so useful. This is a must for anyone on their computer passed 6pm.<br>The’ve recently released an Android Beta app, but might become superseded by Apple’s Night Shift and Android N’s Night Mode.</p>
+<h3 id="KeePass"><a href="#KeePass" class="headerlink" title="KeePass"></a>KeePass</h3><p>Alright here’s one that I’ve debated with friends about. There are alternatives like LastPass and 1Password, but I’m always one to avoid paying money. <a href="http://keepass.info/" target="_blank" rel="external">KeePass</a> is my favorite so far for several reasons.</p>
+<ul>
+<li>It is free and open-source software. Freedom!</li>
+<li>It is cross-platform. Use it on Windows, Mac, Linux, Android, iOS, Windows Phone, Chromebook, and even BlackBerry. </li>
+<li>They all use the same database filetype. You could save your database file to the cloud using Google Drive, OneDrive, Dropbox, etc. and use the same file among multiple clients. </li>
+<li>Use in conjunction with <a href="https://chrome.google.com/webstore/detail/chromeipass/ompiailgknfdndiefoaoiligalphfdae?hl=en" target="_blank" rel="external">chromeIPass</a> (Chrome extension) or <a href="https://addons.mozilla.org/en-us/firefox/addon/passifox/" target="_blank" rel="external">PassIFox</a> (Firefox add-on) to populate your credentials into login inputs if a URL is matched to an entry’s site field.  </li>
+</ul>
+<h3 id="PushBullet"><a href="#PushBullet" class="headerlink" title="PushBullet"></a>PushBullet</h3><p>I really couldn’t stand to use the iPhone (personal preference!) despite its great interoperability with the Macbook. <a href="https://www.pushbullet.com/" target="_blank" rel="external">PushBullet</a> makes up for that loss by allowing me to receive notifications from my phone while on my computer, as well as letting me respond directly to text messages. An additional bonus is that I can use this on my Windows machine as well as other Android devices (think tablet). This way, I can see my notifications and respond to texts from literally any of my devices. Lastly, it allows me to push things like notes, links, and files between devices as well. Send a link from my phone to my desktop, push a new background image from my phone to my tablet, whatever. Its awesome!</p>
+<h3 id="Synergy"><a href="#Synergy" class="headerlink" title="Synergy"></a>Synergy</h3><p><a href="http://synergy-project.org/" target="_blank" rel="external">Synergy</a> is a super handy utility that bridges multiple computers so that you can share one keyboard and mouse between them. You can use them multiple machines with the same keyboard, copy and paste from one to the other, and even transfer files using drag-n-drop (ahem, sorry. Between Windows-Mac only). Need it for enterprise? You can use the Pro version to encrypt your traffic using SSL. Its absolutely necessary if you work on different machines. </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://filoxo.github.io/2016/07/28/Must-have-Apps-Cross-platform-edition/" data-id="cir7bkc1b0000rpsoz5xiee8c" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Must-have-Apps-Mac-edition" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/28/Must-have-Apps-Mac-edition/" class="article-date">
+  <time datetime="2016-07-29T05:37:44.000Z" itemprop="datePublished">2016-07-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/28/Must-have-Apps-Mac-edition/">Must-have Apps: Mac edition</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>I believe that developers can benefit and learn from others’ favorite suite of tools. I’ll go over my favorite applications that help me be as efficient and quick while working on a Mac. </p>
+<h3 id="BetterTouchTool"><a href="#BetterTouchTool" class="headerlink" title="BetterTouchTool"></a>BetterTouchTool</h3><p>I find <a href="http://www.bettertouchtool.net/" target="_blank" rel="external">BetterTouchTool</a> better than using <a href="https://itunes.apple.com/us/app/bettersnaptool/id417375580?mt=12" target="_blank" rel="external">BetterSnapTool</a>, <a href="http://www.irradiatedsoftware.com/sizeup/" target="_blank" rel="external">SizeUp</a>, or <a href="http://spectacleapp.com/" target="_blank" rel="external">Spectacle</a> for one simple reason: it also includes keyboard/gesture customizations per app and globally. Don’t get me wrong, they’re all pretty great window managers. BetterSnapTool has some more features than BetterTouchTool, but BTT does all that I need it to. Right out of the box, you can define window snapping behavior, such as:</p>
+<ul>
+<li>Snap when dragged to window edge (left, right, top)</li>
+<li>Restore window size when dragged away </li>
+<li>Animate preview window</li>
+</ul>
+<p>Thats really all I need because I wanted to replicate Window’s AeroSnap functionality that is missing from OSX. But my workflow is also enhanced by adding custom shortcuts that can remap and shorten existing ones, or adds new ones. Here are a few that I can’t live without:</p>
+<ul>
+<li>Global <ul>
+<li>⌘ + → : Snap window to right </li>
+<li>⌘ + ← : Snap window to left </li>
+<li>⌘ + ↑ : Maximize window </li>
+</ul>
+</li>
+<li>Chrome specific <ul>
+<li>F12 was remapped to run ⌘⌥I to bring up the Developer tools like on Windows</li>
+</ul>
+</li>
+<li>Firefox specific<ul>
+<li>I borrowed Chrome’s ⌘⇧N to remap Firefox’s keyboard shortcut (⌘⇧P) for opening a new window in Private mode. This way I only need to remember one shortcut</li>
+</ul>
+</li>
+<li>Finder<ul>
+<li>I don’t know why swipe navigation in Finder isn’t already built in; it makes sense to have it. </li>
+<li>“2 finger swipe right” in Finder will trigger ⌘[ which is the hidden keyboard shortcut for “back”. Yay for less work! </li>
+<li>Similarly “2 finger swipe left” will trigger ⌘] to navigate forward. </li>
+</ul>
+</li>
+</ul>
+<h3 id="Sip"><a href="#Sip" class="headerlink" title="Sip"></a>Sip</h3><p>Sometimes I just need to know the HEX or RGB value of a color I see online, in an image, or on an application and <a href="https://itunes.apple.com/us/app/sip/id507257563?mt=12" target="_blank" rel="external">Sip</a> is my tool of choice. To pick a color, a magnifier shows up for precise color selection. You can copy the selected color value/code in an unbelievable amount of formats.</p>
+<p>The Pro version costs $9.99 from the App Store. Since this one is only for Mac, you might also check out ColorCop on my Windows post.</p>
+<h3 id="iTerm2"><a href="#iTerm2" class="headerlink" title="iTerm2"></a>iTerm2</h3><p>I recently switched from <a href="http://totalterminal.binaryage.com/" target="_blank" rel="external">TotalTerminal</a> to <a href="https://www.iterm2.com/" target="_blank" rel="external">iTerm2</a> because I need something a little bit more customizable. The two are not the same: TotalTerminal is a plugin that creates hotkeys for Mac’s <code>Terminal.app</code>. iTerm2 is a replacement for Terminal.app, and as such offers quite a bit more in terms of changing colors schemes, appearance, hotkeys and gestures, and even provides tabs. If you use the console a lot, I recommend at least giving iTerm2 a try. </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://filoxo.github.io/2016/07/28/Must-have-Apps-Mac-edition/" data-id="cir7bkc1n0004rpsonuad4xhy" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Must-have-Apps-Windows-edition" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/28/Must-have-Apps-Windows-edition/" class="article-date">
+  <time datetime="2016-07-29T05:37:38.000Z" itemprop="datePublished">2016-07-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/28/Must-have-Apps-Windows-edition/">Must-have Apps: Windows edition</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>I believe that developers can benefit and learn from others’ favorite suite of tools. I’ll go over my favorite applications that help me be as efficient and quick while working on a Mac.</p>
+<h3 id="Launchy"><a href="#Launchy" class="headerlink" title="Launchy"></a>Launchy</h3><p>After switching to a Mac, I love Spotlight. I now have to use Windows computer at work, so I really missed having the Spotlight available. <a href="http://www.launchy.net/" target="_blank" rel="external">Launchy</a> achieves this on Windows really well, indexing the *.lnk files in your start menu and User folder, and making the shortcuts available using <code>ALT + SPACE</code>. It even does simple calculations (just like Spotlight!), allows for website shortcuts, and is themable. Its a tad better than Spotlight because of those last features.</p>
+<blockquote>
+<p>Pro tip: it can even run commands from the launcher. An example: hit <code>ALT + SPACE</code>, type cmd, hit <code>TAB</code>, and type a command that is available to your environment like <code>ping</code> or <code>ipconfig</code>. Life-changing? Probably not. But it does save me about 5 seconds!</p>
+</blockquote>
+<p>Launchy is free to use, but it is so valuable that you should consider making a donation if you use it.</p>
+<h3 id="Greenshot"><a href="#Greenshot" class="headerlink" title="Greenshot"></a>Greenshot</h3><p>I also really liked Mac’s built in screenshot utility, mainly because of the drop shadow it automatically generates. They look high quality and ready to ship and share.<br><a href="http://getgreenshot.org/" target="_blank" rel="external">Greenshot</a> does all of that and a whole lot more. Here are some of the highlights:</p>
+<ul>
+<li>It shows a magnifier for precision start/finish points</li>
+<li>has a built in image editor that you can use to add drop shadow effects, “torn paper” effect, obfuscate text, highlight, and more </li>
+<li>comes prepackaged with some snazzy plugins to automatically upload to Box, Imgur, and the whole Office Suite. <ul>
+<li>It is missing integration with major services like Google Drive, Dropbox, and OneDrive but you can work around that by setting a default save location to be inside your local synced folder.</li>
+</ul>
+</li>
+<li>overrides the default <code>PrtScn</code> key and variations (eg. <code>ALT + PrtScn</code>) for quick and easy screenshots</li>
+</ul>
+<p>Seriously, this one is great for non-techy people too. One of my old Project Management teams adopted it solely because of the Jira integration plugin. Awesome! Plus Greenshot is open source and free!</p>
+<h3 id="ColorCop"><a href="#ColorCop" class="headerlink" title="ColorCop"></a>ColorCop</h3><p>Similar to Sip for Mac, <a href="http://colorcop.net/" target="_blank" rel="external">ColorCop</a> is a handy tool that lets you grab colors from anything on your screen. It automatically shows a magnified eyedropper so you can select a color with more precision. Its also configurable so it can automatically copy the HEX or RGB value to your clipboard. Great for when you need to pull colors from, say, a website mockup as a PSD file into your CSS file. ColorCop is free, but also accepts donations if you find it useful.</p>
+<h3 id="Cmder"><a href="#Cmder" class="headerlink" title="Cmder"></a>Cmder</h3><p>I only recently was introduced to <a href="http://gooseberrycreative.com/cmder/" target="_blank" rel="external">Cmder</a>, a new project to fill the need for actually amazing and useful console emulators on Windows. It uses the popular Monokai color scheme right out of the box, utilizes msysgit to provide Unix commands in the PATH, offers tabs for multiple consoles, and is totally portable. This thing has won my heart over, and I will probably never use CygWin again. Its still a work in progress so visit <a href="https://github.com/bliker/cmder" target="_blank" rel="external">Cmder’s Github repo</a> if you have issues.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://filoxo.github.io/2016/07/28/Must-have-Apps-Windows-edition/" data-id="cir7bkc1m0003rpso6t3h9fdw" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Firebase-Email-Auth-and-Validation" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/28/Firebase-Email-Auth-and-Validation/" class="article-date">
+  <time datetime="2016-07-29T05:36:47.000Z" itemprop="datePublished">2016-07-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/28/Firebase-Email-Auth-and-Validation/">Firebase Email Auth and Validation</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>If you use Firebase, you’d be inclined to use their authentication for you system because of how amazingly easy it is to get started. They offer a variety of methods: email &amp; password, oAuth with Google/Twitter/Facebook/Github, or even custom auth. </p>
+<p>A few days ago, a new Firebase user asked a very interesting help question in my school Slack channel:</p>
+<blockquote>
+<p>I am looking at Firebase’s authentication set up with email and password and I can find no way to set any password rules. For example I could create the password “j”. Is there a way to set at least a minimum password length?</p>
+</blockquote>
+<p>Having only used oAuth myself, I figured you could simply create a <a href="https://www.firebase.com/docs/security/api/rule/validate.html" target="_blank" rel="external"><code>.validate</code> rule</a> and once in place, perform basic <a href="https://www.firebase.com/docs/security/api/string/" target="_blank" rel="external">string operations</a> to test whether it actually passes or not. Easy right? <em>Unfortunately, no.</em></p>
+<p>You actually don’t have access to any of the user data with the email &amp; password option. Firebase manages the email and password. That’s pretty much the point of that scheme.<br>That also means you’re left at the mercy of the security rules enforced (or not!) by Firebase. So a user can create a password with <em>just one character</em> and the developer is only left with client-side validation. If you want any sort of granular control in the authentication flow, you’ll have go to with Custom Authentication. </p>
+<h3 id="Help-me-Obi-Wan"><a href="#Help-me-Obi-Wan" class="headerlink" title="Help me Obi-Wan"></a>Help me Obi-Wan</h3><p>The Firebase gurus on the <a href="https://www.firebase.com/blog/2016-02-26-firebase-slack-community.html" target="_blank" rel="external">Firebase Slack channel</a> offered an alternative for managing and verifying this data while still not owning the auth process. </p>
+<ul>
+<li>Add a security rule to the user profile in your database, something like <code>isVerified</code></li>
+<li>Pass the username and password to a server API call<ul>
+<li><a href="https://github.com/firebase/firebase-queue" target="_blank" rel="external">Firebase Queue</a> is an elegant alternative to a REST API</li>
+</ul>
+</li>
+<li>Create a task that can invalidate bad passwords or add the <code>isVerified</code> field accordingly</li>
+</ul>
+<p>Couple this with client-side validation and you’d be able to rest easier having implemented better security practices. I’m not 100% convinced that it is a <em>great</em> solution, but it is still much better than leaving everything to be validated on the client. </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://filoxo.github.io/2016/07/28/Firebase-Email-Auth-and-Validation/" data-id="cir7bkc1k0002rpsoda86gxl1" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/28/hello-world/" class="article-date">
+  <time datetime="2016-07-29T05:35:55.000Z" itemprop="datePublished">2016-07-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/28/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://filoxo.github.io/2016/07/28/hello-world/" data-id="cir7bkc1q0005rpsotor95io3" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/07/28/Install-zsh-on-Mac-without-homebrew/">Install zsh on Mac without homebrew</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/28/Must-have-Apps-Cross-platform-edition/">Must-have Apps: Cross-platform edition</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/28/Must-have-Apps-Mac-edition/">Must-have Apps: Mac edition</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/28/Must-have-Apps-Windows-edition/">Must-have Apps: Windows edition</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/28/Firebase-Email-Auth-and-Validation/">Firebase Email Auth and Validation</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Carlos Filoteo<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
