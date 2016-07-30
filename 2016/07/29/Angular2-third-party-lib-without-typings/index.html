@@ -3,21 +3,21 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Must-have Apps: Mac edition | Filoblog</title>
+    <title>Angular2: Using third-party libs without typings | Filoblog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="I believe that developers can benefit and learn from others’ favorite suite of tools. I’ll go over my favorite applications that help me be as efficient and quick while working on a Mac. 
-BetterTouchT">
+    <meta name="description" content="Angular2 is great in many ways, but one situation that I’ve found painful is integrating third-party libraries that do not have typings. 
+If you’re not already familiar with typings, these are the typ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Must-have Apps: Mac edition">
-<meta property="og:url" content="http://filoxo.github.io/2016/07/28/Must-have-Apps-Mac-edition/index.html">
+<meta property="og:title" content="Angular2: Using third-party libs without typings">
+<meta property="og:url" content="http://filoxo.github.io/2016/07/29/Angular2-third-party-lib-without-typings/index.html">
 <meta property="og:site_name" content="Filoblog">
-<meta property="og:description" content="I believe that developers can benefit and learn from others’ favorite suite of tools. I’ll go over my favorite applications that help me be as efficient and quick while working on a Mac. 
-BetterTouchT">
-<meta property="og:updated_time" content="2016-07-29T19:30:55.000Z">
+<meta property="og:description" content="Angular2 is great in many ways, but one situation that I’ve found painful is integrating third-party libraries that do not have typings. 
+If you’re not already familiar with typings, these are the typ">
+<meta property="og:updated_time" content="2016-07-30T03:37:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Must-have Apps: Mac edition">
-<meta name="twitter:description" content="I believe that developers can benefit and learn from others’ favorite suite of tools. I’ll go over my favorite applications that help me be as efficient and quick while working on a Mac. 
-BetterTouchT">
+<meta name="twitter:title" content="Angular2: Using third-party libs without typings">
+<meta name="twitter:description" content="Angular2 is great in many ways, but one situation that I’ve found painful is integrating third-party libraries that do not have typings. 
+If you’re not already familiar with typings, these are the typ">
     
 
     
@@ -154,7 +154,7 @@ BetterTouchT">
 </aside>
 
             
-            <section id="main"><article id="post-Must-have-Apps-Mac-edition" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-Angular2-third-party-lib-without-typings" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -163,7 +163,7 @@ BetterTouchT">
                 
     
         <h1 class="article-title" itemprop="name">
-            Must-have Apps: Mac edition
+            Angular2: Using third-party libs without typings
         </h1>
     
 
@@ -172,8 +172,8 @@ BetterTouchT">
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2016/07/28/Must-have-Apps-Mac-edition/">
-            <time datetime="2016-07-29T05:37:44.000Z" itemprop="datePublished">28 Jul 2016</time>
+        <a href="/2016/07/29/Angular2-third-party-lib-without-typings/">
+            <time datetime="2016-07-29T19:40:43.000Z" itemprop="datePublished">29 Jul 2016</time>
         </a>
     </div>
 
@@ -182,7 +182,7 @@ BetterTouchT">
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/mac/">mac</a>
+        <a class="tag-link" href="/tags/angular2/">angular2</a>
     </div>
 
                     </div>
@@ -192,39 +192,32 @@ BetterTouchT">
         <div class="article-entry" itemprop="articleBody">
         
             
-            <p>I believe that developers can benefit and learn from others’ favorite suite of tools. I’ll go over my favorite applications that help me be as efficient and quick while working on a Mac. </p>
-<h3 id="BetterTouchTool"><a href="#BetterTouchTool" class="headerlink" title="BetterTouchTool"></a>BetterTouchTool</h3><p>I find <a href="http://www.bettertouchtool.net/" target="_blank" rel="external">BetterTouchTool</a> better than using <a href="https://itunes.apple.com/us/app/bettersnaptool/id417375580?mt=12" target="_blank" rel="external">BetterSnapTool</a>, <a href="http://www.irradiatedsoftware.com/sizeup/" target="_blank" rel="external">SizeUp</a>, or <a href="http://spectacleapp.com/" target="_blank" rel="external">Spectacle</a> for one simple reason: it also includes keyboard/gesture customizations per app and globally. Don’t get me wrong, they’re all pretty great window managers. BetterSnapTool has some more features than BetterTouchTool, but BTT does all that I need it to. Right out of the box, you can define window snapping behavior, such as:</p>
+            <p>Angular2 is great in many ways, but one situation that I’ve found painful is integrating third-party libraries that <em>do not</em> have typings. </p>
+<p>If you’re not already familiar with typings, these are the type definitions of libraries not written in TypeScript. Without these, TypeScript can’t type check them and therefore causes compilation errors. Fortunately, these libraries can still be used but they have to be added differently than imported modules.</p>
+<ol>
+<li><p>Include a script reference to the library on your page (<code>index.html</code>)</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"//cdn.somewhe.re/lib.min.js"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/local/path/to/lib.min.js"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<pre><code>- The first is an example script that is pulled from some CDN.
+- The second is an example of a script that can be referenced locally. These could be managed by npm (node_mdules), bower, or manually.
+- These scripts will add or attach to a global (eg. `THREE`, `mapbox`, `$`, etc.)
+</code></pre><ol>
+<li><p>In the component that requires these, use <code>declare</code> to initialize a variable matching the global name used by the lib. This lets TypeScript know that it has already been initialized<a href="http://stackoverflow.com/a/13252853/2554793" target="_blank" rel="external"><sup>1</sup></a>.</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">declare <span class="keyword">var</span> &lt;globalname&gt;: any;</div></pre></td></tr></table></figure>
 <ul>
-<li>Snap when dragged to window edge (left, right, top)</li>
-<li>Restore window size when dragged away </li>
-<li>Animate preview window</li>
+<li><p>Some libs attach to globals, such as <code>window</code> or <code>document</code>. Since these already exist in TypeScript, these objects need to be extended with the new object interface in order to be accessible. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">interface WindowIntercom extends Window &#123; Intercom: any; &#125;</div><div class="line">declare <span class="keyword">var</span> <span class="built_in">window</span>: WindowIntercom;</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>Thats really all I need because I wanted to replicate Window’s AeroSnap functionality that is missing from OSX. But my workflow is also enhanced by adding custom shortcuts that can remap and shorten existing ones, or adds new ones. Here are a few that I can’t live without:</p>
+</li>
+<li><p>Use the lib inside your components as needed. </p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@Component &#123; ... &#125;</div><div class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">AppComponent</span> <span class="title">implements</span> <span class="title">AfterViewInit</span> </span>&#123;</div><div class="line">	...</div><div class="line">	ngAfterViewInit() &#123;</div><div class="line">		<span class="keyword">var</span> geometry = <span class="keyword">new</span> THREE.BoxGeometry( <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span> );</div><div class="line">		<span class="built_in">window</span>.Intercom(<span class="string">'boot'</span>, &#123; ... &#125;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
-<li>Global <ul>
-<li>⌘ + → : Snap window to right </li>
-<li>⌘ + ← : Snap window to left </li>
-<li>⌘ + ↑ : Maximize window </li>
+<li>NOTE: Be aware of and make sure to use the lib in the appropriate <a href="https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html" target="_blank" rel="external">component lifecycle</a> method. For example, any libs that manipulate the DOM should be used in the <code>AfterViewInit</code> stage (like in the example).</li>
 </ul>
 </li>
-<li>Chrome specific <ul>
-<li>F12 was remapped to run ⌘⌥I to bring up the Developer tools like on Windows</li>
-</ul>
-</li>
-<li>Firefox specific<ul>
-<li>I borrowed Chrome’s ⌘⇧N to remap Firefox’s keyboard shortcut (⌘⇧P) for opening a new window in Private mode. This way I only need to remember one shortcut</li>
-</ul>
-</li>
-<li>Finder<ul>
-<li>I don’t know why swipe navigation in Finder isn’t already built in; it makes sense to have it. </li>
-<li>“2 finger swipe right” in Finder will trigger ⌘[ which is the hidden keyboard shortcut for “back”. Yay for less work! </li>
-<li>Similarly “2 finger swipe left” will trigger ⌘] to navigate forward. </li>
-</ul>
-</li>
-</ul>
-<h3 id="Sip"><a href="#Sip" class="headerlink" title="Sip"></a>Sip</h3><p>Sometimes I just need to know the HEX or RGB value of a color I see online, in an image, or on an application and <a href="https://itunes.apple.com/us/app/sip/id507257563?mt=12" target="_blank" rel="external">Sip</a> is my tool of choice. To pick a color, a magnifier shows up for precise color selection. You can copy the selected color value/code in an unbelievable amount of formats.</p>
-<p>The Pro version costs $9.99 from the App Store. Since this one is only for Mac, you might also check out ColorCop on my Windows post.</p>
-<h3 id="iTerm2"><a href="#iTerm2" class="headerlink" title="iTerm2"></a>iTerm2</h3><p>I recently switched from <a href="http://totalterminal.binaryage.com/" target="_blank" rel="external">TotalTerminal</a> to <a href="https://www.iterm2.com/" target="_blank" rel="external">iTerm2</a> because I need something a little bit more customizable. The two are not the same: TotalTerminal is a plugin that creates hotkeys for Mac’s <code>Terminal.app</code>. iTerm2 is a replacement for Terminal.app, and as such offers quite a bit more in terms of changing colors schemes, appearance, hotkeys and gestures, and even provides tabs. If you use the console a lot, I recommend at least giving iTerm2 a try. </p>
+</ol>
 
         
         </div>
@@ -235,7 +228,7 @@ BetterTouchT">
 
 </div>
 
-    <a data-url="http://filoxo.github.io/2016/07/28/Must-have-Apps-Mac-edition/" data-id="cir85wxwu0003d5soug0slhlt" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://filoxo.github.io/2016/07/29/Angular2-third-party-lib-without-typings/" data-id="cir85wxwd0000d5sox1aolm1n" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -310,19 +303,10 @@ BetterTouchT">
         
 <nav id="article-nav">
     
-        <a href="/2016/07/28/Must-have-Apps-Cross-platform-edition/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Newer</strong>
-            <div class="article-nav-title">
-                
-                    Must-have Apps: Cross-platform edition
-                
-            </div>
-        </a>
     
-    
-        <a href="/2016/07/28/Must-have-Apps-Windows-edition/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2016/07/28/Install-zsh-on-Mac-without-homebrew/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">Must-have Apps: Windows edition</div>
+            <div class="article-nav-title">Install zsh on Mac without homebrew</div>
         </a>
     
 </nav>
