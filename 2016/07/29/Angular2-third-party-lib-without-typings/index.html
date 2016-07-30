@@ -13,7 +13,7 @@ If you’re not already familiar with typings, these are the typ">
 <meta property="og:site_name" content="Filoblog">
 <meta property="og:description" content="Angular2 is great in many ways, but one situation that I’ve found painful is integrating third-party libraries that do not have typings. 
 If you’re not already familiar with typings, these are the typ">
-<meta property="og:updated_time" content="2016-07-30T03:37:40.000Z">
+<meta property="og:updated_time" content="2016-07-30T03:40:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular2: Using third-party libs without typings">
 <meta name="twitter:description" content="Angular2 is great in many ways, but one situation that I’ve found painful is integrating third-party libraries that do not have typings. 
@@ -197,12 +197,12 @@ If you’re not already familiar with typings, these are the typ">
 <ol>
 <li><p>Include a script reference to the library on your page (<code>index.html</code>)</p>
  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"//cdn.somewhe.re/lib.min.js"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/local/path/to/lib.min.js"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>The first is an example script that is pulled from some CDN.</li>
+<li>The second is an example of a script that can be referenced locally. These could be managed by npm (node_mdules), bower, or manually.</li>
+<li>These scripts will add or attach to a global (eg. <code>THREE</code>, <code>mapbox</code>, <code>$</code>, etc.)</li>
+</ul>
 </li>
-</ol>
-<pre><code>- The first is an example script that is pulled from some CDN.
-- The second is an example of a script that can be referenced locally. These could be managed by npm (node_mdules), bower, or manually.
-- These scripts will add or attach to a global (eg. `THREE`, `mapbox`, `$`, etc.)
-</code></pre><ol>
 <li><p>In the component that requires these, use <code>declare</code> to initialize a variable matching the global name used by the lib. This lets TypeScript know that it has already been initialized<a href="http://stackoverflow.com/a/13252853/2554793" target="_blank" rel="external"><sup>1</sup></a>.</p>
  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">declare <span class="keyword">var</span> &lt;globalname&gt;: any;</div></pre></td></tr></table></figure>
 <ul>
