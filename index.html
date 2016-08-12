@@ -36,7 +36,7 @@
 
 <body>
     <div id="container">
-        <header id="header">
+        <header id="header" class="mdi-card">
     <div id="header-main" class="header-inner">
         <div class="outer">
             <a href="/" id="logo">
@@ -86,18 +86,18 @@
     </div>
 </header>
 
-        <div class="outer">
+        <div class="outer main-outer">
             
                 
 
 <aside id="profile">
-    <div class="inner profile-inner">
+    <div class="inner profile-inner mdi-card">
         <div class="base-info profile-block">
             <img id="avatar" src="/css/images/avatar.jpg" />
             <h2 id="name">Carlos Filoteo</h2>
             <h3 id="title">Front End Developer</h3>
             <span id="location"><i class="fa fa-map-marker"></i>Utah area</span>
-            <a id="follow" target="_blank" href="https://github.com/filoxo/">FOLLOW</a>
+            <a id="follow" target="_blank" href="https://twitter.com/c_filoteo">FOLLOW</a>
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
@@ -141,9 +141,9 @@
 </aside>
 
             
-            <section id="main">
+            <main id="main">
     <article id="post-Angular2-third-party-lib-without-typings" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+    <div class="article-inner mdi-card">
         
         
         
@@ -165,13 +165,6 @@
         </a>
     </div>
 
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/angular2/">angular2</a>
-    </div>
 
                     </div>
                 
@@ -210,13 +203,20 @@
         
         </div>
         <footer class="article-footer">
-            <div class="share-container">
+				        <!---->
+				        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="mdi-chip-link" href="/tags/angular2/">angular2</a>
+    </div>
+
+			          <div class="share-container">
 
 
 
 </div>
 
-    <a data-url="http://filoxo.github.io/2016/07/29/Angular2-third-party-lib-without-typings/" data-id="cir8pju9r00000lso8vb9x81w" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://filoxo.github.io/2016/07/29/Angular2-third-party-lib-without-typings/" data-id="cirr8b4h60000vdsoo3pfr7gz" class="article-share-link mdi-button"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -282,7 +282,7 @@
     })(jQuery);
 </script>
 
-            
+			          
     
 
         </footer>
@@ -293,7 +293,7 @@
 
 
     <article id="post-Install-zsh-on-Mac-without-homebrew" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+    <div class="article-inner mdi-card">
         
         
         
@@ -316,13 +316,6 @@
     </div>
 
 
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/mac/">mac</a>
-    </div>
-
                     </div>
                 
             </header>
@@ -336,11 +329,13 @@
 <ol>
 <li>Get the source tarball (<code>zsh-*.tar.gz</code>) from <a href="http://zsh.sourceforge.net/Arc/source.html" target="_blank" rel="external">zsh.org</a></li>
 <li><p>Unpack the file</p>
-<pre><code>tar xzf zsh-5.2.tar.gz
-</code></pre></li>
+ <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar xzf zsh-5.2.tar.gz</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
 <li><p>Build the binary. This will install <code>zsh</code> under <code>/usr/local/bin/zsh</code></p>
-<pre><code>./configure &amp;&amp; make &amp;&amp; make test &amp;&amp; make install
-</code></pre><ul>
+ <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./configure &amp;&amp; make &amp;&amp; make <span class="built_in">test</span> &amp;&amp; make install</div></pre></td></tr></table></figure>
+<ul>
 <li>The version of <code>zsh</code> that ships on Mac machines is outdated, thus why its necessary to build the binary.</li>
 <li>You may get an error message saying <code>install: /usr/local/bin/zsh-5.2: Permission denied</code>. If so, you will need to <code>sudo make install</code> instead.</li>
 </ul>
@@ -348,8 +343,8 @@
 <li><p>You now have <code>zsh</code> installed and working on your system. Begin configuring it by running <code>zsh</code> in your terminal; you’ll see a series of prompts to enable and disable features to your liking. </p>
 </li>
 <li><p>Next, you’ll want to also install <a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank" rel="external"><code>oh-my-zsh</code></a>. It makes zsh even more awesome by building in additional plugins and themes. This was the install script at the time of this writing. </p>
-<pre><code>sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;
-</code></pre><ul>
+ <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sh -c <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span>"</span></div></pre></td></tr></table></figure>
+<ul>
 <li>NOTE: you should read the contents of <code>install.sh</code> before directly piping it into your shell. Ya know, because security. </li>
 </ul>
 </li>
@@ -371,7 +366,7 @@
 </ul>
 </li>
 </ol>
-<p>##Bonus<br>Don’t let the fun end there. Here’s a few more things you can do to further refine your terminal to your liking. </p>
+<h2 id="Bonus"><a href="#Bonus" class="headerlink" title="Bonus"></a>Bonus</h2><p>Don’t let the fun end there. Here’s a few more things you can do to further refine your terminal to your liking. </p>
 <h4 id="Disable-‘last-login’-banner"><a href="#Disable-‘last-login’-banner" class="headerlink" title="Disable ‘last login’ banner"></a>Disable ‘last login’ banner</h4><p>When I open up the terminal I see a line at the top saying something like</p>
 <blockquote>
 <p>Last login: Mon Jan 1 12:00:00 on ttys004</p>
@@ -384,13 +379,20 @@
         
         </div>
         <footer class="article-footer">
-            <div class="share-container">
+				        <!---->
+				        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="mdi-chip-link" href="/tags/mac/">mac</a>
+    </div>
+
+			          <div class="share-container">
 
 
 
 </div>
 
-    <a data-url="http://filoxo.github.io/2016/07/28/Install-zsh-on-Mac-without-homebrew/" data-id="cir8pjuat00050lsoxhwqdqb2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://filoxo.github.io/2016/07/28/Install-zsh-on-Mac-without-homebrew/" data-id="cirr8b4hv0004vdso7lwpjmyx" class="article-share-link mdi-button"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -456,7 +458,7 @@
     })(jQuery);
 </script>
 
-            
+			          
     
 
         </footer>
@@ -467,7 +469,7 @@
 
 
     <article id="post-Must-have-Apps-Cross-platform-edition" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+    <div class="article-inner mdi-card">
         
         
         
@@ -489,13 +491,6 @@
         </a>
     </div>
 
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/android/">android</a>, <a class="tag-link" href="/tags/iOS/">iOS</a>, <a class="tag-link" href="/tags/linux/">linux</a>, <a class="tag-link" href="/tags/mac/">mac</a>, <a class="tag-link" href="/tags/windows/">windows</a>
-    </div>
 
                     </div>
                 
@@ -519,13 +514,20 @@
         
         </div>
         <footer class="article-footer">
-            <div class="share-container">
+				        <!---->
+				        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="mdi-chip-link" href="/tags/android/">android</a> <a class="mdi-chip-link" href="/tags/iOS/">iOS</a> <a class="mdi-chip-link" href="/tags/linux/">linux</a> <a class="mdi-chip-link" href="/tags/mac/">mac</a> <a class="mdi-chip-link" href="/tags/windows/">windows</a>
+    </div>
+
+			          <div class="share-container">
 
 
 
 </div>
 
-    <a data-url="http://filoxo.github.io/2016/07/28/Must-have-Apps-Cross-platform-edition/" data-id="cir8pjua900020lsozomh21hm" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://filoxo.github.io/2016/07/28/Must-have-Apps-Cross-platform-edition/" data-id="cirr8b4i30009vdsoc7lp1u98" class="article-share-link mdi-button"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -591,7 +593,7 @@
     })(jQuery);
 </script>
 
-            
+			          
     
 
         </footer>
@@ -602,7 +604,7 @@
 
 
     <article id="post-Must-have-Apps-Mac-edition" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+    <div class="article-inner mdi-card">
         
         
         
@@ -625,13 +627,6 @@
     </div>
 
 
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/mac/">mac</a>
-    </div>
-
                     </div>
                 
             </header>
@@ -648,13 +643,16 @@
 </ul>
 <p>Thats really all I need because I wanted to replicate Window’s AeroSnap functionality that is missing from OSX. But my workflow is also enhanced by adding custom shortcuts that can remap and shorten existing ones, or adds new ones. Here are a few that I can’t live without:</p>
 <ul>
-<li>Global <ul>
+<li><p>Global </p>
+<ul>
 <li>⌘ + → : Snap window to right </li>
 <li>⌘ + ← : Snap window to left </li>
 <li>⌘ + ↑ : Maximize window </li>
+<li>Press ⌥ + ⌃ + ⌘ + 8 to invert or revert the screen colors</li>
 </ul>
 </li>
-<li>Chrome specific <ul>
+<li><p>Chrome specific </p>
+<ul>
 <li>F12 was remapped to run ⌘⌥I to bring up the Developer tools like on Windows</li>
 </ul>
 </li>
@@ -676,13 +674,20 @@
         
         </div>
         <footer class="article-footer">
-            <div class="share-container">
+				        <!---->
+				        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="mdi-chip-link" href="/tags/mac/">mac</a>
+    </div>
+
+			          <div class="share-container">
 
 
 
 </div>
 
-    <a data-url="http://filoxo.github.io/2016/07/28/Must-have-Apps-Mac-edition/" data-id="cir8pjuau00070lso42x96fyb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://filoxo.github.io/2016/07/28/Must-have-Apps-Mac-edition/" data-id="cirr8b4i20007vdsoxha11cfn" class="article-share-link mdi-button"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -748,7 +753,7 @@
     })(jQuery);
 </script>
 
-            
+			          
     
 
         </footer>
@@ -759,7 +764,7 @@
 
 
     <article id="post-Must-have-Apps-Windows-edition" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+    <div class="article-inner mdi-card">
         
         
         
@@ -781,13 +786,6 @@
         </a>
     </div>
 
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/windows/">windows</a>
-    </div>
 
                     </div>
                 
@@ -819,13 +817,20 @@
         
         </div>
         <footer class="article-footer">
-            <div class="share-container">
+				        <!---->
+				        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="mdi-chip-link" href="/tags/windows/">windows</a>
+    </div>
+
+			          <div class="share-container">
 
 
 
 </div>
 
-    <a data-url="http://filoxo.github.io/2016/07/28/Must-have-Apps-Windows-edition/" data-id="cir8pjub3000a0lsodbaexo86" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://filoxo.github.io/2016/07/28/Must-have-Apps-Windows-edition/" data-id="cirr8b4hz0005vdsow6h7nukc" class="article-share-link mdi-button"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -891,7 +896,7 @@
     })(jQuery);
 </script>
 
-            
+			          
     
 
         </footer>
@@ -904,63 +909,61 @@
     <nav id="page-nav">
         <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
-</section>
+</main>
             
                 <aside id="sidebar">
    
         
-    <div class="widget-wrap">
-        <h3 class="widget-title">recent</h3>
-        <div class="widget">
-            <ul id="recent-post" class="no-thumbnail">
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2016/07/29/Angular2-third-party-lib-without-typings/" class="title">Angular2: Using third-party libs without typings</a></p>
-                            <p class="item-date"><time datetime="2016-07-29T19:40:43.000Z" itemprop="datePublished">29 Jul 2016</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2016/07/28/Install-zsh-on-Mac-without-homebrew/" class="title">Install zsh on Mac without homebrew</a></p>
-                            <p class="item-date"><time datetime="2016-07-29T05:38:05.000Z" itemprop="datePublished">28 Jul 2016</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2016/07/28/Must-have-Apps-Cross-platform-edition/" class="title">Must-have Apps: Cross-platform edition</a></p>
-                            <p class="item-date"><time datetime="2016-07-29T05:37:55.000Z" itemprop="datePublished">28 Jul 2016</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2016/07/28/Must-have-Apps-Mac-edition/" class="title">Must-have Apps: Mac edition</a></p>
-                            <p class="item-date"><time datetime="2016-07-29T05:37:44.000Z" itemprop="datePublished">28 Jul 2016</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2016/07/28/Must-have-Apps-Windows-edition/" class="title">Must-have Apps: Windows edition</a></p>
-                            <p class="item-date"><time datetime="2016-07-29T05:37:38.000Z" itemprop="datePublished">28 Jul 2016</time></p>
-                        </div>
-                    </li>
-                
-            </ul>
-        </div>
+    <div class="mdi-card">
+        <h3 class="mdi-card-title">recent</h3>
+        <ul id="recent-posts" class="mdi-list">
+            
+                <li class="mdi-list-item">
+                    
+                    <div class="item-inner">
+                        <p class="item-category"></p>
+                        <p class="item-title"><a href="/2016/07/29/Angular2-third-party-lib-without-typings/" class="title">Angular2: Using third-party libs without typings</a></p>
+                        <p class="item-date text-muted"><time datetime="2016-07-29T19:40:43.000Z" itemprop="datePublished">29 Jul 2016</time></p>
+                    </div>
+                </li>
+            
+                <li class="mdi-list-item">
+                    
+                    <div class="item-inner">
+                        <p class="item-category"></p>
+                        <p class="item-title"><a href="/2016/07/28/Install-zsh-on-Mac-without-homebrew/" class="title">Install zsh on Mac without homebrew</a></p>
+                        <p class="item-date text-muted"><time datetime="2016-07-29T05:38:05.000Z" itemprop="datePublished">28 Jul 2016</time></p>
+                    </div>
+                </li>
+            
+                <li class="mdi-list-item">
+                    
+                    <div class="item-inner">
+                        <p class="item-category"></p>
+                        <p class="item-title"><a href="/2016/07/28/Must-have-Apps-Cross-platform-edition/" class="title">Must-have Apps: Cross-platform edition</a></p>
+                        <p class="item-date text-muted"><time datetime="2016-07-29T05:37:55.000Z" itemprop="datePublished">28 Jul 2016</time></p>
+                    </div>
+                </li>
+            
+                <li class="mdi-list-item">
+                    
+                    <div class="item-inner">
+                        <p class="item-category"></p>
+                        <p class="item-title"><a href="/2016/07/28/Must-have-Apps-Mac-edition/" class="title">Must-have Apps: Mac edition</a></p>
+                        <p class="item-date text-muted"><time datetime="2016-07-29T05:37:44.000Z" itemprop="datePublished">28 Jul 2016</time></p>
+                    </div>
+                </li>
+            
+                <li class="mdi-list-item">
+                    
+                    <div class="item-inner">
+                        <p class="item-category"></p>
+                        <p class="item-title"><a href="/2016/07/28/Must-have-Apps-Windows-edition/" class="title">Must-have Apps: Windows edition</a></p>
+                        <p class="item-date text-muted"><time datetime="2016-07-29T05:37:38.000Z" itemprop="datePublished">28 Jul 2016</time></p>
+                    </div>
+                </li>
+            
+        </ul>
     </div>
 
     
