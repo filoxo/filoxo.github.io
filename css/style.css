@@ -11,7 +11,6 @@ body:after {
 }
 .mdi-card {
   background-color: #fff;
-  -webkit-border-radius: 2px;
   border-radius: 2px;
   -webkit-box-shadow: 0 2.5px 5px rgba(0,0,0,0.2);
   box-shadow: 0 2.5px 5px rgba(0,0,0,0.2);
@@ -24,7 +23,6 @@ body:after {
 .mdi-chip,
 .mdi-chip-link {
   background-color: rgba(0,0,0,0.3);
-  -webkit-border-radius: 32px;
   border-radius: 32px;
   color: #fff;
   display: inline-block;
@@ -45,7 +43,6 @@ body:after {
   background-color: rgba(0,0,0,0.4);
 }
 .mdi-button {
-  -webkit-border-radius: 2px;
   border-radius: 2px;
   padding: 8px 16px;
   max-height: 32px;
@@ -178,7 +175,6 @@ code {
   color: #e96900;
   padding: 3px 5px;
   font-size: 0.8em;
-  -webkit-border-radius: 2px;
   border-radius: 2px;
   font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
   background-color: #f8f8f8;
@@ -186,7 +182,6 @@ code {
 kbd {
   background-color: #f7f7f7;
   border: 1px solid #ccc;
-  -webkit-border-radius: 3px;
   border-radius: 3px;
   -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.2), 0 0 0 2px #fff inset;
   box-shadow: 0 1px 0 rgba(0,0,0,0.2), 0 0 0 2px #fff inset;
@@ -553,7 +548,6 @@ kbd {
   float: left;
 }
 #sub-nav #profile-nav .avatar {
-  -webkit-border-radius: 100%;
   border-radius: 100%;
   width: 40px;
   height: 40px;
@@ -575,7 +569,6 @@ kbd {
   padding: 0 30px 0 15px;
   line-height: 40px;
   height: 40px !important;
-  -webkit-border-radius: 21px;
   border-radius: 21px;
 }
 #search-form-wrap .search-form .search-form-input::-webkit-search-results-decoration,
@@ -669,7 +662,6 @@ kbd {
     margin-right: 15px;
     height: 32px;
     line-height: 32px;
-    -webkit-border-radius: 16px;
     border-radius: 16px;
   }
 }
@@ -718,7 +710,6 @@ kbd {
   margin: 10px auto 20px;
   width: 128px;
   height: 128px;
-  -webkit-border-radius: 128px;
   border-radius: 128px;
 }
 #profile .inner .base-info #name,
@@ -749,7 +740,6 @@ kbd {
   text-align: center;
   margin: 20px auto 10px;
   background: #38b7ea;
-  -webkit-border-radius: 20px;
   border-radius: 20px;
   -webkit-transition: 0.2s ease;
   -moz-transition: 0.2s ease;
@@ -817,7 +807,6 @@ kbd {
   padding: 5px 15px;
   position: absolute;
   white-space: nowrap;
-  -webkit-border-radius: 2px;
   border-radius: 2px;
   text-transform: uppercase;
   -webkit-box-shadow: 0 0 2px rgba(0,0,0,0.2);
@@ -1070,7 +1059,6 @@ a .article-title:hover {
   display: inline-block;
   line-height: 1em;
   padding: 6px 15px;
-  -webkit-border-radius: 15px;
   border-radius: 15px;
   background: #eceff1;
   color: #999;
@@ -1143,7 +1131,6 @@ a .article-title:hover {
     margin-top: -4px;
     margin-left: -4px;
     content: "";
-    -webkit-border-radius: 50%;
     border-radius: 50%;
     background: #787c81;
   }
@@ -1203,7 +1190,6 @@ a .article-title:hover {
   background: #fff;
   -webkit-box-shadow: 0px 2px 2px rgba(0,0,0,0.1);
   box-shadow: 0px 2px 2px rgba(0,0,0,0.1);
-  -webkit-border-radius: 3px;
   border-radius: 3px;
   margin-left: -145px;
   overflow: hidden;
@@ -1223,7 +1209,6 @@ a .article-title:hover {
   color: #565a5f;
   outline: none;
   border: 1px solid #eceff2;
-  -webkit-border-radius: 3px 3px 0 0;
   border-radius: 3px 3px 0 0;
   height: 36px;
   line-height: 36px;
@@ -1315,7 +1300,6 @@ a .article-title:hover {
   background: #f9f9f9;
   margin: 2em 0 0 0.2em;
   padding: 1em;
-  -webkit-border-radius: 0px;
   border-radius: 0px;
 }
 .toc-article .toc-title {
@@ -1591,7 +1575,6 @@ ol.toc {
   line-height: 32px;
   text-align: center;
   display: inline-block;
-  -webkit-border-radius: 32px;
   border-radius: 32px;
 }
 #page-nav a {
@@ -1651,7 +1634,6 @@ ol.toc {
   width: 12px;
   color: #fff;
   height: 12px;
-  -webkit-border-radius: 50%;
   border-radius: 50%;
   margin: 11px 0 0 -8px;
   display: inline-block;
@@ -1872,7 +1854,6 @@ ol.toc {
 }
 #toTop {
   background: #565a5f;
-  -webkit-border-radius: 60px;
   border-radius: 60px;
   bottom: 20px;
   -webkit-box-shadow: 2.5px 2.5px 5px rgba(0,0,0,0.15);
@@ -1936,7 +1917,6 @@ ol.toc {
   -webkit-box-shadow: none;
   box-shadow: none;
   font-weight: 200;
-  -webkit-border-radius: 0;
   border-radius: 0;
   background: #fff;
   line-height: 20px;

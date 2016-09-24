@@ -3,18 +3,14 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Firebase Email Auth and Validation | Filoblog</title>
+    <title>Tag: react | Filoblog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="If you use Firebase, you’d be inclined to use their authentication for you system because of how amazingly easy it is to get started. They offer a variety of methods: email &amp;amp; password, oAuth with">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Firebase Email Auth and Validation">
-<meta property="og:url" content="http://filoxo.github.io/2016/07/28/Firebase-Email-Auth-and-Validation/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Filoblog">
+<meta property="og:url" content="http://filoxo.github.io/tags/react/index.html">
 <meta property="og:site_name" content="Filoblog">
-<meta property="og:description" content="If you use Firebase, you’d be inclined to use their authentication for you system because of how amazingly easy it is to get started. They offer a variety of methods: email &amp;amp; password, oAuth with">
-<meta property="og:updated_time" content="2016-07-29T19:29:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Firebase Email Auth and Validation">
-<meta name="twitter:description" content="If you use Firebase, you’d be inclined to use their authentication for you system because of how amazingly easy it is to get started. They offer a variety of methods: email &amp;amp; password, oAuth with">
+<meta name="twitter:title" content="Filoblog">
     
 
     
@@ -145,174 +141,45 @@
 </aside>
 
             
-            <main id="main"><article id="post-Firebase-Email-Auth-and-Validation" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner mdi-card">
-        
-        
-        
-            <header class="article-header">
+            <main id="main">
+<div class="timeline timeline-wrap">
+    <div class="timeline-row timeline-row-major">
+        <span class="node"><i class="fa fa-tag"></i></span>
+        <h1 class="title">#react</h1>
+    </div>
+    
+        <div class="timeline-row">
+            <span class="node"></span>
+            <div class="content">
                 
     
-        <h1 class="article-title" itemprop="name">
-            Firebase Email Auth and Validation
+        <h1 itemprop="name">
+            <a class="timeline-article-title" href="/2016/09/22/Recommended-resources/">Recommended resources</a>
         </h1>
     
 
-                
-                    <div class="article-meta">
-                        
+                <div class="article-meta">
+                    
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2016/07/28/Firebase-Email-Auth-and-Validation/">
-            <time datetime="2016-07-29T05:36:47.000Z" itemprop="datePublished">28 Jul 2016</time>
+        <a href="/2016/09/22/Recommended-resources/">
+            <time datetime="2016-09-22T23:02:02.000Z" itemprop="datePublished">22 Sep 2016</time>
         </a>
     </div>
 
 
-                    </div>
-                
-            </header>
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>If you use Firebase, you’d be inclined to use their authentication for you system because of how amazingly easy it is to get started. They offer a variety of methods: email &amp; password, oAuth with Google/Twitter/Facebook/Github, or even custom auth. </p>
-<p>A few days ago, a new Firebase user asked a very interesting help question in my school Slack channel:</p>
-<blockquote>
-<p>I am looking at Firebase’s authentication set up with email and password and I can find no way to set any password rules. For example I could create the password “j”. Is there a way to set at least a minimum password length?</p>
-</blockquote>
-<p>Having only used oAuth myself, I figured you could simply create a <a href="https://www.firebase.com/docs/security/api/rule/validate.html" target="_blank" rel="external"><code>.validate</code> rule</a> and once in place, perform basic <a href="https://www.firebase.com/docs/security/api/string/" target="_blank" rel="external">string operations</a> to test whether it actually passes or not. Easy right? <em>Unfortunately, no.</em></p>
-<p>You actually don’t have access to any of the user data with the email &amp; password option. Firebase manages the email and password. That’s pretty much the point of that scheme.<br>That also means you’re left at the mercy of the security rules enforced (or not!) by Firebase. So a user can create a password with <em>just one character</em> and the developer is only left with client-side validation. If you want any sort of granular control in the authentication flow, you’ll have go to with Custom Authentication. </p>
-<h3 id="Help-me-Obi-Wan"><a href="#Help-me-Obi-Wan" class="headerlink" title="Help me Obi-Wan"></a>Help me Obi-Wan</h3><p>The Firebase gurus on the <a href="https://www.firebase.com/blog/2016-02-26-firebase-slack-community.html" target="_blank" rel="external">Firebase Slack channel</a> offered an alternative for managing and verifying this data while still not owning the auth process. </p>
-<ul>
-<li>Add a security rule to the user profile in your database, something like <code>isVerified</code></li>
-<li>Pass the username and password to a server API call<ul>
-<li><a href="https://github.com/firebase/firebase-queue" target="_blank" rel="external">Firebase Queue</a> is an elegant alternative to a REST API</li>
-</ul>
-</li>
-<li>Create a task that can invalidate bad passwords or add the <code>isVerified</code> field accordingly</li>
-</ul>
-<p>Couple this with client-side validation and you’d be able to rest easier having implemented better security practices. I’m not 100% convinced that it is a <em>great</em> solution, but it is still much better than leaving everything to be validated on the client. </p>
-
-        
-        </div>
-        <footer class="article-footer">
-				        <!---->
-		        
+                    
+                    
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="mdi-chip-link" href="/tags/firebase/">firebase</a>
+        <a class="mdi-chip-link" href="/tags/angular2/">angular2</a> <a class="mdi-chip-link" href="/tags/javascript/">javascript</a> <a class="mdi-chip-link" href="/tags/react/">react</a>
     </div>
 
-	          <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://filoxo.github.io/2016/07/28/Firebase-Email-Auth-and-Validation/" data-id="cithkt0rg0004xxsou30vktxj" class="article-share-link mdi-button"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-	          
-    
-
-		        
-        </footer>
-    </div>
-    
-        
-<nav id="article-nav">
-    
-        <a href="/2016/07/28/Must-have-Apps-Windows-edition/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Newer</strong>
-            <div class="article-nav-title">
-                
-                    Must-have Apps: Windows edition
-                
+                </div>
             </div>
-        </a>
+        </div>
     
-    
-        <a href="/2016/07/28/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">Hello World</div>
-        </a>
-    
-</nav>
-
-
-    
-</article>
-
-
-    
-    <section id="comments">
-    
-    </section>
-
+</div>
 </main>
             
                 <aside id="sidebar">
