@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<url> <loc>https://filoxo.github.io/404.html</loc> </url>
+<url> <loc>https://filoxo.github.io/about/</loc> </url>
+<url> <loc>https://filoxo.github.io/</loc> </url>
+<url> <loc>https://filoxo.github.io/posts/Firebase-Email-Auth-and-Validation/</loc> </url>
+<url> <loc>https://filoxo.github.io/posts/Install-zsh-on-Mac-without-homebrew/</loc> </url>
+<url> <loc>https://filoxo.github.io/posts/Must-have-Apps-Cross-platform-edition/</loc> </url>
+<url> <loc>https://filoxo.github.io/posts/Must-have-Apps-Mac-edition/</loc> </url>
+<url> <loc>https://filoxo.github.io/posts/Must-have-Apps-Windows-edition/</loc> </url>
+<url> <loc>https://filoxo.github.io/posts/first-post/</loc> </url>
+<url> <loc>https://filoxo.github.io/posts/hello-world/</loc> </url>
+<url> <loc>https://filoxo.github.io/posts/recommended-resources/</loc> </url>
+</urlset>
