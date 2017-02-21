@@ -1,22 +1,38 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[filoblog]]></title><description><![CDATA[filoblog]]></description><link>https://filoxo.github.io</link><generator>RSS for Node</generator><lastBuildDate>Mon, 13 Feb 2017 23:50:15 GMT</lastBuildDate><atom:link href="https://filoxo.github.io/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[Building a CSS framework using npm]]></title><description><![CDATA[<p>This last weekend I wanted to create a simple CSS framework that I can reuse for my own little projects. The end result is <a href="https://github.com/filoxo/simple-style">Simple Style</a> (which is still a WIP as requirements come up). Surprisingly, using <a href="https://medium.com/@dabit3/introduction-to-using-npm-as-a-build-tool-b41076f488b0#.5w4loc8uy">npm as a build tool</a> made it extremely easy to set up a dev environment. I'll review everything about the setup in this post for my own documentation, but hopefully can also serve as a clean, straightforward example.</p>
-<p>I used <code>yarn</code> for this experiment instead of <code>npm</code> solely for the speed improvements. Fortunately, <code>yarn</code>'s commands all have their <code>npm</code> equivalents so don't get hung up on the differences.</p>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[filoblog]]></title><description><![CDATA[filoblog]]></description><link>https://filoxo.github.io</link><generator>RSS for Node</generator><lastBuildDate>Tue, 21 Feb 2017 16:41:52 GMT</lastBuildDate><atom:link href="https://filoxo.github.io/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[Building a CSS framework using npm]]></title><description><![CDATA[<p>This last weekend I wanted to create a simple CSS framework that I can reuse for my own little projects. The end result is <a href="https://github.com/filoxo/simple-style">Simple Style</a> (which is still a WIP as requirements come up). Surprisingly, using <a href="https://medium.com/@dabit3/introduction-to-using-npm-as-a-build-tool-b41076f488b0#.5w4loc8uy">npm as a build tool</a> made it extremely easy to set up a dev environment. I'll review everything about the setup in this post for my own documentation, but hopefully can also serve as a clean, straightforward example.</p>
+<p>I used <a href="https://yarnpkg.com/en/"><code>yarn</code></a> for this experiment instead of <code>npm</code> solely for the speed improvements. Fortunately, <code>yarn</code>'s commands all have their <code>npm</code> equivalents so don't get hung up on the differences.</p>
+<p>This basic setup offers:</p>
+<ul>
+<li>Autoprefixing to support the 2 latest browsers</li>
+<li>Future CSS syntax usable today</li>
+<li>minification</li>
+<li>optimizations</li>
+<li>a quick and easy development setup to reflect changes on-the-fly</li>
+</ul>
 <h3 id="dev-dependencies"><a href="#dev-dependencies" class="phenomic-HeadingAnchor">#</a>Dev dependencies</h3>
 <p>Here are our initial development dependencies:</p>
 <ul>
-<li><a href="https://necolas.github.io/normalize.css/">normalize.css</a>: so that all elements render consistently</li>
-<li><a href="https://github.com/postcss/postcss">PostCSS</a>'s CLI: to leverage its ecosystem of feature plugins</li>
-<li><a href="http://cssnext.io/">CSSnext</a>: a PostCSS plugin that helps you to use the latest CSS syntax today. This way the code will be a little more future-proof. Additionally, CSSnext also includes <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> as a dependency.</li>
-<li><code>postcss-import</code>: used to pull in a css file that wasn't being preprocessed</li>
-<li><code>cssnano</code>: minify and optimize output</li>
+<li>
+<p><a href="https://necolas.github.io/normalize.css/">normalize.css</a>: so that all elements render consistently</p>
+</li>
+<li>
+<p><a href="https://github.com/postcss/postcss">PostCSS</a>'s CLI: to leverage its ecosystem of feature plugins</p>
+</li>
+<li>
+<p><a href="http://cssnext.io/">CSSnext</a>: a PostCSS plugin that helps you to use the latest CSS syntax today. This way the code will be a little more future-proof. Additionally, CSSnext also includes <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> as a dependency.</p>
+</li>
+<li>
+<p><code>postcss-import</code>: used to pull in a css file that wasn't being preprocessed</p>
+</li>
+<li>
+<p><code>cssnano</code>: minify and optimize output</p>
+<p>  yarn add -D normalize.css postcss-cli postcss-cssnext postcss-import cssnano</p>
+</li>
 </ul>
-<p>Install using yarn (or the npm equivalent)</p>
-<pre><code>yarn add -D normalize.css postcss-cli postcss-cssnext postcss-import cssnano
-</code></pre>
 <h3 id="postcss-config"><a href="#postcss-config" class="phenomic-HeadingAnchor">#</a>PostCSS config</h3>
 <p>Create a json file that contains the config for PostCSS. The docs named it <strong>options.json</strong> but I choose <strong>postcss.json</strong> for better clarity. The comments below explain some keys.</p>
 <pre><code>{
     // Enable plugins in order
-    "use": [ 
+    "use": [
         "postcss-import",
         "postcss-cssnext",
         "cssnano"
@@ -34,8 +50,8 @@
     }
 }
 </code></pre>
-<h3 id="css-time"><a href="#css-time" class="phenomic-HeadingAnchor">#</a>CSS time</h3>
-<p>Go ahead and create <strong>main.css</strong> at the project root. The above config will output to <strong>dist/</strong>. Here's a quick sample.</p>
+<h3 id="css-time"><a href="#css-time" class="phenomic-HeadingAnchor">#</a>CSS-time</h3>
+<p>Go ahead and create <strong>main.css</strong> at the project root. The above config will output to <strong>dist/</strong>. Here's a quick sample to put into the file for now.</p>
 <pre><code>@import('normalize.css');
 
 :root {
@@ -44,57 +60,46 @@
 }
 </code></pre>
 <h3 id="building"><a href="#building" class="phenomic-HeadingAnchor">#</a>Building</h3>
-<p>Use the postcss-cli with the config file passed in as an arg and save it as an npm script. </p>
+<p>Use the postcss-cli with the config file passed in as an arg and save it as an npm script.</p>
 <pre><code>"scripts": {
     "build": "node_modules/postcss-cli/bin/postcss -c postcss.json"
 }
 </code></pre>
-<p>Now you can simply run <code>yarn run build</code> and your css will be processed and output to <strong>dist</strong>. But we can still do better. </p>
+<p>Now you can simply run <code>yarn run build</code> and your css will be processed and output to <strong>dist</strong>. But we can still do better.</p>
 <h3 id="watch-for-changes"><a href="#watch-for-changes" class="phenomic-HeadingAnchor">#</a>Watch for changes</h3>
 <p>Enabling watch will auto-transform the css file on changes. Add another npm script, which is exactly the same as <code>build</code> but with the watch flag.</p>
 <pre><code>"build:dev": "node_modules/postcss-cli/bin/postcss -c postcss.json -w"
 </code></pre>
 <h3 id="livereload"><a href="#livereload" class="phenomic-HeadingAnchor">#</a>Livereload</h3>
-<p>You wouldn't develop a CSS framework without seeing it rendered on a page so let's create one that we can use for development. In <strong>dist/</strong> create an <strong>index.html</strong> file and populate it with some HTML, and add a link to your <strong>main.css</strong> file.</p>
+<p>You wouldn't develop a CSS framework without seeing it rendered on a page so let's create a test page for development. Create <strong>index.html</strong> at the project root and populate it with some HTML, and add a link to your <strong>main.css</strong> file.</p>
 <pre><code>&#x3C;!doctype html>
 &#x3C;html lang="en-US">
     &#x3C;head>
-        &#x3C;link rel="stylesheet" href="/main.css">
+        &#x3C;link rel="stylesheet" href="/dist/main.css">
     &#x3C;/head>
     &#x3C;body>
         &#x3C;main>Hello world&#x3C;/main>
     &#x3C;/body>
 &#x3C;/html>
 </code></pre>
-<blockquote>
-<p><strong>dist/</strong> probably isn't the best place for this file and I may change that in the future. We'll leave it here for now.</p>
-</blockquote>
-<p><a href="https://www.npmjs.com/package/lr-http-server"><code>lr-http-server</code></a> will reload on changes, as well as a functioning http server. </p>
-<pre><code>yarn add -D lr-http-server 
+<p><a href="https://www.npmjs.com/package/lr-http-server"><code>lr-http-server</code></a> will reload on changes, as well as a functioning http server.</p>
+<pre><code>yarn add -D lr-http-server
 </code></pre>
 <p>And then register a new npm script for it</p>
-<pre><code>"reload": "lr-http-server -p 3000 -d './dist/'"
+<pre><code>"reload": "lr-http-server -p 3000"
 </code></pre>
 <h3 id="composing-scripts"><a href="#composing-scripts" class="phenomic-HeadingAnchor">#</a>Composing scripts</h3>
 <p>We want the two above scripts to run in parallel so that if either the css or the html file changes the livereload server will do its job. <a href="https://www.npmjs.com/package/npm-run-all"><code>npm-run-all</code></a> with the <code>-p</code> (parallel) flag does this exactly.</p>
-<pre><code>yarn add -D npm-run-all 
+<pre><code>yarn add -D npm-run-all
 </code></pre>
 <p>Join the two tasks together into a single npm script</p>
-<pre><code>"start": "npm-run-all -p build:dev reload" 
+<pre><code>"start": "npm-run-all -p build:dev reload"
 </code></pre>
-<p>And then run easily with </p>
+<p>And then run easily with</p>
 <pre><code>yarn start
 </code></pre>
-<h3 id="fin"><a href="#fin" class="phenomic-HeadingAnchor">#</a>Fin</h3>
-<p>This basic setup offers:</p>
-<ul>
-<li>Autoprefixing to support the 2 latest browsers</li>
-<li>Future CSS syntax usable today</li>
-<li>minification</li>
-<li>optimizations</li>
-<li>a quick and easy development setup to reflect changes on-the-fly</li>
-</ul>
-<p>Use <code>yarn start</code> to develop, and <code>yarn run build</code> to output the final CSS file, ready to use. Improve upon this as needed! </p>
+<h3 id="done"><a href="#done" class="phenomic-HeadingAnchor">#</a>Done!</h3>
+<p>You're ready to keep going developing your styles inside <strong>main.css</strong>. Feel free to improve upon this as needed!</p>
 ]]></description><link>https://filoxo.github.io/posts/build-a-css-framework-using-npm/</link><guid isPermaLink="true">https://filoxo.github.io/posts/build-a-css-framework-using-npm/</guid><pubDate>Tue, 14 Feb 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Cross-platform Revisited]]></title><description><![CDATA[<p>Time has passed, technology has improved, and my preferences have also changed. In this post I'll revisit my choice of tooling. </p>
 <h3 id="password-manager"><a href="#password-manager" class="phenomic-HeadingAnchor">#</a>Password manager</h3>
 <p>Having put a password manager in place to store, generate, and access my passphrases has been one of the most beneficial tools I've been able to use in my day-to-day. KeePass has long been the standard for accomplishing this but the clients built around it have not kept up—at least not very well. </p>
