@@ -1,4 +1,43 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[filoblog]]></title><description><![CDATA[filoblog]]></description><link>https://filoxo.github.io</link><generator>RSS for Node</generator><lastBuildDate>Tue, 21 Feb 2017 16:41:52 GMT</lastBuildDate><atom:link href="https://filoxo.github.io/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[Building a CSS framework using npm]]></title><description><![CDATA[<p>This last weekend I wanted to create a simple CSS framework that I can reuse for my own little projects. The end result is <a href="https://github.com/filoxo/simple-style">Simple Style</a> (which is still a WIP as requirements come up). Surprisingly, using <a href="https://medium.com/@dabit3/introduction-to-using-npm-as-a-build-tool-b41076f488b0#.5w4loc8uy">npm as a build tool</a> made it extremely easy to set up a dev environment. I'll review everything about the setup in this post for my own documentation, but hopefully can also serve as a clean, straightforward example.</p>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[filoblog]]></title><description><![CDATA[filoblog]]></description><link>https://filoxo.github.io</link><generator>RSS for Node</generator><lastBuildDate>Wed, 05 Apr 2017 08:46:39 GMT</lastBuildDate><atom:link href="https://filoxo.github.io/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[Thoughts on Angular: Ng-Content]]></title><description><![CDATA[<p>I recently came across some interesting behavior with Angular's <code>ng-content</code> that I wanted to jot down so I can search for some answers. NgContent isn't well documented. </p>
+<h3 id="why-isnt-ng-content-self-closing"><a href="#why-isnt-ng-content-self-closing" class="phenomic-HeadingAnchor">#</a>Why isn't <code>ng-content</code> self-closing?</h3>
+<p><code>ng-content</code> is to be used like any other element. This is great, especially for rendering in default content. For example, a component that can transclude some content but if for some reason nothing is nested into it, it will show a default state.</p>
+<pre><code>&#x3C;profile-card>
+    &#x3C;ng-content>
+        &#x3C;img src="/defaultProfile.jpg"/>
+        &#x3C;p>Unknown&#x3C;/p>
+    &#x3C;/ng-content>
+&#x3C;/profile-card>
+</code></pre>
+<p>But what if you don't need anything within the opening and closing tags? You'd think that just <code>&#x3C;ng-content /></code> would be a nice and simple way to signal where to place the included content, but attempting to do so generates the following error:</p>
+<pre><code>Template parse errors: Only void and foreign elements can be self closed "ng-content"
+[ERROR ->]&#x3C;ng-content />
+</code></pre>
+<p>Seems weird to me. This may be by design. </p>
+<h3 id="select-is-only-able-to-find-immediate-children"><a href="#select-is-only-able-to-find-immediate-children" class="phenomic-HeadingAnchor">#</a>Select is only able to find immediate children?</h3>
+<p>One of the features of <code>ng-content</code> is that you can use the <code>select</code> attribute on it to pull transcluded content into a specific location. </p>
+<pre><code>&#x3C;!-- my-component.html -->
+&#x3C;div>
+    &#x3C;ng-content select=".title">&#x3C;/ng-content>
+    &#x3C;ng-content select=".subtitle">&#x3C;/ng-content>
+&#x3C;/div>
+</code></pre>
+<p>This is great for enforcing layout in a specific way. Except... it has a <strong>major</strong> caveat, at least in my opinion. This select only seems to match <em>immediate children only</em>, nothing else.</p>
+<p>So using the above <code>my-component</code>, this belwo works while placing the <code>title</code> above the <code>subtitle</code>:</p>
+<pre><code>&#x3C;my-component>
+    &#x3C;p class="subtitle">world&#x3C;/p>
+    &#x3C;h2 class="title">Hello&#x3C;/h2>
+&#x3C;/my-component>
+</code></pre>
+<p>but then this doesn't! Nothing is rendered. </p>
+<pre><code>&#x3C;my-component>
+    &#x3C;div>
+        &#x3C;h2 class="title">Hello&#x3C;/h2>
+        &#x3C;p class="subtitle">world&#x3C;/p>
+    &#x3C;/div>
+&#x3C;/my-component>
+</code></pre>
+<p>It can't find these same elements  because they're wrapped in an extra div? I would have thought that it would match those elements as well, just like <code>querySelector</code> or CSS selectors would. If I only wanted immediate children I would have used something like <code>select="> .title"</code>. My assumption that it used standard selectors is wrong? ¯\<em>(ツ)</em>/¯ That sucks.</p>
+]]></description><link>https://filoxo.github.io/posts/thoughts-on-angular-ngcontent/</link><guid isPermaLink="true">https://filoxo.github.io/posts/thoughts-on-angular-ngcontent/</guid><pubDate>Wed, 05 Apr 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Building a CSS framework using npm]]></title><description><![CDATA[<p>This last weekend I wanted to create a simple CSS framework that I can reuse for my own little projects. The end result is <a href="https://github.com/filoxo/simple-style">Simple Style</a> (which is still a WIP as requirements come up). Surprisingly, using <a href="https://medium.com/@dabit3/introduction-to-using-npm-as-a-build-tool-b41076f488b0#.5w4loc8uy">npm as a build tool</a> made it extremely easy to set up a dev environment. I'll review everything about the setup in this post for my own documentation, but hopefully can also serve as a clean, straightforward example.</p>
 <p>I used <a href="https://yarnpkg.com/en/"><code>yarn</code></a> for this experiment instead of <code>npm</code> solely for the speed improvements. Fortunately, <code>yarn</code>'s commands all have their <code>npm</code> equivalents so don't get hung up on the differences.</p>
 <p>This basic setup offers:</p>
 <ul>
@@ -11,23 +50,15 @@
 <h3 id="dev-dependencies"><a href="#dev-dependencies" class="phenomic-HeadingAnchor">#</a>Dev dependencies</h3>
 <p>Here are our initial development dependencies:</p>
 <ul>
-<li>
-<p><a href="https://necolas.github.io/normalize.css/">normalize.css</a>: so that all elements render consistently</p>
-</li>
-<li>
-<p><a href="https://github.com/postcss/postcss">PostCSS</a>'s CLI: to leverage its ecosystem of feature plugins</p>
-</li>
-<li>
-<p><a href="http://cssnext.io/">CSSnext</a>: a PostCSS plugin that helps you to use the latest CSS syntax today. This way the code will be a little more future-proof. Additionally, CSSnext also includes <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> as a dependency.</p>
-</li>
-<li>
-<p><code>postcss-import</code>: used to pull in a css file that wasn't being preprocessed</p>
-</li>
-<li>
-<p><code>cssnano</code>: minify and optimize output</p>
-<p>  yarn add -D normalize.css postcss-cli postcss-cssnext postcss-import cssnano</p>
-</li>
+<li><a href="https://necolas.github.io/normalize.css/">normalize.css</a>: so that all elements render consistently</li>
+<li><a href="https://github.com/postcss/postcss">PostCSS</a>'s CLI: to leverage its ecosystem of feature plugins</li>
+<li><a href="http://cssnext.io/">CSSnext</a>: a PostCSS plugin that helps you to use the latest CSS syntax today. This way the code will be a little more future-proof. Additionally, CSSnext also includes <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> as a dependency.</li>
+<li><code>postcss-import</code>: used to pull in a css file that wasn't being preprocessed</li>
+<li><code>cssnano</code>: minify and optimize output</li>
 </ul>
+<p>Install using yarn (or the npm equivalent)</p>
+<pre><code>yarn add -D normalize.css postcss-cli postcss-cssnext postcss-import cssnano
+</code></pre>
 <h3 id="postcss-config"><a href="#postcss-config" class="phenomic-HeadingAnchor">#</a>PostCSS config</h3>
 <p>Create a json file that contains the config for PostCSS. The docs named it <strong>options.json</strong> but I choose <strong>postcss.json</strong> for better clarity. The comments below explain some keys.</p>
 <pre><code>{
@@ -50,7 +81,7 @@
     }
 }
 </code></pre>
-<h3 id="css-time"><a href="#css-time" class="phenomic-HeadingAnchor">#</a>CSS-time</h3>
+<h3 id="css-time"><a href="#css-time" class="phenomic-HeadingAnchor">#</a>CSS time</h3>
 <p>Go ahead and create <strong>main.css</strong> at the project root. The above config will output to <strong>dist/</strong>. Here's a quick sample to put into the file for now.</p>
 <pre><code>@import('normalize.css');
 
@@ -100,7 +131,161 @@
 </code></pre>
 <h3 id="done"><a href="#done" class="phenomic-HeadingAnchor">#</a>Done!</h3>
 <p>You're ready to keep going developing your styles inside <strong>main.css</strong>. Feel free to improve upon this as needed!</p>
-]]></description><link>https://filoxo.github.io/posts/build-a-css-framework-using-npm/</link><guid isPermaLink="true">https://filoxo.github.io/posts/build-a-css-framework-using-npm/</guid><pubDate>Tue, 14 Feb 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Cross-platform Revisited]]></title><description><![CDATA[<p>Time has passed, technology has improved, and my preferences have also changed. In this post I'll revisit my choice of tooling. </p>
+]]></description><link>https://filoxo.github.io/posts/build-a-css-framework-using-npm/</link><guid isPermaLink="true">https://filoxo.github.io/posts/build-a-css-framework-using-npm/</guid><pubDate>Tue, 14 Feb 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[An Angular Modal]]></title><description><![CDATA[<p>This post is just an exercise in creating a modal in Angular (~2 at the time of this writing). Hopefully it can shed light on some of the things to do, not do, and to always remember. Let's get to it.</p>
+<h3 id="requirements"><a href="#requirements" class="phenomic-HeadingAnchor">#</a>Requirements</h3>
+<p>Here are some requirements during this build that will help guide the implementation and serve as the basis for testing. It should:</p>
+<ul>
+<li>Have a backdrop</li>
+<li>Open modal</li>
+<li>Close modal</li>
+<li>Prevent background scrolling when open</li>
+<li>
+<p>Accessible<sup>*</sup></p>
+<ul>
+<li>Prevent losing focus when open</li>
+<li>Close with <kbd>ESC</kbd></li>
+<li>Return focus to trigger on close</li>
+</ul>
+</li>
+<li>Animate on open/close</li>
+</ul>
+<p class="note">
+    * This is main motivation for writing this post.
+</p>
+<h3 id="template"><a href="#template" class="phenomic-HeadingAnchor">#</a>Template</h3>
+<p>Let's start with laying out the template. This way we know what goes where.</p>
+<pre><code>&#x3C;div class="backdrop" #modal>
+    &#x3C;div class="contents" role="dialog">
+        &#x3C;div>
+            &#x3C;ng-content>&#x3C;/ng-content>
+        &#x3C;/div>
+        &#x3C;footer>
+            &#x3C;button class="closeBtn">Close&#x3C;/button>
+        &#x3C;/footer>
+    &#x3C;/div>
+&#x3C;/div>
+</code></pre>
+<p>We have a <code>.backdrop</code> element that will be a dark translucent color to provide additional focus to the modal content (fullfills requirement 1 already 🎉). The <code>#modal</code> syntax creates a local ref that we'll use later. The <code>.contents</code> element will contain the projected content via  <code>&#x3C;ng-content></code>. The <code>footer</code> aligns the <code>.closeBtn</code>. In order to help keep the focus of this article, I've excluded the <a href="https://github.com/filoxo/an-angular-modal/blob/master/src/app/app.component.css">modal component styles</a>. Visit the link to get them.</p>
+<h3 id="use-in-app"><a href="#use-in-app" class="phenomic-HeadingAnchor">#</a>Use in App</h3>
+<p>In order to continue developing this component, it'll have to be rendered. Let's add an instance of it to the app component, as well as a few buttons that will trigger it to open. In the App component template, add:</p>
+<pre><code>&#x3C;app-modal #myModal>This is my modal&#x3C;/app-modal>
+&#x3C;section class="red">
+    &#x3C;p>Top&#x3C;/p>
+    &#x3C;button (click)="myModal.open()">Open&#x3C;/button>
+&#x3C;/section>
+</code></pre>
+<h3 id="open-and-close-modal"><a href="#open-and-close-modal" class="phenomic-HeadingAnchor">#</a>Open and close modal</h3>
+<p>Let's add some real functionality to this component now. <code>show</code> will be the private member used to store the display state. We'll expose changing this state via <code>open()</code> and <code>close()</code> methods.</p>
+<pre><code>export class ModalComponent {
+    private show: boolean = false;
+    ...
+    open() {
+        this.show = true;
+    }
+
+    close() {
+        this.show = false;
+    }
+}
+</code></pre>
+<p>In conjunction, our template can use the <code>*ngIf</code> directive to display the content conditionally. Wire up the backdrop and the close button to the <code>close</code> method. Also, prevent clicks from bubbling up so the modal doesn't close if you click inside of it.</p>
+<pre><code>&#x3C;div class="backdrop" #modal *ngIf="show" (click)="close()">
+    &#x3C;div class="contents" (click)="$event.stopPropagation()">
+        ...
+        &#x3C;button class="closeBtn" (click)="close()">Close&#x3C;/button>
+    &#x3C;/div>
+&#x3C;/div>
+</code></pre>
+<p>Adding event emitters will allow us to know if a modal is opened or closed, and emit events on open and close. Add the following to the component;</p>
+<pre><code>import { ..., Output, EventEmitter } from '@angular/core';
+...
+export class ModalComponent {
+    @Output() opened = new EventEmitter&#x3C;any>();
+    @Output() closed = new EventEmitter&#x3C;any>();
+    ...
+    open() {
+        ...
+        this.opened.emit(null);
+    }
+
+    close() {
+        ...
+        this.closed.emit(null)
+    }
+}
+</code></pre>
+<p>Done with requirements 2 &#x26; 3 👋 !</p>
+<h3 id="prevent-background-scrolling-when-open"><a href="#prevent-background-scrolling-when-open" class="phenomic-HeadingAnchor">#</a>Prevent background scrolling when open</h3>
+<p>This one is fairly easy: get the html element, and set it's <code>overflow</code> property based on the modal state. Here's what was added to the modal component.</p>
+<pre><code>export class ModalComponent{
+    ...
+    private html: HTMLElement = document.querySelector('html');
+    ...
+
+    open() {
+        ...
+        this.preventBgScrolling();
+    }
+
+    close() {
+        ...
+        this.preventBgScrolling();
+    }
+
+    private preventBgScrolling() {
+        this.html.style.overflow = this.show ? 'hidden' : '';
+    }
+}
+</code></pre>
+<p>#4 is completed 👍</p>
+<h3 id="accessiblity"><a href="#accessiblity" class="phenomic-HeadingAnchor">#</a>Accessiblity</h3>
+<p>Accessibility should never be an after thought. Though we're taking this on fairly late in development, its so that we had the proper structure and state in order to reflect the UI non-visually.</p>
+<p>We started by adding <code>role="dialog"</code> to the modal <code>.contents</code>. However, adding that role alone is not sufficient to make a dialog accessible. Additionally, the dialog must be properly labeled and keyboard focus must be managed correctly.</p>
+<p>In order to poperly label the dialog, we'll use both <code>aria-labelledby</code> and <code>aria-describedby</code>. The labelledby value will apply to a title option that won't be required; since its not required, the describedby value will be a fallback to provide the needed info.
+In order to do this, the modal needs a unique ID that we'll use to prefix the IDs of these other elements. I won't make the ID required either, letting the component generate one if needed. Here's how that turned out:</p>
+<pre><code>import { ..., OnInit, Input } from '@angular/core';
+
+interface ModalConfig extends Object {
+    title?: string;
+    id?: string;
+}
+
+const defaultConfig = &#x3C;ModalConfig> {};
+
+let id = 0;
+
+...
+export class ModalComponent implements OnInit {
+    @Input() options: ModalConfig;
+    ...
+    ngOnInit() {
+        const options = Object.assign({}, defaultConfig, this.options);
+        this.id = options.id || `modal-${id++}`;
+        this.titleId = `${this.id}-title`;
+        this.contentId = `${this.id}-content`;
+    }
+}
+</code></pre>
+<p>Let me explain what's going on here. We declare a config interface in order to define the available options. If we wanted default options, we could establish those in <code>defaultConfig</code>. The <code>id</code> value will exist in the global classspace and will increment after being used (I found this neat trick in the Angular Material project). Next, we receive an input of type <code>ModalConfig</code> and merge it with the <code>defaultConfig</code>. If no ID is passed in, then a new one is generated automatically.</p>
+<pre><code>&#x3C;div class="contents" role="dialog" id="{{ id }}"
+    [attr.aria-labelledby]="title ? titleId : null"
+    [attr.aria-describedby]="contentId">
+    &#x3C;h2 class="title" id="{{ titleId }}" *ngIf="title">{{ title }}&#x3C;/h2>
+    &#x3C;div id="{{ contentId }}">...&#x3C;/div>
+&#x3C;/div>
+</code></pre>
+<p>The template is then enhanced by adding the IDs, a dynamic title element that renders only if a <code>title</code> option was passed in, and binds the <code>labelledby</code> and <code>describedby</code> attrs. If there is no <code>title</code> option, the <code>labelledby</code> attr isn't rendered.</p>
+<h4 id="prevent-losing-focus-when-open"><a href="#prevent-losing-focus-when-open" class="phenomic-HeadingAnchor">#</a>Prevent losing focus when open</h4>
+<p>First, focus needs to be given inside the modal. Then focus should be kept inside the modal as long as its open.</p>
+<h4 id="close-with-kbdesckbd"><a href="#close-with-kbdesckbd" class="phenomic-HeadingAnchor">#</a>Close with <kbd>ESC</kbd></h4>
+<h4 id="return-focus-to-trigger-on-close"><a href="#return-focus-to-trigger-on-close" class="phenomic-HeadingAnchor">#</a>Return focus to trigger on close</h4>
+<h3 id="animations"><a href="#animations" class="phenomic-HeadingAnchor">#</a>Animations</h3>
+<h3 id="improvements"><a href="#improvements" class="phenomic-HeadingAnchor">#</a>Improvements</h3>
+<p>The above is a pretty good modal but perhaps it doesn't meet all of your requirements. Here are some feature that you could add:</p>
+<ul>
+<li>Add additional action buttons that can be enabled/disabled as options</li>
+</ul>
+]]></description><link>https://filoxo.github.io/posts/an-angular-modal/</link><guid isPermaLink="true">https://filoxo.github.io/posts/an-angular-modal/</guid><pubDate>Tue, 14 Feb 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Cross-platform Revisited]]></title><description><![CDATA[<p>Time has passed, technology has improved, and my preferences have also changed. In this post I'll revisit my choice of tooling. </p>
 <h3 id="password-manager"><a href="#password-manager" class="phenomic-HeadingAnchor">#</a>Password manager</h3>
 <p>Having put a password manager in place to store, generate, and access my passphrases has been one of the most beneficial tools I've been able to use in my day-to-day. KeePass has long been the standard for accomplishing this but the clients built around it have not kept up—at least not very well. </p>
 <h4 id="keeweb"><a href="#keeweb" class="phenomic-HeadingAnchor">#</a>KeeWeb</h4>
@@ -193,7 +378,71 @@
 <li><a href="mashable.com/">Mashable</a></li>
 <li><a href="https://techcrunch.com/">TechCrunch</a></li>
 </ul>
-]]></description><link>https://filoxo.github.io/posts/recommended-resources/</link><guid isPermaLink="true">https://filoxo.github.io/posts/recommended-resources/</guid><pubDate>Thu, 22 Sep 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[Must-have Apps: Windows edition]]></title><description><![CDATA[<p>I believe that developers can benefit and learn from others' favorite suite of tools. I'll go over my favorite applications that help me be as efficient and quick while working on a Mac.</p>
+]]></description><link>https://filoxo.github.io/posts/recommended-resources/</link><guid isPermaLink="true">https://filoxo.github.io/posts/recommended-resources/</guid><pubDate>Thu, 22 Sep 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[Install zsh on Mac without homebrew]]></title><description><![CDATA[<p>I'm not a big supporter of Homebrew. It just doesn't solve any problems for me. I have only needed brew for <code>zsh</code> and maybe <code>node</code> (but for that I could use <a href="https://github.com/creationix/nvm"><code>nvm</code></a> or <a href="https://github.com/tj/n"><code>n</code></a>). I don't want to install brew just for those when they can be set up easily. Seems like a lot of overhead just for one function.</p>
+<p>That said, I had a lot of trouble finding how to get <code>zsh</code> installed without <code>brew</code>. Seems like a lot of people have bought into it for what that it offers.</p>
+<p>So here's how I installed <code>zsh</code> on my machine without brew.</p>
+<ol>
+<li>
+<p>Get the source tarball (<code>zsh-*.tar.gz</code>) from <a href="http://zsh.sourceforge.net/Arc/source.html">zsh.org</a></p>
+</li>
+<li>
+<p>Unpack the file</p>
+<pre><code class="hljs language-sh">tar xzf zsh-5.2.tar.gz</code></pre>
+</li>
+<li>
+<p>Build the binary. This will install <code>zsh</code> under <code>/usr/local/bin/zsh</code></p>
+<pre><code class="hljs language-sh">./configure &#x26;&#x26; make &#x26;&#x26; make <span class="hljs-built_in">test</span> &#x26;&#x26; make install</code></pre>
+<ul>
+<li>The version of <code>zsh</code> that ships on Mac machines is outdated, thus why its necessary to build the binary.</li>
+<li>You may get an error message saying <code>install: /usr/local/bin/zsh-5.2: Permission denied</code>. If so, you will need to <code>sudo make install</code> instead.</li>
+</ul>
+</li>
+<li>
+<p>You now have <code>zsh</code> installed and working on your system. Begin configuring it by running <code>zsh</code> in your terminal; you'll see a series of prompts to enable and disable features to your liking.</p>
+</li>
+<li>
+<p>Next, you'll want to also install <a href="https://github.com/robbyrussell/oh-my-zsh"><code>oh-my-zsh</code></a>. It makes zsh even more awesome by building in additional plugins and themes. This was the install script at the time of this writing.</p>
+<pre><code class="hljs language-sh">sh -c <span class="hljs-string">"<span class="hljs-variable">$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span>"</span></code></pre>
+<ul>
+<li>NOTE: you should read the contents of <code>install.sh</code> before directly piping it into your shell. Ya know, because security.</li>
+</ul>
+</li>
+<li>
+<p>Customize your heart out! Become familiar with the themes and plugins now available to you. Enable those which you might use most.</p>
+</li>
+<li>
+<p>Make sure everything works. I had exported some paths in my <code>~/.bash_profile</code> file, and needed to copy those over to <code>~/.zshrc</code>.</p>
+<ul>
+<li>For some reason, <code>nvm</code> was one of those things that I couldn't get to work quite right. I tried adding the paths to the zsh profile, making sure <code>$NVM_DIR</code> was correctly set, etc. Reinstalling was the only way I got it to work again.</li>
+</ul>
+</li>
+<li>
+<p>For these changes to persist, you'll have to change your default shell. The easiest is to just access the setting through the UI. You could do this with a terminal command, so Google it.</p>
+<ul>
+<li>Open "System Preferences"</li>
+<li>Click on "Users &#x26; Groups"</li>
+<li>Unlock the settings by clicking on the padlock and entering your password.</li>
+<li>CTRL + Click on your user and select "Advanced options..."</li>
+<li>Choose <code>/bin/zsh</code> from the <em>Login shell</em> dropdown</li>
+<li>Click OK to complete</li>
+</ul>
+</li>
+</ol>
+<h2 id="bonus"><a href="#bonus" class="phenomic-HeadingAnchor">#</a>Bonus</h2>
+<p>Don't let the fun end there. Here's a few more things you can do to further refine your terminal to your liking.</p>
+<h4 id="disable-last-login-banner"><a href="#disable-last-login-banner" class="phenomic-HeadingAnchor">#</a>Disable 'last login' banner</h4>
+<p>When I open up the terminal I see a line at the top saying something like</p>
+<blockquote>
+<p>Last login: Mon Jan 1 12:00:00 on ttys004</p>
+</blockquote>
+<p>This information is not very relevant to me, so I'd rather not see it. Silence this message by simply creating a <code>.hushlogin</code> file.</p>
+<pre><code>touch ~/.hushlogin
+</code></pre>
+<h4 id="disable-the-user-banner"><a href="#disable-the-user-banner" class="phenomic-HeadingAnchor">#</a>Disable the user banner</h4>
+<p>You can disable the user banner by simply adding <code>DEFAULT_USER="yourusername"</code> to your profile file.</p>
+<h4 id="get-a-better-font"><a href="#get-a-better-font" class="phenomic-HeadingAnchor">#</a>Get a better font</h4>
+<p>I quickly became a fan of the Agnoster theme, but it required patched fonts (<a href="https://github.com/powerline/fonts">Powerline fonts</a>) to be installed in order to display some of the special characters it uses (eg. git icons). I'm a fan of Source Code Pro, but I've also heard great things about Meslo, Inconsolata, and Terminus.</p>
+]]></description><link>https://filoxo.github.io/posts/Install-zsh-on-Mac-without-homebrew/</link><guid isPermaLink="true">https://filoxo.github.io/posts/Install-zsh-on-Mac-without-homebrew/</guid><pubDate>Thu, 28 Jul 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[Must-have Apps: Windows edition]]></title><description><![CDATA[<p>I believe that developers can benefit and learn from others' favorite suite of tools. I'll go over my favorite applications that help me be as efficient and quick while working on a Mac.</p>
 <h3 id="launchy"><a href="#launchy" class="phenomic-HeadingAnchor">#</a>Launchy</h3>
 <p>After switching to a Mac, I love Spotlight. I now have to use Windows computer at work, so I really missed having the Spotlight available. <a href="http://www.launchy.net/">Launchy</a> achieves this on Windows really well, indexing the *.lnk files in your start menu and User folder, and making the shortcuts available using <code>ALT + SPACE</code>. It even does simple calculations (just like Spotlight!), allows for website shortcuts, and is themable. Its a tad better than Spotlight because of those last features.</p>
 <blockquote>
@@ -280,71 +529,7 @@ The've recently released an Android Beta app, but might become superseded by App
 <p>I really couldn't stand to use the iPhone (personal preference!) despite its great interoperability with the Macbook. <a href="https://www.pushbullet.com/">PushBullet</a> makes up for that loss by allowing me to receive notifications from my phone while on my computer, as well as letting me respond directly to text messages. An additional bonus is that I can use this on my Windows machine as well as other Android devices (think tablet). This way, I can see my notifications and respond to texts from literally any of my devices. Lastly, it allows me to push things like notes, links, and files between devices as well. Send a link from my phone to my desktop, push a new background image from my phone to my tablet, whatever. Its awesome!</p>
 <h3 id="synergy"><a href="#synergy" class="phenomic-HeadingAnchor">#</a>Synergy</h3>
 <p><a href="http://synergy-project.org/">Synergy</a> is a super handy utility that bridges multiple computers so that you can share one keyboard and mouse between them. You can use them multiple machines with the same keyboard, copy and paste from one to the other, and even transfer files using drag-n-drop (ahem, sorry. Between Windows-Mac only). Need it for enterprise? You can use the Pro version to encrypt your traffic using SSL. Its absolutely necessary if you work on different machines.</p>
-]]></description><link>https://filoxo.github.io/posts/Must-have-Apps-Cross-platform-edition/</link><guid isPermaLink="true">https://filoxo.github.io/posts/Must-have-Apps-Cross-platform-edition/</guid><pubDate>Thu, 28 Jul 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[Install zsh on Mac without homebrew]]></title><description><![CDATA[<p>I'm not a big supporter of Homebrew. It just doesn't solve any problems for me. I have only needed brew for <code>zsh</code> and maybe <code>node</code> (but for that I could use <a href="https://github.com/creationix/nvm"><code>nvm</code></a> or <a href="https://github.com/tj/n"><code>n</code></a>). I don't want to install brew just for those when they can be set up easily. Seems like a lot of overhead just for one function.</p>
-<p>That said, I had a lot of trouble finding how to get <code>zsh</code> installed without <code>brew</code>. Seems like a lot of people have bought into it for what that it offers.</p>
-<p>So here's how I installed <code>zsh</code> on my machine without brew.</p>
-<ol>
-<li>
-<p>Get the source tarball (<code>zsh-*.tar.gz</code>) from <a href="http://zsh.sourceforge.net/Arc/source.html">zsh.org</a></p>
-</li>
-<li>
-<p>Unpack the file</p>
-<pre><code class="hljs language-sh">tar xzf zsh-5.2.tar.gz</code></pre>
-</li>
-<li>
-<p>Build the binary. This will install <code>zsh</code> under <code>/usr/local/bin/zsh</code></p>
-<pre><code class="hljs language-sh">./configure &#x26;&#x26; make &#x26;&#x26; make <span class="hljs-built_in">test</span> &#x26;&#x26; make install</code></pre>
-<ul>
-<li>The version of <code>zsh</code> that ships on Mac machines is outdated, thus why its necessary to build the binary.</li>
-<li>You may get an error message saying <code>install: /usr/local/bin/zsh-5.2: Permission denied</code>. If so, you will need to <code>sudo make install</code> instead.</li>
-</ul>
-</li>
-<li>
-<p>You now have <code>zsh</code> installed and working on your system. Begin configuring it by running <code>zsh</code> in your terminal; you'll see a series of prompts to enable and disable features to your liking.</p>
-</li>
-<li>
-<p>Next, you'll want to also install <a href="https://github.com/robbyrussell/oh-my-zsh"><code>oh-my-zsh</code></a>. It makes zsh even more awesome by building in additional plugins and themes. This was the install script at the time of this writing.</p>
-<pre><code class="hljs language-sh">sh -c <span class="hljs-string">"<span class="hljs-variable">$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span>"</span></code></pre>
-<ul>
-<li>NOTE: you should read the contents of <code>install.sh</code> before directly piping it into your shell. Ya know, because security.</li>
-</ul>
-</li>
-<li>
-<p>Customize your heart out! Become familiar with the themes and plugins now available to you. Enable those which you might use most.</p>
-</li>
-<li>
-<p>Make sure everything works. I had exported some paths in my <code>~/.bash_profile</code> file, and needed to copy those over to <code>~/.zshrc</code>.</p>
-<ul>
-<li>For some reason, <code>nvm</code> was one of those things that I couldn't get to work quite right. I tried adding the paths to the zsh profile, making sure <code>$NVM_DIR</code> was correctly set, etc. Reinstalling was the only way I got it to work again.</li>
-</ul>
-</li>
-<li>
-<p>For these changes to persist, you'll have to change your default shell. The easiest is to just access the setting through the UI. You could do this with a terminal command, so Google it.</p>
-<ul>
-<li>Open "System Preferences"</li>
-<li>Click on "Users &#x26; Groups"</li>
-<li>Unlock the settings by clicking on the padlock and entering your password.</li>
-<li>CTRL + Click on your user and select "Advanced options..."</li>
-<li>Choose <code>/bin/zsh</code> from the <em>Login shell</em> dropdown</li>
-<li>Click OK to complete</li>
-</ul>
-</li>
-</ol>
-<h2 id="bonus"><a href="#bonus" class="phenomic-HeadingAnchor">#</a>Bonus</h2>
-<p>Don't let the fun end there. Here's a few more things you can do to further refine your terminal to your liking.</p>
-<h4 id="disable-last-login-banner"><a href="#disable-last-login-banner" class="phenomic-HeadingAnchor">#</a>Disable 'last login' banner</h4>
-<p>When I open up the terminal I see a line at the top saying something like</p>
-<blockquote>
-<p>Last login: Mon Jan 1 12:00:00 on ttys004</p>
-</blockquote>
-<p>This information is not very relevant to me, so I'd rather not see it. Silence this message by simply creating a <code>.hushlogin</code> file.</p>
-<pre><code>touch ~/.hushlogin
-</code></pre>
-<h4 id="disable-the-user-banner"><a href="#disable-the-user-banner" class="phenomic-HeadingAnchor">#</a>Disable the user banner</h4>
-<p>You can disable the user banner by simply adding <code>DEFAULT_USER="yourusername"</code> to your profile file.</p>
-<h4 id="get-a-better-font"><a href="#get-a-better-font" class="phenomic-HeadingAnchor">#</a>Get a better font</h4>
-<p>I quickly became a fan of the Agnoster theme, but it required patched fonts (<a href="https://github.com/powerline/fonts">Powerline fonts</a>) to be installed in order to display some of the special characters it uses (eg. git icons). I'm a fan of Source Code Pro, but I've also heard great things about Meslo, Inconsolata, and Terminus.</p>
-]]></description><link>https://filoxo.github.io/posts/Install-zsh-on-Mac-without-homebrew/</link><guid isPermaLink="true">https://filoxo.github.io/posts/Install-zsh-on-Mac-without-homebrew/</guid><pubDate>Thu, 28 Jul 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[Firebase Email Auth and Validation]]></title><description><![CDATA[<p>If you use Firebase, you'd be inclined to use their authentication for you system because of how amazingly easy it is to get started. They offer a variety of methods: email &#x26; password, oAuth with Google/Twitter/Facebook/Github, or even custom auth.</p>
+]]></description><link>https://filoxo.github.io/posts/Must-have-Apps-Cross-platform-edition/</link><guid isPermaLink="true">https://filoxo.github.io/posts/Must-have-Apps-Cross-platform-edition/</guid><pubDate>Thu, 28 Jul 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[Firebase Email Auth and Validation]]></title><description><![CDATA[<p>If you use Firebase, you'd be inclined to use their authentication for you system because of how amazingly easy it is to get started. They offer a variety of methods: email &#x26; password, oAuth with Google/Twitter/Facebook/Github, or even custom auth.</p>
 <p>A few days ago, a new Firebase user asked a very interesting help question in my school Slack channel:</p>
 <blockquote>
 <p>I am looking at Firebase's authentication set up with email and password and I can find no way to set any password rules. For example I could create the password "j". Is there a way to set at least a minimum password length?</p>
