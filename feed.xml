@@ -1,4 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[filoblog]]></title><description><![CDATA[filoblog]]></description><link>https://filoxo.github.io</link><generator>RSS for Node</generator><lastBuildDate>Wed, 31 May 2017 22:36:41 GMT</lastBuildDate><atom:link href="https://filoxo.github.io/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[Practical thoughts on React and Angular]]></title><description><![CDATA[<p>I sometimes see developers ask "Should I use React, or Angular, or Vue.js, or <em>[insert new framework here]</em>?" and every time, I see fanatics immediately jump to recommending one without any real justification. Now, I'm no expert but I do have experience with both Angular and React. This post lists some of the differences between the actual usage of Angular (2+) and React. I hope to just shed some light on the practical differences between them to help you understand the decision a bit better.</p>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[filoblog]]></title><description><![CDATA[filoblog]]></description><link>https://filoxo.github.io</link><generator>RSS for Node</generator><lastBuildDate>Sat, 10 Jun 2017 15:08:29 GMT</lastBuildDate><atom:link href="https://filoxo.github.io/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[Why I'm not (currently) recommending my employer]]></title><description><![CDATA[<p>I want to make it clear that these opinions are my own and reflect only my experience. My employer is a very place to work if you can get your foot in the door. This complaint is with the <strong>hiring process</strong> only. There are some major issues with the hiring process that have made me extremely frustrated, to the point where I want to gripe about it.</p>
+<h3 id="into-the-void"><a href="#into-the-void" class="phenomic-HeadingAnchor">#</a>Into the void</h3>
+<p>I've had many people reach out to me about applying, and as a developer there isn't much more that I can do apart from give some general advice to prep for an interview and generating a referral.</p>
+<p>The problem that has me furious is that after one of these individual applies, there's little to no follow up from company. Only 13% of my referrals ever even received a response. The rest have sat in our recruiting system(s) as "inactive" or "pending recruiter response". What bothers me about this is that this is polite and timely responses can be automated! Fire off an 'Application Received' email; send a 'Thank you for applying' once the position is closed; Deliver a 'Sorry about the lack of response' message if an application has sat for X weeks without any recruiter activity. </p>
+<p>Because this is so easy with modern systems and common-place at other companies, I find it <strong>extremely rude and inconsiderate</strong> to prospective employees for this company. I've now begun letting people know that they may not hear back at all, ever. 👎</p>
+<h3 id="got-privilege-"><a href="#got-privilege-" class="phenomic-HeadingAnchor">#</a>Got Privilege? ✅</h3>
+<p>Another seemingly arbitrary requirement is that applicants must have a college degree. Seriously. I recently heard some spew about "attempting to attract only the best" but this ignores the fact that this is a <em>very bad</em> policy for diversity &#x26; inclusion. The number of minorities (specifically hispanic and black) who graduate from college is far lower than white/Europeans.
+I'm not trying to fight for affirmative action here, but this can lead to a form of candidate suppression: many qualified people are immediately excluded from the pool. There are so many individuals who are very smart and higher education wasn't in the cards for them. Real world experience and a proven track record is equally valuable in my experience.</p>
+<p>Anectodally, I heard that an offer was <strong>reneged</strong> because the applicant didn't have a degree, regardless of their previous experience. WTF 😞</p>
+<h3 id="woe-woe-woe"><a href="#woe-woe-woe" class="phenomic-HeadingAnchor">#</a>Woe, woe, woe</h3>
+<p>I <em>think</em> the main reason for this is because we have too few recruiters for the number of applicants. Our HR team is ~10 people in a company of 1500+ employees—that's less than 1%. As a developer, I don't know how many applications are received per opening but the two that I've been a part of have received 200+. That's a lot of work for such a small team! The above mentioned practices really aren't helping anything either. Its a people problem and a process problem. </p>
+<p>Even more frustrating with the issue here is that there's nothing I can really do. Sure, I could talk to someone higher up. I've complained somewhat openly to my coworkers. But honestly, there's probably no real change that I can make. At least, not as a developer.</p>
+<h3 id="on-the-bright-side"><a href="#on-the-bright-side" class="phenomic-HeadingAnchor">#</a>On the bright side...</h3>
+<p>Like I said at the beginning of this post, this company is <strong>great</strong> to work for if there was any possibility of being able to get an interview. I'm optimistic that the problems above are fairly easy to fix with just a few changes:</p>
+<ul>
+<li>Setup automated communications</li>
+<li>Find flaws in the application pipeline and solve</li>
+<li>Hire more/better personnel</li>
+<li>Remove the hard requirement of university degrees</li>
+</ul>
+<p>I retain the hope that someday this company can better their hiring processes and become a place to which I would recommend any of my developer friends.</p>
+]]></description><link>https://filoxo.github.io/posts/why-im-not-currently-recommending-my-employer/</link><guid isPermaLink="true">https://filoxo.github.io/posts/why-im-not-currently-recommending-my-employer/</guid><pubDate>Sat, 10 Jun 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Practical thoughts on React and Angular]]></title><description><![CDATA[<p>I sometimes see developers ask "Should I use React, or Angular, or Vue.js, or <em>[insert new framework here]</em>?" and every time, I see fanatics immediately jump to recommending one without any real justification. Now, I'm no expert but I do have experience with both Angular and React. This post lists some of the differences between the actual usage of Angular (2+) and React. I hope to just shed some light on the practical differences between them to help you understand the decision a bit better.</p>
 <h3 id="complexity"><a href="#complexity" class="phenomic-HeadingAnchor">#</a>Complexity</h3>
 <p>Frameworks are abstractions to help reduce the complexity of building an application. Frameworks in turn introduce their own complexity. First, let's establish that each framework falls somewhere on a complexity spectrum.<a href="#vuejsTalk">¹</a></p>
 <p><img src="/assets/framework-spectrum.jpg" alt="Framework Complexity Spectrum"></p>
@@ -112,101 +133,7 @@ Footnotes:</p>
 &#x3C;/my-component>
 </code></pre>
 <p>It can't find these same elements  because they're wrapped in an extra div? I would have thought that it would match those elements as well, just like <code>querySelector</code> or CSS selectors would. If I only wanted immediate children I would have used something like <code>select="> .title"</code>. My assumption that it used standard selectors is wrong? ¯\<em>(ツ)</em>/¯ That sucks.</p>
-]]></description><link>https://filoxo.github.io/posts/thoughts-on-angular-ngcontent/</link><guid isPermaLink="true">https://filoxo.github.io/posts/thoughts-on-angular-ngcontent/</guid><pubDate>Wed, 05 Apr 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Building a CSS framework using npm]]></title><description><![CDATA[<p>This last weekend I wanted to create a simple CSS framework that I can reuse for my own little projects. The end result is <a href="https://github.com/filoxo/simple-style">Simple Style</a> (which is still a WIP as requirements come up). Surprisingly, using <a href="https://medium.com/@dabit3/introduction-to-using-npm-as-a-build-tool-b41076f488b0#.5w4loc8uy">npm as a build tool</a> made it extremely easy to set up a dev environment. I'll review everything about the setup in this post for my own documentation, but hopefully can also serve as a clean, straightforward example.</p>
-<p>I used <a href="https://yarnpkg.com/en/"><code>yarn</code></a> for this experiment instead of <code>npm</code> solely for the speed improvements. Fortunately, <code>yarn</code>'s commands all have their <code>npm</code> equivalents so don't get hung up on the differences.</p>
-<p>This basic setup offers:</p>
-<ul>
-<li>Autoprefixing to support the 2 latest browsers</li>
-<li>Future CSS syntax usable today</li>
-<li>minification</li>
-<li>optimizations</li>
-<li>a quick and easy development setup to reflect changes on-the-fly</li>
-</ul>
-<h3 id="dev-dependencies"><a href="#dev-dependencies" class="phenomic-HeadingAnchor">#</a>Dev dependencies</h3>
-<p>Here are our initial development dependencies:</p>
-<ul>
-<li><a href="https://necolas.github.io/normalize.css/">normalize.css</a>: so that all elements render consistently</li>
-<li><a href="https://github.com/postcss/postcss">PostCSS</a>'s CLI: to leverage its ecosystem of feature plugins</li>
-<li><a href="http://cssnext.io/">CSSnext</a>: a PostCSS plugin that helps you to use the latest CSS syntax today. This way the code will be a little more future-proof. Additionally, CSSnext also includes <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> as a dependency.</li>
-<li><code>postcss-import</code>: used to pull in a css file that wasn't being preprocessed</li>
-<li><code>cssnano</code>: minify and optimize output</li>
-</ul>
-<p>Install using yarn (or the npm equivalent)</p>
-<pre><code>yarn add -D normalize.css postcss-cli postcss-cssnext postcss-import cssnano
-</code></pre>
-<h3 id="postcss-config"><a href="#postcss-config" class="phenomic-HeadingAnchor">#</a>PostCSS config</h3>
-<p>Create a json file that contains the config for PostCSS. The docs named it <strong>options.json</strong> but I choose <strong>postcss.json</strong> for better clarity. The comments below explain some keys.</p>
-<pre><code>{
-    // Enable plugins in order
-    "use": [
-        "postcss-import",
-        "postcss-cssnext",
-        "cssnano"
-    ],
-    "input": "main.css",
-    "output": "dist/main.css",
-    // use locally installed plugins (eg. in node_modules)
-    "local-plugins": true,
-    // Enable sourcemaps
-    "map": true,
-    // CSSnext and cssnano both use autoprefixer, but for different features/purposes
-    // see https://github.com/MoOx/postcss-cssnext/issues/323
-    "postcss-cssnext": {
-        "warnForDuplicates": false
-    }
-}
-</code></pre>
-<h3 id="css-time"><a href="#css-time" class="phenomic-HeadingAnchor">#</a>CSS time</h3>
-<p>Go ahead and create <strong>main.css</strong> at the project root. The above config will output to <strong>dist/</strong>. Here's a quick sample to put into the file for now.</p>
-<pre><code>@import('normalize.css');
-
-:root {
-    --color-primary: blue;
-    --color-secondary: red;
-}
-</code></pre>
-<h3 id="building"><a href="#building" class="phenomic-HeadingAnchor">#</a>Building</h3>
-<p>Use the postcss-cli with the config file passed in as an arg and save it as an npm script.</p>
-<pre><code>"scripts": {
-    "build": "node_modules/postcss-cli/bin/postcss -c postcss.json"
-}
-</code></pre>
-<p>Now you can simply run <code>yarn run build</code> and your css will be processed and output to <strong>dist</strong>. But we can still do better.</p>
-<h3 id="watch-for-changes"><a href="#watch-for-changes" class="phenomic-HeadingAnchor">#</a>Watch for changes</h3>
-<p>Enabling watch will auto-transform the css file on changes. Add another npm script, which is exactly the same as <code>build</code> but with the watch flag.</p>
-<pre><code>"build:dev": "node_modules/postcss-cli/bin/postcss -c postcss.json -w"
-</code></pre>
-<h3 id="livereload"><a href="#livereload" class="phenomic-HeadingAnchor">#</a>Livereload</h3>
-<p>You wouldn't develop a CSS framework without seeing it rendered on a page so let's create a test page for development. Create <strong>index.html</strong> at the project root and populate it with some HTML, and add a link to your <strong>main.css</strong> file.</p>
-<pre><code>&#x3C;!doctype html>
-&#x3C;html lang="en-US">
-    &#x3C;head>
-        &#x3C;link rel="stylesheet" href="/dist/main.css">
-    &#x3C;/head>
-    &#x3C;body>
-        &#x3C;main>Hello world&#x3C;/main>
-    &#x3C;/body>
-&#x3C;/html>
-</code></pre>
-<p><a href="https://www.npmjs.com/package/lr-http-server"><code>lr-http-server</code></a> will reload on changes, as well as a functioning http server.</p>
-<pre><code>yarn add -D lr-http-server
-</code></pre>
-<p>And then register a new npm script for it</p>
-<pre><code>"reload": "lr-http-server -p 3000"
-</code></pre>
-<h3 id="composing-scripts"><a href="#composing-scripts" class="phenomic-HeadingAnchor">#</a>Composing scripts</h3>
-<p>We want the two above scripts to run in parallel so that if either the css or the html file changes the livereload server will do its job. <a href="https://www.npmjs.com/package/npm-run-all"><code>npm-run-all</code></a> with the <code>-p</code> (parallel) flag does this exactly.</p>
-<pre><code>yarn add -D npm-run-all
-</code></pre>
-<p>Join the two tasks together into a single npm script</p>
-<pre><code>"start": "npm-run-all -p build:dev reload"
-</code></pre>
-<p>And then run easily with</p>
-<pre><code>yarn start
-</code></pre>
-<h3 id="done"><a href="#done" class="phenomic-HeadingAnchor">#</a>Done!</h3>
-<p>You're ready to keep going developing your styles inside <strong>main.css</strong>. Feel free to improve upon this as needed!</p>
-]]></description><link>https://filoxo.github.io/posts/build-a-css-framework-using-npm/</link><guid isPermaLink="true">https://filoxo.github.io/posts/build-a-css-framework-using-npm/</guid><pubDate>Tue, 14 Feb 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[An Angular Modal]]></title><description><![CDATA[<p>This post is just an exercise in creating a modal in Angular (~2 at the time of this writing). Hopefully it can shed light on some of the things to do, not do, and to always remember. Let's get to it.</p>
+]]></description><link>https://filoxo.github.io/posts/thoughts-on-angular-ngcontent/</link><guid isPermaLink="true">https://filoxo.github.io/posts/thoughts-on-angular-ngcontent/</guid><pubDate>Wed, 05 Apr 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[An Angular Modal]]></title><description><![CDATA[<p>This post is just an exercise in creating a modal in Angular (~2 at the time of this writing). Hopefully it can shed light on some of the things to do, not do, and to always remember. Let's get to it.</p>
 <h3 id="requirements"><a href="#requirements" class="phenomic-HeadingAnchor">#</a>Requirements</h3>
 <p>Here are some requirements during this build that will help guide the implementation and serve as the basis for testing. It should:</p>
 <ul>
@@ -360,7 +287,101 @@ export class ModalComponent implements OnInit {
 <ul>
 <li>Add additional action buttons that can be enabled/disabled as options</li>
 </ul>
-]]></description><link>https://filoxo.github.io/posts/an-angular-modal/</link><guid isPermaLink="true">https://filoxo.github.io/posts/an-angular-modal/</guid><pubDate>Tue, 14 Feb 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Cross-platform Revisited]]></title><description><![CDATA[<p>Time has passed, technology has improved, and my preferences have also changed. In this post I'll revisit my choice of tooling. </p>
+]]></description><link>https://filoxo.github.io/posts/an-angular-modal/</link><guid isPermaLink="true">https://filoxo.github.io/posts/an-angular-modal/</guid><pubDate>Tue, 14 Feb 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Building a CSS framework using npm]]></title><description><![CDATA[<p>This last weekend I wanted to create a simple CSS framework that I can reuse for my own little projects. The end result is <a href="https://github.com/filoxo/simple-style">Simple Style</a> (which is still a WIP as requirements come up). Surprisingly, using <a href="https://medium.com/@dabit3/introduction-to-using-npm-as-a-build-tool-b41076f488b0#.5w4loc8uy">npm as a build tool</a> made it extremely easy to set up a dev environment. I'll review everything about the setup in this post for my own documentation, but hopefully can also serve as a clean, straightforward example.</p>
+<p>I used <a href="https://yarnpkg.com/en/"><code>yarn</code></a> for this experiment instead of <code>npm</code> solely for the speed improvements. Fortunately, <code>yarn</code>'s commands all have their <code>npm</code> equivalents so don't get hung up on the differences.</p>
+<p>This basic setup offers:</p>
+<ul>
+<li>Autoprefixing to support the 2 latest browsers</li>
+<li>Future CSS syntax usable today</li>
+<li>minification</li>
+<li>optimizations</li>
+<li>a quick and easy development setup to reflect changes on-the-fly</li>
+</ul>
+<h3 id="dev-dependencies"><a href="#dev-dependencies" class="phenomic-HeadingAnchor">#</a>Dev dependencies</h3>
+<p>Here are our initial development dependencies:</p>
+<ul>
+<li><a href="https://necolas.github.io/normalize.css/">normalize.css</a>: so that all elements render consistently</li>
+<li><a href="https://github.com/postcss/postcss">PostCSS</a>'s CLI: to leverage its ecosystem of feature plugins</li>
+<li><a href="http://cssnext.io/">CSSnext</a>: a PostCSS plugin that helps you to use the latest CSS syntax today. This way the code will be a little more future-proof. Additionally, CSSnext also includes <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> as a dependency.</li>
+<li><code>postcss-import</code>: used to pull in a css file that wasn't being preprocessed</li>
+<li><code>cssnano</code>: minify and optimize output</li>
+</ul>
+<p>Install using yarn (or the npm equivalent)</p>
+<pre><code>yarn add -D normalize.css postcss-cli postcss-cssnext postcss-import cssnano
+</code></pre>
+<h3 id="postcss-config"><a href="#postcss-config" class="phenomic-HeadingAnchor">#</a>PostCSS config</h3>
+<p>Create a json file that contains the config for PostCSS. The docs named it <strong>options.json</strong> but I choose <strong>postcss.json</strong> for better clarity. The comments below explain some keys.</p>
+<pre><code>{
+    // Enable plugins in order
+    "use": [
+        "postcss-import",
+        "postcss-cssnext",
+        "cssnano"
+    ],
+    "input": "main.css",
+    "output": "dist/main.css",
+    // use locally installed plugins (eg. in node_modules)
+    "local-plugins": true,
+    // Enable sourcemaps
+    "map": true,
+    // CSSnext and cssnano both use autoprefixer, but for different features/purposes
+    // see https://github.com/MoOx/postcss-cssnext/issues/323
+    "postcss-cssnext": {
+        "warnForDuplicates": false
+    }
+}
+</code></pre>
+<h3 id="css-time"><a href="#css-time" class="phenomic-HeadingAnchor">#</a>CSS time</h3>
+<p>Go ahead and create <strong>main.css</strong> at the project root. The above config will output to <strong>dist/</strong>. Here's a quick sample to put into the file for now.</p>
+<pre><code>@import('normalize.css');
+
+:root {
+    --color-primary: blue;
+    --color-secondary: red;
+}
+</code></pre>
+<h3 id="building"><a href="#building" class="phenomic-HeadingAnchor">#</a>Building</h3>
+<p>Use the postcss-cli with the config file passed in as an arg and save it as an npm script.</p>
+<pre><code>"scripts": {
+    "build": "node_modules/postcss-cli/bin/postcss -c postcss.json"
+}
+</code></pre>
+<p>Now you can simply run <code>yarn run build</code> and your css will be processed and output to <strong>dist</strong>. But we can still do better.</p>
+<h3 id="watch-for-changes"><a href="#watch-for-changes" class="phenomic-HeadingAnchor">#</a>Watch for changes</h3>
+<p>Enabling watch will auto-transform the css file on changes. Add another npm script, which is exactly the same as <code>build</code> but with the watch flag.</p>
+<pre><code>"build:dev": "node_modules/postcss-cli/bin/postcss -c postcss.json -w"
+</code></pre>
+<h3 id="livereload"><a href="#livereload" class="phenomic-HeadingAnchor">#</a>Livereload</h3>
+<p>You wouldn't develop a CSS framework without seeing it rendered on a page so let's create a test page for development. Create <strong>index.html</strong> at the project root and populate it with some HTML, and add a link to your <strong>main.css</strong> file.</p>
+<pre><code>&#x3C;!doctype html>
+&#x3C;html lang="en-US">
+    &#x3C;head>
+        &#x3C;link rel="stylesheet" href="/dist/main.css">
+    &#x3C;/head>
+    &#x3C;body>
+        &#x3C;main>Hello world&#x3C;/main>
+    &#x3C;/body>
+&#x3C;/html>
+</code></pre>
+<p><a href="https://www.npmjs.com/package/lr-http-server"><code>lr-http-server</code></a> will reload on changes, as well as a functioning http server.</p>
+<pre><code>yarn add -D lr-http-server
+</code></pre>
+<p>And then register a new npm script for it</p>
+<pre><code>"reload": "lr-http-server -p 3000"
+</code></pre>
+<h3 id="composing-scripts"><a href="#composing-scripts" class="phenomic-HeadingAnchor">#</a>Composing scripts</h3>
+<p>We want the two above scripts to run in parallel so that if either the css or the html file changes the livereload server will do its job. <a href="https://www.npmjs.com/package/npm-run-all"><code>npm-run-all</code></a> with the <code>-p</code> (parallel) flag does this exactly.</p>
+<pre><code>yarn add -D npm-run-all
+</code></pre>
+<p>Join the two tasks together into a single npm script</p>
+<pre><code>"start": "npm-run-all -p build:dev reload"
+</code></pre>
+<p>And then run easily with</p>
+<pre><code>yarn start
+</code></pre>
+<h3 id="done"><a href="#done" class="phenomic-HeadingAnchor">#</a>Done!</h3>
+<p>You're ready to keep going developing your styles inside <strong>main.css</strong>. Feel free to improve upon this as needed!</p>
+]]></description><link>https://filoxo.github.io/posts/build-a-css-framework-using-npm/</link><guid isPermaLink="true">https://filoxo.github.io/posts/build-a-css-framework-using-npm/</guid><pubDate>Tue, 14 Feb 2017 00:00:00 GMT</pubDate></item><item><title><![CDATA[Cross-platform Revisited]]></title><description><![CDATA[<p>Time has passed, technology has improved, and my preferences have also changed. In this post I'll revisit my choice of tooling. </p>
 <h3 id="password-manager"><a href="#password-manager" class="phenomic-HeadingAnchor">#</a>Password manager</h3>
 <p>Having put a password manager in place to store, generate, and access my passphrases has been one of the most beneficial tools I've been able to use in my day-to-day. KeePass has long been the standard for accomplishing this but the clients built around it have not kept up—at least not very well. </p>
 <h4 id="keeweb"><a href="#keeweb" class="phenomic-HeadingAnchor">#</a>KeeWeb</h4>
