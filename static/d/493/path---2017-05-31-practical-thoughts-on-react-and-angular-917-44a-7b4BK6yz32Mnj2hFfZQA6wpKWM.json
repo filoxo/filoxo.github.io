@@ -1,0 +1,1 @@
+{"errors":[{"message":"Cannot read property 'push' of undefined","locations":[{"line":5,"column":5}],"path":["mdx","html"]}],"data":{"mdx":{"html":null,"frontmatter":{"title":"Practical thoughts on React and Angular","date":"May 31, 2017","tags":["angular","react"]}}},"pageContext":{"slug":"/2017-05-31-practical-thoughts-on-react-and-angular/"}}

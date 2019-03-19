@@ -1,0 +1,1 @@
+{"errors":[{"message":"Cannot read property 'push' of undefined","locations":[{"line":5,"column":5}],"path":["mdx","html"]}],"data":{"mdx":{"html":null,"frontmatter":{"title":"The 👍 and 👎 parts of Angular","date":"Nov 30, 2017","tags":["angular"]}}},"pageContext":{"slug":"/2017-11-30-the-good-and-bad-of-angular/"}}
