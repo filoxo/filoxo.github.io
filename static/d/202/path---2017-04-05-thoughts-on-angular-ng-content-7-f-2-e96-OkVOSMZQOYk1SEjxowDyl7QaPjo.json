@@ -1,1 +1,0 @@
-{"errors":[{"message":"Cannot read property 'push' of undefined","locations":[{"line":5,"column":5}],"path":["mdx","html"]}],"data":{"mdx":{"html":null,"frontmatter":{"title":"Thoughts on Angular: Ng-Content","date":"Apr 05, 2017","tags":["angular"]}}},"pageContext":{"slug":"/2017-04-05-thoughts-on-angular-ng-content/"}}

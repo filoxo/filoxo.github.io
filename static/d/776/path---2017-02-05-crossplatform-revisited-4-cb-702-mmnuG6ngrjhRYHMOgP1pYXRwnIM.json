@@ -1,1 +1,0 @@
-{"errors":[{"message":"Cannot read property 'push' of undefined","locations":[{"line":5,"column":5}],"path":["mdx","html"]}],"data":{"mdx":{"html":null,"frontmatter":{"title":"Cross-platform Revisited","date":"Feb 05, 2017","tags":["programming","javascript"]}}},"pageContext":{"slug":"/2017-02-05-crossplatform-revisited/"}}

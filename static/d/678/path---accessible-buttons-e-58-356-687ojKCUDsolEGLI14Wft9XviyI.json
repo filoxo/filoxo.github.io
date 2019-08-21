@@ -1,1 +1,0 @@
-{"errors":[{"message":"Cannot read property 'push' of undefined","locations":[{"line":6,"column":5}],"path":["mdx","html"]}],"data":{"mdx":{"__typename":"Mdx","html":null,"frontmatter":{"title":"Accessible Buttons","date":"Oct 01, 2018","tags":["javascript","development"]}},"markdownRemark":null},"pageContext":{"slug":"/accessible-buttons/"}}

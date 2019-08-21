@@ -1,1 +1,0 @@
-{"errors":[{"message":"Cannot read property 'push' of undefined","locations":[{"line":5,"column":5}],"path":["mdx","html"]}],"data":{"mdx":{"html":null,"frontmatter":{"title":"Recommended Resources","date":"Sep 22, 2016","tags":["javascript"]}}},"pageContext":{"slug":"/2016-09-22-recommended-resources/"}}
