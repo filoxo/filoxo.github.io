@@ -9,12 +9,12 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-<title>Posts by tag - Filoblog</title>
-<link rel="canonical" href="https://filoxo.github.io/tags/typescript/"/>
+<title>Styled components and props - a rule of thumb - Filoblog</title>
+<link rel="canonical" href="https://filoxo.github.io/posts/styled-components-and-props-rule-of-thumb/"/>
 <meta property="og:site_name" content="Filoblog"/>
-<meta property="og:title" content="Posts by tag - Filoblog"/>
+<meta property="og:title" content="Styled components and props - a rule of thumb - Filoblog"/>
 <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://filoxo.github.io/tags/typescript/"/>
+<meta property="og:url" content="https://filoxo.github.io/posts/styled-components-and-props-rule-of-thumb/"/>
 
 
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
@@ -97,14 +97,52 @@ name="theme-color" content="#4a5568"/> <!-- https://www.filamentgroup.com/lab/lo
     </ul>
   </nav>
 </header><div class="my-0 mx-auto max-w-2xl px-3 md:px-6">
-      <div><h1>1 post tagged with “typescript”</h1>
-<ol>
-  
-    <li>
-      <a href="/posts/react-component-file-structure-proposal/">React component file structure proposal</a>
-    </li>
-  
-</ol></div>
+      <div>
+  <article class="mb-12">
+    <h1 class="mb-4 text-2xl text-red-600">Styled components and props - a rule of thumb</h1>
+    <p class="mb-4 text-red-600">18 May 2020</p>
+    <div class="space-y-6">
+      <div class="prose prose-headings:text-2xl prose-a:text-red-500 prose-code:rounded-sm prose-code:bg-gray-200 prose-code:px-1
+          prose-code:text-black prose-img:rounded-xl dark:prose-invert">
+        <p>A while ago, I wrote about an <a href="/improve-your-styled-component-props-usage/">improvement to using props in styled-components</a>. The TLDR; is &quot;Avoid overusing props in styles and instead use proper DOM and ARIA states&quot;. I think this advice extends to all CSS-in-JS solutions.  However, there are still cases where using props is unavoidable so I've landed on this rule-of-thumb:</p>
+<Aside warn>
+<p>Only use props that match a CSS property (eg. color, width, etc.), <strong>not</strong> DOM properties or HTML attributes.</p>
+</Aside>
+<p>Making CSS properties dynamic makes sense where some components need sensible default styles, but can be overriden based on context and usage. DOM properties and HTML attributes are typically used to store the current document state, and not using those values in dynamic styles yields improved performance, accessibility, and semantics.</p>
+<pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-jsx"><span class="token keyword">const</span> MyButton <span class="token operator">=</span> styled<span class="token punctuation">.</span>button<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"><br>  background: lightgrey;<br>  </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token punctuation">(</span><span class="token punctuation">{</span> width <span class="token operator">=</span> <span class="token string">'auto'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">width: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>width<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">;</span><span class="token template-punctuation string">`</span></span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"><br>  :disabled {<br>    opacity: 0.6;<br>  }<br>  &amp;[aria-pressed] {<br>    background: darkgrey;<br>  }<br></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span></code></pre>
+<p>The code above shows how <code>width</code> is a prop available to a consumer of the button to provide a value if needed, and uses the <code>disabled</code> property and the <code>aria-pressed</code> attribute in a static way. This strikes a good balance that I think will make your styled-component styles much better.</p>
+
+      </div>
+      <footer class="space-y-12">
+        <ul aria-label="Tags:" class="tag-list m-0 inline-flex flex-wrap space-x-2">
+          <li>
+              
+              <a
+                class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out
+                  visited:border-red-900 hover:text-red-600"
+                href="/tags/posts">posts</a>
+            </li><li>
+              ,
+              <a
+                class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out
+                  visited:border-red-900 hover:text-red-600"
+                href="/tags/javascript">javascript</a>
+            </li><li>
+              ,
+              <a
+                class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out
+                  visited:border-red-900 hover:text-red-600"
+                href="/tags/css">css</a>
+            </li></ul>
+        <div class="flex flex-row-reverse justify-between">
+          <a
+            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out hover:text-red-600"
+            href="/">&larr; Back to home</a>
+        </div>
+      </footer>
+    </div>
+  </article>
+</div>
   </div><hr class="my-4 mx-auto w-48 h-1 bg-red-600 rounded border-0 md:my-10"/>
 <footer class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between py-6 px-3 md:px-6">
   <p>

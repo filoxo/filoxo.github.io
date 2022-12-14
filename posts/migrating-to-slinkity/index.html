@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html class="antialiased" lang="en">
+  <head>
+
+
+
+
+
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+<title>migrating to 11ty - Filoblog</title>
+<link rel="canonical" href="https://filoxo.github.io/posts/migrating-to-slinkity/"/>
+<meta property="og:site_name" content="Filoblog"/>
+<meta property="og:title" content="migrating to 11ty - Filoblog"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://filoxo.github.io/posts/migrating-to-slinkity/"/>
+
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<link rel="alternate icon" href="/favicon.ico" type="image/png" sizes="48x48"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="192x192"/>
+<link rel="mask-icon" href="/favicon.svg" color="#4a5568"/>
+<meta
+name="theme-color" content="#4a5568"/> <!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
+
+
+  <script type="module" crossorigin src="/assets/main.949a8c0b.js"></script>
+  <link rel="stylesheet" href="/assets/main.c7acd084.css">
+</head>
+  <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100"><header class="mx-auto mt-2 mb-8 max-w-2xl px-3 md:px-6">
+  <nav class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between">
+    <h1 class="text-2xl font-semibold tracking-wide">
+      <a class="uppercase transition-colors duration-300 ease-in-out hover:text-red-600" href="/">
+        Filoblog
+      </a>
+    </h1>
+    
+    <ul class="m-0 flex items-center">
+      <li>
+        <a
+          href="https://twitter.com/cfiloteo12"
+          rel="noopener noreferrer"
+          target="_blank"
+          class="inline-flex p-2 transition-colors duration-300 ease-in-out hover:text-red-600">
+          <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="24" width="24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452
+              0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568
+              130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3
+              27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431
+              13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365
+              109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137
+              23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122
+              60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path>
+          </svg>
+          <span class="sr-only">Follow me as @cfiloteo12 on Twitter</span>
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://github.com/filoxo"
+          class="inline-flex p-2 transition-colors duration-300 ease-in-out hover:text-red-600">
+          <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 480 512" height="24" width="24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0
+              31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9
+              13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10
+              27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3
+              39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2
+              0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4
+              150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path>
+          </svg>
+          <span class="sr-only">I'm @filoxo on Github</span>
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.linkedin.com/in/carlosfiloteo/"
+          class="inline-flex p-2 transition-colors duration-300 ease-in-out hover:text-red-600">
+          <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="24" width="24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5
+              32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2
+              96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9
+              27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path>
+          </svg>
+          <span class="sr-only">Let's connect on LinkedIn</span>
+        </a>
+      </li>
+      <li>
+        <div><label class="inline-flex relative items-center cursor-pointer mt-2 ml-2">
+  <input type="checkbox" class="sr-only peer" aria-label="Toggle site theme" id="theme-toggle">
+    <div class="w-9 h-5 bg-gray-800 rounded-full peer peer-focus:ring-4 peer-focus:ring-red-300 dark:peer-focus:ring-red-800
+      dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute
+      after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4
+      after:transition-all dark:border-gray-600 peer-checked:bg-red-600"></div>
+  </label></div>
+      </li>
+    </ul>
+  </nav>
+</header><div class="my-0 mx-auto max-w-2xl px-3 md:px-6">
+      <div>
+  <article class="mb-12">
+    <h1 class="mb-4 text-2xl text-red-600">migrating to 11ty</h1>
+    <p class="mb-4 text-red-600">14 Dec 2022</p>
+    <div class="space-y-6">
+      <div class="prose prose-headings:text-2xl prose-a:text-red-500 prose-code:rounded-sm prose-code:bg-gray-200 prose-code:px-1
+          prose-code:text-black prose-img:rounded-xl dark:prose-invert">
+        <p>in typical bored developer fashion, i took these extra vacation days to update my blog. this post is my brain dump during this migration from gatsby to slinkity, which brings together 11ty &amp; vite. wish me luck!  this time i felt like even Gatsby was too hefty for what i need... and mdx has not proven to be as useful as i had hoped, so i'm going to drop it during this migration too. i'll still have to figure out how to work with 11ty, port my syntax highlighting theme, and rewrite any dynamic components. <a href="#tldr">tldr at the bottom</a>.</p>
+<h2>getting started</h2>
+<p>i reviewed the slinkity tutorial and then the 11ty tutorial. the first major step was creating a collection from a <code>/posts</code> directory. i did so by adding <code>src/posts/posts.json</code> containing <code>&quot;tags&quot;: &quot;posts&quot;</code>, i think this means everything inside of this directory will be tagged as &quot;posts&quot;. Which then allows me to iterate over the collection in <code>src/index.md</code>.</p>
+<p>next i created a <code>post.njk</code> layout to use with my post pages. i ported over what i could, and then added <code>&quot;layout&quot;: &quot;post.html&quot;</code> to <code>src/posts/posts.json</code> so that each page in this directory would use this layout. nice!</p>
+<p>at this point i notice that i will be able to replicate some of the react component structures from my old blog, using plain html partials and sprinkle in some interactivity with alpine. i got this idea from a different starter template and i hoped that by avoiding the shortcodes i'd avoid an extra feature that i don't plan to use.</p>
+<h2>generating tags</h2>
+<p>i next took on migrating over the tags pages. these pages show a list of posts that are tagged with a term. retrieving the list was proving tricky at first-blush. i'm thinking... a collection? no, what i actually needed was to make <a href="https://www.11ty.dev/docs/quicktips/tag-pages/">tag pages</a>, and then link to those pages in the post template. I had gone down some rabbit holes thinking that I might need to make a &quot;postsByTags&quot; collection to iterate over, or a tag-list.html partial, or even to create a new layout + page. but its simpler than that: just create a tags.md that contains the whole layout. I might even go and to do this for the about page too. at this point, i started copying over the layout/classes/etc to match the old blog. started with the html + body, then the site header.</p>
+<h2>migrating theme-toggle</h2>
+<p>i used Josh Comeaus' strategy for creating the theme toggle with react, but i chose to experiment with using alpine. at first i wondered if i could colocate the logic/state with the toggle's markup. what seems to align more is to keep the state where it'll be used (the html element) and then toggle it from an element within it.</p>
+<p>so i did just that and everything worked great! the most significant change is that reading &amp; setting the theme state doesn't happen now until after content load, which i don't mind and don't think i get enough readers to bother.</p>
+<h3>simplifying alpine</h3>
+<p>at this point i ran tests to get an idea where things were performance-wise. i ran my site on a slow connection mobile device using google's lighthouse tool. i ran a prod build and served locally and found that i was getting consistetly low scores due to alpine taking time to download. its not even that big! even so, i replaced it with ~25 lines inlined into the html page. that alone boosted the perf score up to 99. i may need to extract this though as it is being processed by vite multiple times, rather than identified as the same script.</p>
+<h2>migrating the rest of the posts</h2>
+<p>i've migrated the remaining posts but am now finding that the sort order of the posts collection isn't reversing as expected. this turned out to be due to a subtle nuance in the liquid templating... using the <a href="https://shopify.github.io/liquid/filters/reverse/"><code>reverse</code> filter</a> eg. <code>\{\% for post in collections.posts | reverse %}</code> <em>did not work</em> but <a href="https://shopify.github.io/liquid/tags/iteration/#reversed">reversed</a> did eg. <code>\{\% for post in collections.posts reversed %}</code>. not sure i understand why still. also at one point i'd been misled by an error that i thought was invalid liquid syntax. a different error was because i hadn't escaped the characters in the example code in this paragraph.
+at this point i struggled between 11ty's liquid syntax, nunjucks syntax that slinkity recommends, plain html examples that turned out to be processed using liquid instead of nunjucks despite being configured, and fixing a bunch of the slight syntax errors between flavors of markdown. along the way i also fixed some minor styling/layout issues, refined some missing classes, improved some layout items, and studied <code>@tailwind/typography</code>'s <a href="https://tailwindcss.com/docs/typography-plugin#element-modifiers%5D">prose API with element modifiers</a> to style the blog contents. this took me a few hours, but i tackled these in chunks.</p>
+<h2>vite plugin is not quite ready for my usecase</h2>
+<p>11ty supports vite via <a href="https://www.11ty.dev/docs/server-vite/">@11ty/eleventy-plugin-vite</a>. i experimented with installing this vite plugin inside of a different template that had a dual process setup. however, i was not able to get tailwind working... it would serve the main.css in development but wasn't being transformed, so tailwind was never loading. the production build <em>worked perfectly</em>; i just couldn't figure out how to get it working in dev.</p>
+<h2>tldr</h2>
+<p>if you're looking for a static site generator, 11ty is great! if you're looking for a blog platform, slinkity is great!</p>
+<h3>tradeoffs</h3>
+<p>the migration doesn't come without tradeoffs</p>
+<ul>
+<li>gatsby used graphql queries to access its document metadata, 11ty uses a standard API (collections) + the templating engine - the latter is simpler but for some reason much more difficult for my brain to connect</li>
+<li>gatsby still generated react apps per page (at least, it did for my blog for some reason); 11ty generates truly static html - i prefer totally static if possible and had thought gatsby did the same until i popped open my devtools one day</li>
+<li>slinkity uses nunjucks by default, while liquid is the default for 11ty. This is due to a single language feature in liquid that makes it hard to use with component shortcodes. unfortunate.</li>
+<li>i might not be as big of a fan of tailwind as i had thought... because the setup required specific syntax and import locations for it to work. i tested it and it appears that tailwind doesn't work with the 11ty plugin yet because vite wasn't transforming the css.
+<ul>
+<li>i've been contemplating adopting <a href="https://picocss.com/">picocss</a> instead, which gives me a lot of interactivity for free by using semantic html. but then i have to redo the html/css structure... 😅 so for now it'll do</li>
+</ul>
+</li>
+<li><a href="https://slinkity.dev/">slinkity</a> is a really well-designed package. the docs are very simple. i can see pretty easily where it and 11ty's apis apply/differ, and it worked very easily out of the box.</li>
+</ul>
+
+      </div>
+      <footer class="space-y-12">
+        <ul aria-label="Tags:" class="tag-list m-0 inline-flex flex-wrap space-x-2">
+          <li>
+              
+              <a
+                class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out
+                  visited:border-red-900 hover:text-red-600"
+                href="/tags/posts">posts</a>
+            </li><li>
+              ,
+              <a
+                class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out
+                  visited:border-red-900 hover:text-red-600"
+                href="/tags/javascript">javascript</a>
+            </li></ul>
+        <div class="flex flex-row-reverse justify-between">
+          <a
+            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out hover:text-red-600"
+            href="/">&larr; Back to home</a>
+        </div>
+      </footer>
+    </div>
+  </article>
+</div>
+  </div><hr class="my-4 mx-auto w-48 h-1 bg-red-600 rounded border-0 md:my-10"/>
+<footer class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between py-6 px-3 md:px-6">
+  <p>
+    i use this space to jot down ideas and thoughts relating to my work as a software dev, hobbies, and life in general.
+    thanks for reading 🤘
+    <a
+      href="/about"
+      class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out hover:text-red-600">
+      more about me
+    </a>
+  </p>
+  <!-- <ul><li>
+        <a href="/about/" class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out hover:text-red-600 underline" >
+          about me
+        </a>
+      </li></ul> -->
+</footer></body></html>
