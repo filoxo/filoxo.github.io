@@ -4,8 +4,6 @@
 
 
 
-
-
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
@@ -21,12 +19,11 @@
 <link rel="alternate icon" href="/favicon.ico" type="image/png" sizes="48x48"/>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="192x192"/>
 <link rel="mask-icon" href="/favicon.svg" color="#4a5568"/>
-<meta
-name="theme-color" content="#4a5568"/> <!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
+<meta name="theme-color" content="#4a5568"/>
+<!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
 
 
-  <script type="module" crossorigin src="/assets/main.949a8c0b.js"></script>
-  <link rel="stylesheet" href="/assets/main.c7acd084.css">
+<script src="/@root/main.js" defer></script>  <link rel="stylesheet" href="/assets/code.05c7d023.css">
 </head>
   <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100"><header class="mx-auto mt-2 mb-8 max-w-2xl px-3 md:px-6">
   <nav class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between">
@@ -97,14 +94,12 @@ name="theme-color" content="#4a5568"/> <!-- https://www.filamentgroup.com/lab/lo
     </ul>
   </nav>
 </header><div class="my-0 mx-auto max-w-2xl px-3 md:px-6">
-      <div>
-  <article class="mb-12">
-    <h1 class="mb-4 text-2xl text-red-600">Building a CSS framework using npm</h1>
-    <p class="mb-4 text-red-600">14 Feb 2017</p>
-    <div class="space-y-6">
-      <div class="prose prose-headings:text-2xl prose-a:text-red-500 prose-code:rounded-sm prose-code:bg-gray-200 prose-code:px-1
-          prose-code:text-black prose-img:rounded-xl dark:prose-invert">
-        <p>This last weekend I wanted to create a simple CSS framework that I can reuse for my own little projects.  The end result is <a href="https://github.com/filoxo/simple-style">Simple Style</a> (which is still a WIP as requirements come up). Surprisingly, using <a href="https://medium.com/@dabit3/introduction-to-using-npm-as-a-build-tool-b41076f488b0#.5w4loc8uy">npm as a build tool</a> made it extremely easy to set up a dev environment. I'll review everything about the setup in this post for my own documentation, but hopefully can also serve as a clean, straightforward example.</p>
+      <div><article class="mb-12">
+  <h1 class="mb-4 text-2xl text-red-600">Building a CSS framework using npm</h1>
+  <p class="mb-4 text-red-600">14 Feb 2017</p>
+  <div class="space-y-6">
+    <div class="prose prose-headings:text-2xl prose-headings:font-normal prose-a:text-red-500 prose-code:rounded-sm prose-code:bg-gray-200 prose-code:px-1 prose-code:text-black prose-img:rounded-xl dark:prose-invert">
+      <p>This last weekend I wanted to create a simple CSS framework that I can reuse for my own little projects.  The end result is <a href="https://github.com/filoxo/simple-style">Simple Style</a> (which is still a WIP as requirements come up). Surprisingly, using <a href="https://medium.com/@dabit3/introduction-to-using-npm-as-a-build-tool-b41076f488b0#.5w4loc8uy">npm as a build tool</a> made it extremely easy to set up a dev environment. I'll review everything about the setup in this post for my own documentation, but hopefully can also serve as a clean, straightforward example.</p>
 <p>I used <a href="https://yarnpkg.com/en/"><code>yarn</code></a> for this experiment instead of <code>npm</code> solely for the speed improvements. Fortunately, <code>yarn</code>'s commands all have their <code>npm</code> equivalents so don't get hung up on the differences.</p>
 <p>This basic setup offers:</p>
 <ul>
@@ -114,7 +109,7 @@ name="theme-color" content="#4a5568"/> <!-- https://www.filamentgroup.com/lab/lo
 <li>optimizations</li>
 <li>a quick and easy development setup to reflect changes on-the-fly</li>
 </ul>
-<h3>Dev dependencies</h3>
+<h3 id="dev-dependencies"><a class="permalink" href="#dev-dependencies" aria-hidden="true">🔗</a> Dev dependencies</h3>
 <p>Here are our initial development dependencies:</p>
 <ul>
 <li><a href="https://necolas.github.io/normalize.css/">normalize.css</a>: so that all elements render consistently</li>
@@ -126,72 +121,58 @@ name="theme-color" content="#4a5568"/> <!-- https://www.filamentgroup.com/lab/lo
 <p>Install using yarn (or the npm equivalent)</p>
 <pre><code>yarn add -D normalize.css postcss-cli postcss-cssnext postcss-import cssnano
 </code></pre>
-<h3>PostCSS config</h3>
+<h3 id="postcss-config"><a class="permalink" href="#postcss-config" aria-hidden="true">🔗</a> PostCSS config</h3>
 <p>Create a json file that contains the config for PostCSS. The docs named it <strong>options.json</strong> but I choose <strong>postcss.json</strong> for better clarity. The comments below explain some keys.</p>
 <pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token comment">// Enable plugins in order</span><br>  <span class="token property">"use"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"postcss-import"</span><span class="token punctuation">,</span> <span class="token string">"postcss-cssnext"</span><span class="token punctuation">,</span> <span class="token string">"cssnano"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>  <span class="token property">"input"</span><span class="token operator">:</span> <span class="token string">"main.css"</span><span class="token punctuation">,</span><br>  <span class="token property">"output"</span><span class="token operator">:</span> <span class="token string">"dist/main.css"</span><span class="token punctuation">,</span><br>  <span class="token comment">// use locally installed plugins (eg. in node_modules)</span><br>  <span class="token property">"local-plugins"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>  <span class="token comment">// Enable sourcemaps</span><br>  <span class="token property">"map"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>  <span class="token comment">// CSSnext and cssnano both use autoprefixer, but for different features/purposes</span><br>  <span class="token comment">// see https://github.com/MoOx/postcss-cssnext/issues/323</span><br>  <span class="token property">"postcss-cssnext"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>    <span class="token property">"warnForDuplicates"</span><span class="token operator">:</span> <span class="token boolean">false</span><br>  <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
-<h3>CSS time</h3>
+<h3 id="css-time"><a class="permalink" href="#css-time" aria-hidden="true">🔗</a> CSS time</h3>
 <p>Go ahead and create <strong>main.css</strong> at the project root. The above config will output to <strong>dist/</strong>. Here's a quick sample to put into the file for now.</p>
 <pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-css"><span class="token atrule"><span class="token rule">@import</span> <span class="token punctuation">(</span><span class="token string">'normalize.css'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><br><span class="token selector">:root</span> <span class="token punctuation">{</span><br>  <span class="token property">--color-primary</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span><br>  <span class="token property">--color-secondary</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
-<h3>Building</h3>
+<h3 id="building"><a class="permalink" href="#building" aria-hidden="true">🔗</a> Building</h3>
 <p>Use the postcss-cli with the config file passed in as an arg and save it as an npm script.</p>
 <pre><code>&quot;scripts&quot;: {
     &quot;build&quot;: &quot;node_modules/postcss-cli/bin/postcss -c postcss.json&quot;
 }
 </code></pre>
 <p>Now you can simply run <code>yarn run build</code> and your css will be processed and output to <strong>dist</strong>. But we can still do better.</p>
-<h3>Watch for changes</h3>
+<h3 id="watch-for-changes"><a class="permalink" href="#watch-for-changes" aria-hidden="true">🔗</a> Watch for changes</h3>
 <p>Enabling watch will auto-transform the css file on changes. Add another npm script, which is exactly the same as <code>build</code> but with the watch flag.</p>
 <pre><code>&quot;build:dev&quot;: &quot;node_modules/postcss-cli/bin/postcss -c postcss.json -w&quot;
 </code></pre>
-<h3>Livereload</h3>
+<h3 id="livereload"><a class="permalink" href="#livereload" aria-hidden="true">🔗</a> Livereload</h3>
 <p>You wouldn't develop a CSS framework without seeing it rendered on a page so let's create a test page for development. Create <strong>index.html</strong> at the project root and populate it with some HTML, and add a link to your <strong>main.css</strong> file.</p>
 <pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en-US<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/dist/main.css<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>main</span><span class="token punctuation">></span></span>Hello world<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>main</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
 <p><a href="https://www.npmjs.com/package/lr-http-server"><code>lr-http-server</code></a> will reload on changes, as well as a functioning http server.</p>
 <pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-sh"><span class="token function">yarn</span> <span class="token function">add</span> <span class="token parameter variable">-D</span> lr-http-server</code></pre>
 <p>And then register a new npm script for it</p>
 <pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-json"><span class="token property">"reload"</span><span class="token operator">:</span> <span class="token string">"lr-http-server -p 3000"</span></code></pre>
-<h3>Composing scripts</h3>
+<h3 id="composing-scripts"><a class="permalink" href="#composing-scripts" aria-hidden="true">🔗</a> Composing scripts</h3>
 <p>We want the two above scripts to run in parallel so that if either the css or the html file changes the livereload server will do its job. <a href="https://www.npmjs.com/package/npm-run-all"><code>npm-run-all</code></a> with the <code>-p</code> (parallel) flag does this exactly.</p>
 <pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-sh"><span class="token function">yarn</span> <span class="token function">add</span> <span class="token parameter variable">-D</span> npm-run-all</code></pre>
 <p>Join the two tasks together into a single npm script</p>
 <pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-sh"><span class="token string">"start"</span><span class="token builtin class-name">:</span> <span class="token string">"npm-run-all -p build:dev reload"</span></code></pre>
 <p>And then run easily with</p>
 <pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-sh"><span class="token function">yarn</span> start</code></pre>
-<h3>Done!</h3>
+<h3 id="done"><a class="permalink" href="#done" aria-hidden="true">🔗</a> Done!</h3>
 <p>You're ready to keep going developing your styles inside <strong>main.css</strong>. Feel free to improve upon this as needed!</p>
 
-      </div>
-      <footer class="space-y-12">
-        <ul aria-label="Tags:" class="tag-list m-0 inline-flex flex-wrap space-x-2">
-          <li>
-              
-              <a
-                class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out
-                  visited:border-red-900 hover:text-red-600"
-                href="/tags/posts">posts</a>
-            </li><li>
-              ,
-              <a
-                class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out
-                  visited:border-red-900 hover:text-red-600"
-                href="/tags/javascript">javascript</a>
-            </li><li>
-              ,
-              <a
-                class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out
-                  visited:border-red-900 hover:text-red-600"
-                href="/tags/npm">npm</a>
-            </li></ul>
-        <div class="flex flex-row-reverse justify-between">
-          <a
-            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out hover:text-red-600"
-            href="/">&larr; Back to home</a>
-        </div>
-      </footer>
     </div>
-  </article>
-</div>
-  </div><hr class="my-4 mx-auto w-48 h-1 bg-red-600 rounded border-0 md:my-10"/>
+    <footer class="space-y-12">
+      <p>Tagged with:&nbsp;<a
+            href="/tags/javascript"
+            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">javascript</a>
+      ,&nbsp;<a
+            href="/tags/npm"
+            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">npm</a>
+      </p>
+      <div class="flex flex-row-reverse justify-between">
+        <a
+          class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out hover:text-red-600"
+          href="/">&larr; Back to home</a>
+      </div>
+    </footer>
+  </div>
+</article></div>
+  </div><hr class="mt-4 mb-2 mx-auto w-48 h-0.5 bg-red-600 rounded border-0"/>
 <footer class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between py-6 px-3 md:px-6">
   <p>
     i use this space to jot down ideas and thoughts relating to my work as a software dev, hobbies, and life in general.
@@ -202,9 +183,4 @@ name="theme-color" content="#4a5568"/> <!-- https://www.filamentgroup.com/lab/lo
       more about me
     </a>
   </p>
-  <!-- <ul><li>
-        <a href="/about/" class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out hover:text-red-600 underline" >
-          about me
-        </a>
-      </li></ul> -->
 </footer></body></html>

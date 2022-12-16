@@ -4,8 +4,6 @@
 
 
 
-
-
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
@@ -21,12 +19,11 @@
 <link rel="alternate icon" href="/favicon.ico" type="image/png" sizes="48x48"/>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="192x192"/>
 <link rel="mask-icon" href="/favicon.svg" color="#4a5568"/>
-<meta
-name="theme-color" content="#4a5568"/> <!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
+<meta name="theme-color" content="#4a5568"/>
+<!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
 
 
-  <script type="module" crossorigin src="/assets/main.949a8c0b.js"></script>
-  <link rel="stylesheet" href="/assets/main.c7acd084.css">
+<script src="/@root/main.js" defer></script>  <link rel="stylesheet" href="/assets/code.05c7d023.css">
 </head>
   <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100"><header class="mx-auto mt-2 mb-8 max-w-2xl px-3 md:px-6">
   <nav class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between">
@@ -97,19 +94,17 @@ name="theme-color" content="#4a5568"/> <!-- https://www.filamentgroup.com/lab/lo
     </ul>
   </nav>
 </header><div class="my-0 mx-auto max-w-2xl px-3 md:px-6">
-      <div>
-  <article class="mb-12">
-    <h1 class="mb-4 text-2xl text-red-600">Building my first handwired keyboard</h1>
-    <p class="mb-4 text-red-600">12 Feb 2018</p>
-    <div class="space-y-6">
-      <div class="prose prose-headings:text-2xl prose-a:text-red-500 prose-code:rounded-sm prose-code:bg-gray-200 prose-code:px-1
-          prose-code:text-black prose-img:rounded-xl dark:prose-invert">
-        <p>I recently finished my first handwired Atreus keyboard, an ortholinear keyboard with 42 keys. I'm really happy with how it turned out and I'm just documenting how it went for me, as well as some reference for my future builds.  I'm proud of how it turned out and excited to do another soon!</p>
-<h3>Final product</h3>
+      <div><article class="mb-12">
+  <h1 class="mb-4 text-2xl text-red-600">Building my first handwired keyboard</h1>
+  <p class="mb-4 text-red-600">12 Feb 2018</p>
+  <div class="space-y-6">
+    <div class="prose prose-headings:text-2xl prose-headings:font-normal prose-a:text-red-500 prose-code:rounded-sm prose-code:bg-gray-200 prose-code:px-1 prose-code:text-black prose-img:rounded-xl dark:prose-invert">
+      <p>I recently finished my first handwired Atreus keyboard, an ortholinear keyboard with 42 keys. I'm really happy with how it turned out and I'm just documenting how it went for me, as well as some reference for my future builds.  I'm proud of how it turned out and excited to do another soon!</p>
+<h3 id="final-product"><a class="permalink" href="#final-product" aria-hidden="true">🔗</a> Final product</h3>
 <p><img src="/assets/final.9c0fbf66.jpg" alt=""></p>
 <p>This is a cross-section of both top and bottom of the keyboard. The bottom is clear acrylic so I can show off my handiwork!</p>
 <p>I researched the hell out of this thing before starting, because I practically knew nothing about the circuitry of how a keyboard matrix worked. The biggest hurdle was knowing the software well enough to enable the hardware. I was lucky in that the <a href="https://atreus.technomancy.us/assembly-hand-wired.pdf">Atreus hand wire guide</a> is pretty comprehensive, as well as relying on great resources like this <a href="https://imgur.com/a/qcgdF">&quot;Modern handwiring guide&quot;</a>. I already knew a fair amount about pro micros from previous builds (I've built 4 other keyboards but with PCBs) so that gave me lots of information about its limitations and where stuff goes; as well as with experience with <a href="https://github.com/qmk/qmk_firmware">QMK</a>. There are plenty of awesome and active people on the QMK Gitter if you get stuck with the firmware. I also had plenty of help from the great people in the <a href="https://discord.gg/tjjT8J">UTMK discord</a> (which welcomes anyone really) regarding the hardware aspect of my build.</p>
-<h3>Build in review</h3>
+<h3 id="build-in-review"><a class="permalink" href="#build-in-review" aria-hidden="true">🔗</a> Build in review</h3>
 <p><img src="/assets/1.a1f462e4.jpg" alt=""></p>
 <p>The case is laser cut from ¼&quot; plywood. A friend sold it to me after finding that it wouldn't work for his Atreus PCB. Here I'm putting in the switches; the black ones are Gateron Clears, the whites are Kalih Pro Purples.</p>
 <p><img src="/assets/2.5bf04c92.jpg" alt=""></p>
@@ -140,32 +135,21 @@ name="theme-color" content="#4a5568"/> <!-- https://www.filamentgroup.com/lab/lo
 <p><img src="/assets/10.2d3851ca.jpg" alt=""></p>
 <p>Top view of the keyboard with keycaps. The next steps will probably disassemble to to stain/treat the wood before using heavily, as well as add a strip of LEDs for some underglow.</p>
 
-      </div>
-      <footer class="space-y-12">
-        <ul aria-label="Tags:" class="tag-list m-0 inline-flex flex-wrap space-x-2">
-          <li>
-              
-              <a
-                class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out
-                  visited:border-red-900 hover:text-red-600"
-                href="/tags/posts">posts</a>
-            </li><li>
-              ,
-              <a
-                class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out
-                  visited:border-red-900 hover:text-red-600"
-                href="/tags/keyboards">keyboards</a>
-            </li></ul>
-        <div class="flex flex-row-reverse justify-between">
-          <a
-            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out hover:text-red-600"
-            href="/">&larr; Back to home</a>
-        </div>
-      </footer>
     </div>
-  </article>
-</div>
-  </div><hr class="my-4 mx-auto w-48 h-1 bg-red-600 rounded border-0 md:my-10"/>
+    <footer class="space-y-12">
+      <p>Tagged with:&nbsp;<a
+            href="/tags/keyboards"
+            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">keyboards</a>
+      </p>
+      <div class="flex flex-row-reverse justify-between">
+        <a
+          class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out hover:text-red-600"
+          href="/">&larr; Back to home</a>
+      </div>
+    </footer>
+  </div>
+</article></div>
+  </div><hr class="mt-4 mb-2 mx-auto w-48 h-0.5 bg-red-600 rounded border-0"/>
 <footer class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between py-6 px-3 md:px-6">
   <p>
     i use this space to jot down ideas and thoughts relating to my work as a software dev, hobbies, and life in general.
@@ -176,9 +160,4 @@ name="theme-color" content="#4a5568"/> <!-- https://www.filamentgroup.com/lab/lo
       more about me
     </a>
   </p>
-  <!-- <ul><li>
-        <a href="/about/" class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out hover:text-red-600 underline" >
-          about me
-        </a>
-      </li></ul> -->
 </footer></body></html>

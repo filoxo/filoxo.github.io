@@ -4,8 +4,6 @@
 
 
 
-
-
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
@@ -21,12 +19,11 @@
 <link rel="alternate icon" href="/favicon.ico" type="image/png" sizes="48x48"/>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="192x192"/>
 <link rel="mask-icon" href="/favicon.svg" color="#4a5568"/>
-<meta
-name="theme-color" content="#4a5568"/> <!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
+<meta name="theme-color" content="#4a5568"/>
+<!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
 
 
-  <script type="module" crossorigin src="/assets/main.949a8c0b.js"></script>
-  <link rel="stylesheet" href="/assets/main.c7acd084.css">
+<script src="/@root/main.js" defer></script>  <link rel="stylesheet" href="/assets/code.05c7d023.css">
 </head>
   <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100"><header class="mx-auto mt-2 mb-8 max-w-2xl px-3 md:px-6">
   <nav class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between">
@@ -97,17 +94,15 @@ name="theme-color" content="#4a5568"/> <!-- https://www.filamentgroup.com/lab/lo
     </ul>
   </nav>
 </header><div class="my-0 mx-auto max-w-2xl px-3 md:px-6">
-      <div>
-  <article class="mb-12">
-    <h1 class="mb-4 text-2xl text-red-600">Theme toggle on a Gatsby + MDX site</h1>
-    <p class="mb-4 text-red-600">27 Nov 2021</p>
-    <div class="space-y-6">
-      <div class="prose prose-headings:text-2xl prose-a:text-red-500 prose-code:rounded-sm prose-code:bg-gray-200 prose-code:px-1
-          prose-code:text-black prose-img:rounded-xl dark:prose-invert">
-        <p>I recently read <a href="https://www.joshwcomeau.com/react/dark-mode/">Josh Comeau's excellent article</a> on how he was able to achieve a theme toggle on his Gatsby site. I find his solution to be excellent! However my Gatsby site is, for better or worse, pretty tied to MDX and React. I implemented a solution based on his for my current site theme.</p>
-<h2>Prereq: Update libraries</h2>
+      <div><article class="mb-12">
+  <h1 class="mb-4 text-2xl text-red-600">Theme toggle on a Gatsby + MDX site</h1>
+  <p class="mb-4 text-red-600">27 Nov 2021</p>
+  <div class="space-y-6">
+    <div class="prose prose-headings:text-2xl prose-headings:font-normal prose-a:text-red-500 prose-code:rounded-sm prose-code:bg-gray-200 prose-code:px-1 prose-code:text-black prose-img:rounded-xl dark:prose-invert">
+      <p>I recently read <a href="https://www.joshwcomeau.com/react/dark-mode/">Josh Comeau's excellent article</a> on how he was able to achieve a theme toggle on his Gatsby site. I find his solution to be excellent! However my Gatsby site is, for better or worse, pretty tied to MDX and React. I implemented a solution based on his for my current site theme.</p>
+<h2 id="prereq-update-libraries"><a class="permalink" href="#prereq-update-libraries" aria-hidden="true">🔗</a> Prereq: Update libraries</h2>
 <p>Before I started this feature, I had to update my blog... and its about <strong>2 years behind</strong> 😬. This meant Gatsby &amp; plugins needed two major version upgrades. While at it, I ditched CSS Modules for Tailwind and then refactored all the components to use these utility classes. With that out of the way...</p>
-<h2>Step 1: Updating HTML in Gatsby</h2>
+<h2 id="step-1-updating-html-in-gatsby"><a class="permalink" href="#step-1-updating-html-in-gatsby" aria-hidden="true">🔗</a> Step 1: Updating HTML in Gatsby</h2>
 <p>Using the Gatsby SSR <code>setPreBodyComponents</code> technique Josh described, my implementation just had slightly different code to run on the client so for brevity that's all I'll include.</p>
 <pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-jsx"><span class="token keyword">const</span> codeToRunOnClient <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"><br>  window.theme = {<br>    init: () => {<br>      window.theme.set(window.theme.current())<br>    },<br>    current: () => localStorage.getItem('theme:dark') === 'true',<br>    set: (to) => {<br>      document.documentElement.classList.toggle('dark', to);<br>      const result = document.documentElement.classList.contains('dark');<br>      localStorage.setItem('theme:dark', result);<br>      return result<br>    },<br>    toggle: () => window.theme.set(!window.theme.current())<br>  }    <br><br>  window.theme.init();<br></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span></code></pre>
 <p>My site doesn't have a problem with globals since I control the libraries used on my blog. Maybe I'll change this if it becomes a problem in the future.</p>
@@ -119,62 +114,42 @@ name="theme-color" content="#4a5568"/> <!-- https://www.filamentgroup.com/lab/lo
 <li><code>toggle</code> is basically just a wrapper around <code>set</code> that negates the <code>current</code> value, for convenience</li>
 </ul>
 <p>The <code>set</code> logic was useful because I was seeing behavior where the <code>classList.toggle</code> would actually fail to add the class for whatever reason. This approach ensured the state was always correct based on the dom.</p>
-<h2>Step 2: Crossing the chasm</h2>
+<h2 id="step-2-crossing-the-chasm"><a class="permalink" href="#step-2-crossing-the-chasm" aria-hidden="true">🔗</a> Step 2: Crossing the chasm</h2>
 <p>The helper functions are setup before any of the rest of the page so once React kicks in I simply wire it up to the ThemeToggle component:</p>
 <pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-jsx"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">ThemeToggle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token keyword">const</span> <span class="token punctuation">[</span>darkModeEnabled<span class="token punctuation">,</span> setDarkModeEnabled<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span><br>    window<span class="token punctuation">.</span>theme<span class="token punctuation">.</span><span class="token function">current</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br>  <span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>  <span class="token keyword">let</span> <span class="token function-variable function">handleThemeToggle</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>    <span class="token function">setDarkModeEnabled</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>theme<span class="token punctuation">.</span><span class="token function">toggle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>  <span class="token keyword">return</span> <span class="token punctuation">(</span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span><span class="token punctuation">></span></span><span class="token plain-text"><br>      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span><br>        <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span><br>        <span class="token attr-name">checked</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>darkModeEnabled<span class="token punctuation">}</span></span><br>        <span class="token attr-name">onChange</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>handleThemeToggle<span class="token punctuation">}</span></span><br>      <span class="token punctuation">/></span></span><span class="token plain-text"><br>    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span><br>  <span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
 <p>Some code was omitted just to highlight the relevant parts. When the component mounts it syncs the <code>theme.current()</code> state, and onChange it calls <code>theme.toggle()</code> and updates local state.</p>
-<h3>SSR</h3>
+<h3 id="ssr"><a class="permalink" href="#ssr" aria-hidden="true">🔗</a> SSR</h3>
 <p>Gatsby won't let you forget about SSR! <code>window</code> is not defined when server-side rendering so we have to handle it by checking if we're in a browser environment and short circuiting if true.</p>
 <pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-jsx"><span class="token comment">// Check if in browser environment</span><br><span class="token keyword">const</span> isBrowser <span class="token operator">=</span> <span class="token keyword">typeof</span> window <span class="token operator">!==</span> <span class="token string">'undefined'</span><span class="token punctuation">;</span><br><br><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">ThemeToggle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token keyword">const</span> <span class="token punctuation">[</span>darkModeEnabled<span class="token punctuation">,</span> setDarkModeEnabled<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>    <span class="token comment">// Short circuit if not in browser</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>isBrowser<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span><br>    <span class="token keyword">else</span> <span class="token keyword">return</span> window<span class="token punctuation">.</span>theme<span class="token punctuation">.</span><span class="token function">current</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token comment">// ... rest of code</span><br><span class="token punctuation">}</span></code></pre>
 <p>The rest of the code doesn't get executed on the server so it doesn't need updating.</p>
-<h3>Step 3: Adding a toggle</h3>
+<h3 id="step-3-adding-a-toggle"><a class="permalink" href="#step-3-adding-a-toggle" aria-hidden="true">🔗</a> Step 3: Adding a toggle</h3>
 <p>Last step is to build the markup for the theme toggle. I found this great <a href="https://medium.com/front-end-weekly/build-a-css-only-toggle-switch-using-tailwindcss-d2739882934">Build a CSS only toggle switch using TailwindCSS</a> article that was very well executed, built with accessibility and semantics in mind. I just copy-and-pasted the code and modified the colors and sizing.</p>
 <p>That's it! I'm pretty happy with my site redesign, and this ThemeToggle was a huge bonus!</p>
 
-      </div>
-      <footer class="space-y-12">
-        <ul aria-label="Tags:" class="tag-list m-0 inline-flex flex-wrap space-x-2">
-          <li>
-              
-              <a
-                class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out
-                  visited:border-red-900 hover:text-red-600"
-                href="/tags/posts">posts</a>
-            </li><li>
-              ,
-              <a
-                class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out
-                  visited:border-red-900 hover:text-red-600"
-                href="/tags/javascript">javascript</a>
-            </li><li>
-              ,
-              <a
-                class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out
-                  visited:border-red-900 hover:text-red-600"
-                href="/tags/react">react</a>
-            </li><li>
-              ,
-              <a
-                class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out
-                  visited:border-red-900 hover:text-red-600"
-                href="/tags/gatsby">gatsby</a>
-            </li><li>
-              ,
-              <a
-                class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out
-                  visited:border-red-900 hover:text-red-600"
-                href="/tags/mdx">mdx</a>
-            </li></ul>
-        <div class="flex flex-row-reverse justify-between">
-          <a
-            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out hover:text-red-600"
-            href="/">&larr; Back to home</a>
-        </div>
-      </footer>
     </div>
-  </article>
-</div>
-  </div><hr class="my-4 mx-auto w-48 h-1 bg-red-600 rounded border-0 md:my-10"/>
+    <footer class="space-y-12">
+      <p>Tagged with:&nbsp;<a
+            href="/tags/javascript"
+            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">javascript</a>
+      ,&nbsp;<a
+            href="/tags/react"
+            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">react</a>
+      ,&nbsp;<a
+            href="/tags/gatsby"
+            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">gatsby</a>
+      ,&nbsp;<a
+            href="/tags/mdx"
+            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">mdx</a>
+      </p>
+      <div class="flex flex-row-reverse justify-between">
+        <a
+          class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out hover:text-red-600"
+          href="/">&larr; Back to home</a>
+      </div>
+    </footer>
+  </div>
+</article></div>
+  </div><hr class="mt-4 mb-2 mx-auto w-48 h-0.5 bg-red-600 rounded border-0"/>
 <footer class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between py-6 px-3 md:px-6">
   <p>
     i use this space to jot down ideas and thoughts relating to my work as a software dev, hobbies, and life in general.
@@ -185,9 +160,4 @@ name="theme-color" content="#4a5568"/> <!-- https://www.filamentgroup.com/lab/lo
       more about me
     </a>
   </p>
-  <!-- <ul><li>
-        <a href="/about/" class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out hover:text-red-600 underline" >
-          about me
-        </a>
-      </li></ul> -->
 </footer></body></html>

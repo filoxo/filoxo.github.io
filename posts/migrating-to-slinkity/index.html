@@ -4,15 +4,13 @@
 
 
 
-
-
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-<title>migrating to 11ty - Filoblog</title>
+<title>migrating to slinkity - Filoblog</title>
 <link rel="canonical" href="https://filoxo.github.io/posts/migrating-to-slinkity/"/>
 <meta property="og:site_name" content="Filoblog"/>
-<meta property="og:title" content="migrating to 11ty - Filoblog"/>
+<meta property="og:title" content="migrating to slinkity - Filoblog"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://filoxo.github.io/posts/migrating-to-slinkity/"/>
 
@@ -21,12 +19,11 @@
 <link rel="alternate icon" href="/favicon.ico" type="image/png" sizes="48x48"/>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="192x192"/>
 <link rel="mask-icon" href="/favicon.svg" color="#4a5568"/>
-<meta
-name="theme-color" content="#4a5568"/> <!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
+<meta name="theme-color" content="#4a5568"/>
+<!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
 
 
-  <script type="module" crossorigin src="/assets/main.949a8c0b.js"></script>
-  <link rel="stylesheet" href="/assets/main.c7acd084.css">
+<script src="/@root/main.js" defer></script>  <link rel="stylesheet" href="/assets/code.05c7d023.css">
 </head>
   <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100"><header class="mx-auto mt-2 mb-8 max-w-2xl px-3 md:px-6">
   <nav class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between">
@@ -97,33 +94,31 @@ name="theme-color" content="#4a5568"/> <!-- https://www.filamentgroup.com/lab/lo
     </ul>
   </nav>
 </header><div class="my-0 mx-auto max-w-2xl px-3 md:px-6">
-      <div>
-  <article class="mb-12">
-    <h1 class="mb-4 text-2xl text-red-600">migrating to 11ty</h1>
-    <p class="mb-4 text-red-600">14 Dec 2022</p>
-    <div class="space-y-6">
-      <div class="prose prose-headings:text-2xl prose-a:text-red-500 prose-code:rounded-sm prose-code:bg-gray-200 prose-code:px-1
-          prose-code:text-black prose-img:rounded-xl dark:prose-invert">
-        <p>in typical bored developer fashion, i took these extra vacation days to update my blog. this post is my brain dump during this migration from gatsby to slinkity, which brings together 11ty &amp; vite. wish me luck!  this time i felt like even Gatsby was too hefty for what i need... and mdx has not proven to be as useful as i had hoped, so i'm going to drop it during this migration too. i'll still have to figure out how to work with 11ty, port my syntax highlighting theme, and rewrite any dynamic components. <a href="#tldr">tldr at the bottom</a>.</p>
-<h2>getting started</h2>
+      <div><article class="mb-12">
+  <h1 class="mb-4 text-2xl text-red-600">migrating to slinkity</h1>
+  <p class="mb-4 text-red-600">16 Dec 2022</p>
+  <div class="space-y-6">
+    <div class="prose prose-headings:text-2xl prose-headings:font-normal prose-a:text-red-500 prose-code:rounded-sm prose-code:bg-gray-200 prose-code:px-1 prose-code:text-black prose-img:rounded-xl dark:prose-invert">
+      <p>in typical bored developer fashion, i took these extra vacation days to update my blog. this post is my brain dump during this migration from gatsby to slinkity, which brings together 11ty &amp; vite. wish me luck!  this time i felt like even Gatsby was too hefty for what i need... and mdx has not proven to be as useful as i had hoped, so i'm going to drop it during this migration too. i'll still have to figure out how to work with 11ty, port my syntax highlighting theme, and rewrite any dynamic components. <a href="#tldr">tldr at the bottom</a>.</p>
+<h2 id="getting-started"><a class="permalink" href="#getting-started" aria-hidden="true">🔗</a> getting started</h2>
 <p>i reviewed the slinkity tutorial and then the 11ty tutorial. the first major step was creating a collection from a <code>/posts</code> directory. i did so by adding <code>src/posts/posts.json</code> containing <code>&quot;tags&quot;: &quot;posts&quot;</code>, i think this means everything inside of this directory will be tagged as &quot;posts&quot;. Which then allows me to iterate over the collection in <code>src/index.md</code>.</p>
 <p>next i created a <code>post.njk</code> layout to use with my post pages. i ported over what i could, and then added <code>&quot;layout&quot;: &quot;post.html&quot;</code> to <code>src/posts/posts.json</code> so that each page in this directory would use this layout. nice!</p>
 <p>at this point i notice that i will be able to replicate some of the react component structures from my old blog, using plain html partials and sprinkle in some interactivity with alpine. i got this idea from a different starter template and i hoped that by avoiding the shortcodes i'd avoid an extra feature that i don't plan to use.</p>
-<h2>generating tags</h2>
+<h2 id="generating-tags"><a class="permalink" href="#generating-tags" aria-hidden="true">🔗</a> generating tags</h2>
 <p>i next took on migrating over the tags pages. these pages show a list of posts that are tagged with a term. retrieving the list was proving tricky at first-blush. i'm thinking... a collection? no, what i actually needed was to make <a href="https://www.11ty.dev/docs/quicktips/tag-pages/">tag pages</a>, and then link to those pages in the post template. I had gone down some rabbit holes thinking that I might need to make a &quot;postsByTags&quot; collection to iterate over, or a tag-list.html partial, or even to create a new layout + page. but its simpler than that: just create a tags.md that contains the whole layout. I might even go and to do this for the about page too. at this point, i started copying over the layout/classes/etc to match the old blog. started with the html + body, then the site header.</p>
-<h2>migrating theme-toggle</h2>
+<h2 id="migrating-theme-toggle"><a class="permalink" href="#migrating-theme-toggle" aria-hidden="true">🔗</a> migrating theme-toggle</h2>
 <p>i used Josh Comeaus' strategy for creating the theme toggle with react, but i chose to experiment with using alpine. at first i wondered if i could colocate the logic/state with the toggle's markup. what seems to align more is to keep the state where it'll be used (the html element) and then toggle it from an element within it.</p>
 <p>so i did just that and everything worked great! the most significant change is that reading &amp; setting the theme state doesn't happen now until after content load, which i don't mind and don't think i get enough readers to bother.</p>
-<h3>simplifying alpine</h3>
+<h3 id="simplifying-alpine"><a class="permalink" href="#simplifying-alpine" aria-hidden="true">🔗</a> simplifying alpine</h3>
 <p>at this point i ran tests to get an idea where things were performance-wise. i ran my site on a slow connection mobile device using google's lighthouse tool. i ran a prod build and served locally and found that i was getting consistetly low scores due to alpine taking time to download. its not even that big! even so, i replaced it with ~25 lines inlined into the html page. that alone boosted the perf score up to 99. i may need to extract this though as it is being processed by vite multiple times, rather than identified as the same script.</p>
-<h2>migrating the rest of the posts</h2>
+<h2 id="migrating-the-rest-of-the-posts"><a class="permalink" href="#migrating-the-rest-of-the-posts" aria-hidden="true">🔗</a> migrating the rest of the posts</h2>
 <p>i've migrated the remaining posts but am now finding that the sort order of the posts collection isn't reversing as expected. this turned out to be due to a subtle nuance in the liquid templating... using the <a href="https://shopify.github.io/liquid/filters/reverse/"><code>reverse</code> filter</a> eg. <code>\{\% for post in collections.posts | reverse %}</code> <em>did not work</em> but <a href="https://shopify.github.io/liquid/tags/iteration/#reversed">reversed</a> did eg. <code>\{\% for post in collections.posts reversed %}</code>. not sure i understand why still. also at one point i'd been misled by an error that i thought was invalid liquid syntax. a different error was because i hadn't escaped the characters in the example code in this paragraph.
-at this point i struggled between 11ty's liquid syntax, nunjucks syntax that slinkity recommends, plain html examples that turned out to be processed using liquid instead of nunjucks despite being configured, and fixing a bunch of the slight syntax errors between flavors of markdown. along the way i also fixed some minor styling/layout issues, refined some missing classes, improved some layout items, and studied <code>@tailwind/typography</code>'s <a href="https://tailwindcss.com/docs/typography-plugin#element-modifiers%5D">prose API with element modifiers</a> to style the blog contents. this took me a few hours, but i tackled these in chunks.</p>
-<h2>vite plugin is not quite ready for my usecase</h2>
+at this point i struggled between 11ty's liquid syntax, nunjucks syntax that slinkity recommends, plain html examples that turned out to be processed using liquid instead of nunjucks despite being configured, and fixing a bunch of the slight syntax errors between flavors of markdown. along the way i also fixed some minor styling/layout issues, refined some missing classes, improved some layout items, and studied <code>@tailwind/typography</code>'s <a href="https://tailwindcss.com/docs/typography-plugin#element-modifiers">prose API with element modifiers</a> to style the blog contents. this took me a few hours, but i tackled these in chunks.</p>
+<h2 id="vite-plugin-is-not-quite-ready-for-my-usecase"><a class="permalink" href="#vite-plugin-is-not-quite-ready-for-my-usecase" aria-hidden="true">🔗</a> vite plugin is not quite ready for my usecase</h2>
 <p>11ty supports vite via <a href="https://www.11ty.dev/docs/server-vite/">@11ty/eleventy-plugin-vite</a>. i experimented with installing this vite plugin inside of a different template that had a dual process setup. however, i was not able to get tailwind working... it would serve the main.css in development but wasn't being transformed, so tailwind was never loading. the production build <em>worked perfectly</em>; i just couldn't figure out how to get it working in dev.</p>
-<h2>tldr</h2>
+<h2 id="tldr"><a class="permalink" href="#tldr" aria-hidden="true">🔗</a> tldr</h2>
 <p>if you're looking for a static site generator, 11ty is great! if you're looking for a blog platform, slinkity is great!</p>
-<h3>tradeoffs</h3>
+<h3 id="tradeoffs"><a class="permalink" href="#tradeoffs" aria-hidden="true">🔗</a> tradeoffs</h3>
 <p>the migration doesn't come without tradeoffs</p>
 <ul>
 <li>gatsby used graphql queries to access its document metadata, 11ty uses a standard API (collections) + the templating engine - the latter is simpler but for some reason much more difficult for my brain to connect</li>
@@ -137,32 +132,21 @@ at this point i struggled between 11ty's liquid syntax, nunjucks syntax that sli
 <li><a href="https://slinkity.dev/">slinkity</a> is a really well-designed package. the docs are very simple. i can see pretty easily where it and 11ty's apis apply/differ, and it worked very easily out of the box.</li>
 </ul>
 
-      </div>
-      <footer class="space-y-12">
-        <ul aria-label="Tags:" class="tag-list m-0 inline-flex flex-wrap space-x-2">
-          <li>
-              
-              <a
-                class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out
-                  visited:border-red-900 hover:text-red-600"
-                href="/tags/posts">posts</a>
-            </li><li>
-              ,
-              <a
-                class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out
-                  visited:border-red-900 hover:text-red-600"
-                href="/tags/javascript">javascript</a>
-            </li></ul>
-        <div class="flex flex-row-reverse justify-between">
-          <a
-            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out hover:text-red-600"
-            href="/">&larr; Back to home</a>
-        </div>
-      </footer>
     </div>
-  </article>
-</div>
-  </div><hr class="my-4 mx-auto w-48 h-1 bg-red-600 rounded border-0 md:my-10"/>
+    <footer class="space-y-12">
+      <p>Tagged with:&nbsp;<a
+            href="/tags/javascript"
+            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">javascript</a>
+      </p>
+      <div class="flex flex-row-reverse justify-between">
+        <a
+          class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out hover:text-red-600"
+          href="/">&larr; Back to home</a>
+      </div>
+    </footer>
+  </div>
+</article></div>
+  </div><hr class="mt-4 mb-2 mx-auto w-48 h-0.5 bg-red-600 rounded border-0"/>
 <footer class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between py-6 px-3 md:px-6">
   <p>
     i use this space to jot down ideas and thoughts relating to my work as a software dev, hobbies, and life in general.
@@ -173,9 +157,4 @@ at this point i struggled between 11ty's liquid syntax, nunjucks syntax that sli
       more about me
     </a>
   </p>
-  <!-- <ul><li>
-        <a href="/about/" class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out hover:text-red-600 underline" >
-          about me
-        </a>
-      </li></ul> -->
 </footer></body></html>

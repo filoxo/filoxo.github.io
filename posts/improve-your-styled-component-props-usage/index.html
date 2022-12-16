@@ -4,8 +4,6 @@
 
 
 
-
-
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
@@ -21,12 +19,11 @@
 <link rel="alternate icon" href="/favicon.ico" type="image/png" sizes="48x48"/>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="192x192"/>
 <link rel="mask-icon" href="/favicon.svg" color="#4a5568"/>
-<meta
-name="theme-color" content="#4a5568"/> <!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
+<meta name="theme-color" content="#4a5568"/>
+<!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
 
 
-  <script type="module" crossorigin src="/assets/main.949a8c0b.js"></script>
-  <link rel="stylesheet" href="/assets/main.c7acd084.css">
+<script src="/@root/main.js" defer></script>  <link rel="stylesheet" href="/assets/code.05c7d023.css">
 </head>
   <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100"><header class="mx-auto mt-2 mb-8 max-w-2xl px-3 md:px-6">
   <nav class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between">
@@ -97,23 +94,21 @@ name="theme-color" content="#4a5568"/> <!-- https://www.filamentgroup.com/lab/lo
     </ul>
   </nav>
 </header><div class="my-0 mx-auto max-w-2xl px-3 md:px-6">
-      <div>
-  <article class="mb-12">
-    <h1 class="mb-4 text-2xl text-red-600">Improve your styled-component props usage</h1>
-    <p class="mb-4 text-red-600">30 Nov 2019</p>
-    <div class="space-y-6">
-      <div class="prose prose-headings:text-2xl prose-a:text-red-500 prose-code:rounded-sm prose-code:bg-gray-200 prose-code:px-1
-          prose-code:text-black prose-img:rounded-xl dark:prose-invert">
-        <p>I hadn't used styled-components until about a year ago when I started at my current job. I can't say its my favorite CSS-in-JS option for various reasons. One of those reasons is the pitfall of relying on props for styling, which can do a lot more damage than devs may realize.  Take a look at this example:</p>
+      <div><article class="mb-12">
+  <h1 class="mb-4 text-2xl text-red-600">Improve your styled-component props usage</h1>
+  <p class="mb-4 text-red-600">30 Nov 2019</p>
+  <div class="space-y-6">
+    <div class="prose prose-headings:text-2xl prose-headings:font-normal prose-a:text-red-500 prose-code:rounded-sm prose-code:bg-gray-200 prose-code:px-1 prose-code:text-black prose-img:rounded-xl dark:prose-invert">
+      <p>I hadn't used styled-components until about a year ago when I started at my current job. I can't say its my favorite CSS-in-JS option for various reasons. One of those reasons is the pitfall of relying on props for styling, which can do a lot more damage than devs may realize.  Take a look at this example:</p>
 <pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-jsx"><span class="token keyword">const</span> Button <span class="token operator">=</span> styled<span class="token punctuation">.</span>button<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"><br>  background: steelblue;<br><br>  </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token operator">=></span><br>    <span class="token punctuation">(</span>props<span class="token punctuation">.</span>isDisabled <span class="token operator">||</span> props<span class="token punctuation">.</span>isLoading<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span><br>    <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"><br>  background: lightsteelblue;<br>  pointer-events: none;<br></span><span class="token template-punctuation string">`</span></span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"><br></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span><br><br><span class="token keyword">const</span> FormInput <span class="token operator">=</span> styled<span class="token punctuation">.</span>input<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"><br>  border: 3px solid dimgray;<br><br>  </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token operator">=></span> props<span class="token punctuation">.</span>isInvalid <span class="token operator">&amp;&amp;</span> <span class="token string">'border-color: tomato;'</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"><br></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span></code></pre>
 <p>The problem here is somewhat subtle. Can you spot it?</p>
-<h2>The component props are not providing semantic value to the rendered element</h2>
+<h2 id="the-component-props-are-not-providing-semantic-value-to-the-rendered-element"><a class="permalink" href="#the-component-props-are-not-providing-semantic-value-to-the-rendered-element" aria-hidden="true">🔗</a> The component props are not providing semantic value to the rendered element</h2>
 <p>When used like this the props only cause the class name to change. The pure HTML/CSS equivalent would be something like <code>&lt;button class=&quot;button disabled loading&quot;&gt;</code> (though the output classNames from styled components are even less understandable <code>&lt;button class=&quot;sc-aBcDe sc-fGhIj sc-kLmNo&quot;&gt;</code>). This leads to some very interesting gotchas.</p>
 <ul>
 <li>Setting <code>pointer-events: none</code> through usage of <code>isDisabled</code> seems innocuous but this <em>does not disable the button correctly</em>! Disabled buttons 1) should not receive focus, and 2) should not respond to mouse or keyboard click events; but <code>pointer-events: none</code> only prevents mouse click events. A keyboard user will <strong>still be able to interact with this button</strong>, and a screenreader user will have <strong>no idea that the button is disabled</strong>.</li>
 <li>Similarly, the <code>&lt;Button isLoading&gt;</code> and the <code>&lt;FormInput isValid/&gt;</code> does not communicate the state of the control to assitive technology. This leaves those users in the dark as to what is happening when they're interacting with your application.</li>
 </ul>
-<h2>Instead, render semantic markup and use as selectors</h2>
+<h2 id="instead-render-semantic-markup-and-use-as-selectors"><a class="permalink" href="#instead-render-semantic-markup-and-use-as-selectors" aria-hidden="true">🔗</a> Instead, render semantic markup and use as selectors</h2>
 <p>For example, <code>isDisabled</code> should instead be renamed to <code>disabled</code> which would then be propagated to the DOM as the <a href="https://www.w3.org/TR/2014/REC-html5-20141028/forms.html#concept-fe-disabled"><code>disabled</code> attribute</a> on the button. The corresponding CSS could then be simplified to use the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:disabled"><code>:disabled</code> CSS pseudoselector</a>.</p>
 <p><code>isLoading</code> can instead be used to set the <a href="https://www.w3.org/TR/wai-aria-1.0/states_and_properties#aria-busy"><code>aria-busy</code> role</a>, and <code>isValid</code> used to set the <a href="https://www.w3.org/TR/wai-aria-1.0/states_and_properties#aria-invalid"><code>aria-invalid</code> role</a>; then, use those roles as your selectors in your css!</p>
 <pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-js"><span class="token keyword">const</span> StyledButton <span class="token operator">=</span> styled<span class="token punctuation">.</span>button<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"><br>  background: steelblue;<br><br>  &amp;:disabled,<br>  &amp;[aria-busy] {<br>    background: lightsteelblue;<br>  }<br></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span><br><br><span class="token keyword">const</span> <span class="token function-variable function">Button</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> disabled<span class="token punctuation">,</span> isLoading<span class="token punctuation">,</span> <span class="token operator">...</span>props <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><br>  <span class="token operator">&lt;</span>StyledButton disabled<span class="token operator">=</span><span class="token punctuation">{</span>disabled<span class="token punctuation">}</span> aria<span class="token operator">-</span>busy<span class="token operator">=</span><span class="token punctuation">{</span>isLoading <span class="token operator">||</span> <span class="token keyword">null</span><span class="token punctuation">}</span> <span class="token punctuation">{</span><span class="token operator">...</span>props<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span><br><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token keyword">const</span> StyledFormInput <span class="token operator">=</span> styled<span class="token punctuation">.</span>input<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"><br>  border: 3px solid dimgray;<br><br>  &amp;[aria-invalid='true'] {<br>    border-color: tomato;<br>  }<br></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span><br><br><span class="token keyword">const</span> <span class="token function-variable function">FormInput</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> isValid<span class="token punctuation">,</span> <span class="token operator">...</span>props <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><br>  <span class="token operator">&lt;</span>StyledFormInput aria<span class="token operator">-</span>invalid<span class="token operator">=</span><span class="token punctuation">{</span><span class="token operator">!</span>isValid<span class="token punctuation">}</span> <span class="token punctuation">{</span><span class="token operator">...</span>props<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span><br><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
@@ -125,38 +120,24 @@ name="theme-color" content="#4a5568"/> <!-- https://www.filamentgroup.com/lab/lo
 </ul>
 <p>This isn't to say that you should <em>never</em> use props in styles (perhaps the topic of another post), but do think through how your user experience should work and ensure the proper semantics are in place before simply reaching through to props in your styled components.</p>
 
-      </div>
-      <footer class="space-y-12">
-        <ul aria-label="Tags:" class="tag-list m-0 inline-flex flex-wrap space-x-2">
-          <li>
-              
-              <a
-                class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out
-                  visited:border-red-900 hover:text-red-600"
-                href="/tags/posts">posts</a>
-            </li><li>
-              ,
-              <a
-                class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out
-                  visited:border-red-900 hover:text-red-600"
-                href="/tags/css">css</a>
-            </li><li>
-              ,
-              <a
-                class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out
-                  visited:border-red-900 hover:text-red-600"
-                href="/tags/javascript">javascript</a>
-            </li></ul>
-        <div class="flex flex-row-reverse justify-between">
-          <a
-            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out hover:text-red-600"
-            href="/">&larr; Back to home</a>
-        </div>
-      </footer>
     </div>
-  </article>
-</div>
-  </div><hr class="my-4 mx-auto w-48 h-1 bg-red-600 rounded border-0 md:my-10"/>
+    <footer class="space-y-12">
+      <p>Tagged with:&nbsp;<a
+            href="/tags/css"
+            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">css</a>
+      ,&nbsp;<a
+            href="/tags/javascript"
+            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">javascript</a>
+      </p>
+      <div class="flex flex-row-reverse justify-between">
+        <a
+          class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out hover:text-red-600"
+          href="/">&larr; Back to home</a>
+      </div>
+    </footer>
+  </div>
+</article></div>
+  </div><hr class="mt-4 mb-2 mx-auto w-48 h-0.5 bg-red-600 rounded border-0"/>
 <footer class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between py-6 px-3 md:px-6">
   <p>
     i use this space to jot down ideas and thoughts relating to my work as a software dev, hobbies, and life in general.
@@ -167,9 +148,4 @@ name="theme-color" content="#4a5568"/> <!-- https://www.filamentgroup.com/lab/lo
       more about me
     </a>
   </p>
-  <!-- <ul><li>
-        <a href="/about/" class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out hover:text-red-600 underline" >
-          about me
-        </a>
-      </li></ul> -->
 </footer></body></html>
