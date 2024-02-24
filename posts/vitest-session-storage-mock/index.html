@@ -4,16 +4,15 @@
 
 
 
-
-  <meta charset="UTF-8"/>
+<meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-<title>Posts tagged with “testing”</title>
-<link rel="canonical" href="https://filoxo.github.io/tags/testing/"/>
+<title>Vitest sessionStorage mock - Filoblog</title>
+<link rel="canonical" href="https://filoxo.github.io/posts/vitest-session-storage-mock/"/>
 <meta property="og:site_name" content="Filoblog"/>
-<meta property="og:title" content="Posts tagged with “testing”"/>
+<meta property="og:title" content="Vitest sessionStorage mock - Filoblog"/>
 <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://filoxo.github.io/tags/testing/"/>
+<meta property="og:url" content="https://filoxo.github.io/posts/vitest-session-storage-mock/"/>
 
 
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
@@ -96,31 +95,32 @@
     </ul>
   </nav>
 </header><div class="my-0 mx-auto max-w-2xl px-3 md:px-6">
-      <div>
-<h1 class="mb-12 text-3xl">2 posts tagged with “testing”</h1>
-<div class="space-y-16 mb-12"><section>
-    <h1 class="mb-4 text-2xl text-red-600">
-      <a href="/posts/vitest-session-storage-mock/">Vitest sessionStorage mock</a>
-    </h1>
-    <div class="text-red-600 mb-4">23 Feb 2024</div>
-    <div>
-      <p class="prose dark:prose-invert">
-i needed to ensure what we were saving didn&#39;t contain sensitive credit card info so i had to write a mock. 
-        <a class="text-red-600" href="/posts/vitest-session-storage-mock/">Read more</a>
-      </p>
+      <div><article class="mb-12">
+  <h1 class="mb-4 text-2xl text-red-600">Vitest sessionStorage mock</h1>
+  <p class="mb-4 text-red-600">23 Feb 2024</p>
+  <div class="space-y-6">
+    <div class="prose prose-headings:text-2xl prose-headings:font-normal prose-a:text-red-500 prose-code:rounded-sm prose-code:bg-gray-200 prose-code:px-1 prose-code:text-black prose-img:rounded-xl dark:prose-invert">
+      <p>i needed to ensure what we were saving didn't contain sensitive credit card info so i had to write a mock.  this mock implements the sessionStorage api using a simple js map.</p>
+<pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-js"><span class="token comment">// mock sessionStorage to test react-hook-form-persist with vitest</span><br>vi<span class="token punctuation">.</span><span class="token function">stubGlobal</span><span class="token punctuation">(</span><span class="token string">'sessionStorage'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><br>  <span class="token literal-property property">__sessionStorage</span><span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br>  <span class="token function-variable function">getItem</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token function">mockedGetItem</span><span class="token punctuation">(</span><span class="token parameter">key</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>__sessionStorage<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token keyword">null</span><br>  <span class="token punctuation">}</span><span class="token punctuation">,</span><br>  <span class="token function-variable function">setItem</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token function">mockedSetItem</span><span class="token punctuation">(</span><span class="token parameter">key<span class="token punctuation">,</span> val</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>__sessionStorage<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> val<span class="token punctuation">)</span><br>  <span class="token punctuation">}</span><span class="token punctuation">,</span><br>  <span class="token function-variable function">clear</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token function">mockedClear</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>__sessionStorage<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br>  <span class="token punctuation">}</span><span class="token punctuation">,</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>simple and worked.</p>
+
     </div>
-  </section><section>
-    <h1 class="mb-4 text-2xl text-red-600">
-      <a href="/posts/react-component-file-structure-proposal/">React component file structure proposal</a>
-    </h1>
-    <div class="text-red-600 mb-4">12 Aug 2022</div>
-    <div>
-      <p class="prose dark:prose-invert">
-This is an attempt at a proposal for organizing a React component file structure based on the needs and current patterns at JupiterOne.
-        <a class="text-red-600" href="/posts/react-component-file-structure-proposal/">Read more</a>
+    <footer class="space-y-12">
+      <p>Tagged with:&nbsp;<a
+            href="/tags/javascript"
+            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">javascript</a>
+      ,&nbsp;<a
+            href="/tags/testing"
+            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">testing</a>
       </p>
-    </div>
-  </section></div></div>
+      <div class="flex flex-row-reverse justify-between">
+        <a
+          class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out hover:text-red-600"
+          href="/">&larr; Back to home</a>
+      </div>
+    </footer>
+  </div>
+</article></div>
   </div><hr class="mt-4 mb-2 mx-auto w-48 h-0.5 bg-red-600 rounded border-0"/>
 <footer class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between py-6 px-3 md:px-6">
   <p>
