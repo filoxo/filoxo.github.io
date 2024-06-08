@@ -7,12 +7,12 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-<title>Should we have a design system? - Filoblog</title>
-<link rel="canonical" href="https://filoxo.github.io/posts/should-we-have-a-design-system/"/>
+<title>another blog upgrade - Filoblog</title>
+<link rel="canonical" href="https://filoxo.github.io/posts/another-blog-upgrade/"/>
 <meta property="og:site_name" content="Filoblog"/>
-<meta property="og:title" content="Should we have a design system? - Filoblog"/>
+<meta property="og:title" content="another blog upgrade - Filoblog"/>
 <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://filoxo.github.io/posts/should-we-have-a-design-system/"/>
+<meta property="og:url" content="https://filoxo.github.io/posts/another-blog-upgrade/"/>
 
 
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
@@ -104,42 +104,25 @@
   </nav>
 </header><div class="my-0 mx-auto max-w-2xl px-3 md:px-6">
       <div><article class="mb-12">
-  <h1 class="mb-4 text-2xl text-red-600">Should we have a design system?</h1>
-  <p class="mb-4 text-red-600">6 May 2024</p>
+  <h1 class="mb-4 text-2xl text-red-600">another blog upgrade</h1>
+  <p class="mb-4 text-red-600">8 Jun 2024</p>
   <div class="space-y-6">
     <div class="prose prose-headings:text-2xl prose-headings:font-normal prose-a:text-red-500 prose-code:rounded-sm prose-code:bg-gray-200 prose-code:px-1 prose-code:text-black prose-img:rounded-xl dark:prose-invert">
-      <p>before leaving for the weekend, my coworker Luca posed an excellent question that i think is worth sharing and expanding on. shout out to <a href="https://github.com/lucafrederice/">Luca</a> for this inspired question!</p>
-<blockquote>
-<p>Do you think [our current company's name] should have a design system at its current maturity level?</p>
-</blockquote>
-<p>my response:</p>
-<blockquote>
-<p>No, it should have a <strong>design gallery</strong> - a baseline set of high quality components that are composible, and serve the business needs. Both of these are objectives that most open source design systems don't share</p>
-</blockquote>
-<p>expanding on those points</p>
-<h2 id="%22design-gallery%22%3F"><a class="permalink" href="#%22design-gallery%22%3F" aria-hidden="true">🔗</a> &quot;design gallery&quot;?</h2>
-<p>to put it simply, this is a PR tactic. &quot;design system&quot; has no consistent definition across the realms of design, product, and engineering... and yet some how also generally share that it'd be a lot to build from the ground up. and pretty much the same if you say &quot;component library&quot;, very enterprise-y. <a href="https://bigmedium.com/ideas/design-system-ecosystem.html">this article does a good job mapping the breadth of a &quot;mature design system&quot;</a>. still, seems like a lot of that overhead could be avoided if spun as a 'gallery of ready-made components for us to use'. at least when you're a smaller stage organization. what do you think?</p>
-<h2 id="define-%22high-quality-components%22"><a class="permalink" href="#define-%22high-quality-components%22" aria-hidden="true">🔗</a> define &quot;high quality components&quot;</h2>
-<p>&quot;design gallery&quot; also helps lend a perception that what you're making is more bespoke and tailor-made. and i really believe that to be very wise approach to take. be thoughtful of how your components are going to be used. <strong>curate</strong> it to the strengths and weaknesses of your business <a href="https://bigmedium.com/ideas/design-system-ecosystem.html">someday graduate that into <em>pacelayering</em></a>. also, <a href="https://bradfrost.com/blog/post/dont-put-crap-in-the-design-system/">no crap</a> goes in. my personal philosophy when it comes to components is that they should have sensible defaults, with escape hatches as needed.</p>
-<p>in practice, this means that we've placed bets on Tailwind, React &amp; Remix, and an emphasis on web basics and standards. i already see an roi on the current wave of tools to look at for inspiration. shout out to tailwindui, shadcn/ui, ark-ui, and v0.dev.</p>
-<h2 id="serve-the-needs"><a class="permalink" href="#serve-the-needs" aria-hidden="true">🔗</a> serve the needs</h2>
-<p>here's where relying on an open source design system seems to break down at startups, in my experience. there just isn't a consistent-enough language to speak end-user/business requirements to design/UX and output engineering requirement. open source design systems simply can't serve these hyper-specific needs... but your frontend devs do, everyday.</p>
-<p>some examples of this are:</p>
-<ul>
-<li>ensuring that the designs meet SEO and a11y requirements</li>
-<li>building patterns that aren't readily available elsewhere</li>
-<li>basically anything that can preceeds <a href="https://bootcamp.uxdesign.cc/how-to-write-a-ux-case-study-6c5190554d0d">writing a ux case study</a></li>
-</ul>
-<p>ultimately, what i'm getting at is that your org should strive to build something that is <em>for themselves &amp; their needs</em> to deliver something good.</p>
+      <p>its been 2 years since i've had to make updates and i was reflecting on what i got out of it.</p>
+<ol>
+<li>11ty v2's <a href="https://www.11ty.dev/docs/usage/incremental/">incremental builds</a></li>
+<li><a href="https://unocss.dev/">unocss</a> to replace Tailwind</li>
+<li>excited for 11ty v3</li>
+</ol>
+<p>the first is meh, i didn't really have much of a problem with build perf.</p>
+<p>unocss is pretty much a drop in replacement for tailwind, as it follows all the same conventions as the main projects while being so much more customizable. i've been using tailwind/unocss classes at work and i think its paid off dividends that a lot of people don't realize!</p>
+<p>and last, i'm pretty excited for <strong>11ty v3</strong> because it introduces <a href="https://www.11ty.dev/blog/canary-eleventy-v3/">bundler-free ESM support</a>! i've been longing for the says of esm everywhere</p>
 
     </div>
     <footer class="space-y-12">
       <p>Tagged with:&nbsp;<a
             href="/tags/javascript"
             class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">javascript</a>
-      ,&nbsp;<a
-            href="/tags/architecture"
-            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">architecture</a>
       </p>
       <div class="flex flex-row-reverse justify-between">
         <a

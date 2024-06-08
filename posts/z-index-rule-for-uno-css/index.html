@@ -149,20 +149,21 @@
     <span class="token keyword">return</span> <span class="token punctuation">{</span> <span class="token string-property property">'z-index'</span><span class="token operator">:</span> zIndex <span class="token punctuation">}</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">]</span></code></pre>
-<p>i found inspiration for this solution after reading:</p>
+<p>i found inspiration for this solution after reading the below articles. be sure to read them!</p>
 <ul>
-<li>https://dev.to/mimafogeus2/a-better-way-to-manage-z-indexes-1nf</li>
-<li>https://www.smashingmagazine.com/2021/02/css-z-index-large-projects/</li>
+<li><a href="">https://dev.to/mimafogeus2/a-better-way-to-manage-z-indexes-1nf</a></li>
+<li><a href="">https://www.smashingmagazine.com/2021/02/css-z-index-large-projects/</a></li>
 </ul>
-<p>ultimately though the best way to avoid z-index wars is to never join them. most elements that position over top of others get rendered as React Portals, and are outside of the application's dom root. this means that in theory, an <code>&lt;App /&gt;</code> that renders a <code>&lt;Modal /&gt;</code> which contains a <code>&lt;Dropdown /&gt;</code> render ordered accordingly. i'd expect something like this represented in the dom:</p>
-<pre class="not-prose"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>root<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<h3 id="last-tip%3A-isolate"><a class="permalink" href="#last-tip%3A-isolate" aria-hidden="true">🔗</a> last tip: isolate</h3>
+<p>the absolutely best way to avoid z-index wars is to <em>never join them</em>. most elements that position over top of others get rendered as React Portals, and are outside of the application's dom root. this means that in theory, an <code>&lt;App /&gt;</code> that renders a <code>&lt;Dialog /&gt;</code> which contains a <code>&lt;Popover /&gt;</code> render in the correct order. something like this in the dom:</p>
+<pre class="not-prose"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>app-root<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>react-portal</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>dialog<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dialog</span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dialog</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>react-portal</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>react-portal</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>listbox<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">popover</span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>react-portal</span><span class="token punctuation">></span></span></code></pre>
-<p>then also <a href="https://www.joshwcomeau.com/css/stacking-contexts/">ensure that app root is styled with <code>isolate</code></a> and then you're <span class="font-bold dark:text-yellow-400">golden</span> 🏆</p>
+<p>if youre in the same boat, <a href="https://www.joshwcomeau.com/css/stacking-contexts/">ensure that app root is styled with <code>isolate</code></a> and then you're <span class="font-bold dark:text-yellow-400">golden</span> 🏆</p>
 
     </div>
     <footer class="space-y-12">
