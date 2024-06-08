@@ -21,11 +21,19 @@
 <link rel="mask-icon" href="/favicon.svg" color="#4a5568"/>
 <meta name="theme-color" content="#4a5568"/>
 <!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
-
-
-  <script type="module" crossorigin src="/assets/main.2ac814e5.js"></script>
-  <link rel="stylesheet" href="/assets/main.94a13cab.css">
-</head>
+<link
+  crossorigin="anonymous"
+  rel="stylesheet"
+  href="/styles/style.css"
+  media="print"
+  onload="this.media='all'; this.onload=null;"/>
+<link
+  crossorigin="anonymous"
+  rel="stylesheet"
+  href="/styles/code.css"
+  media="print"
+  onload="this.media='all'; this.onload=null;"/>
+<script type="module" src="/static/main.js" defer></script></head>
   <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100"><header class="mx-auto mt-2 mb-8 max-w-2xl px-3 md:px-6">
   <nav class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between">
     <h1 class="text-2xl font-semibold tracking-wide">
@@ -105,18 +113,30 @@
 <p>I saw import-map syntax I've never seen before and I was wondering if single-spa (really more SystemJS) supported it.</p>
 </blockquote>
 <blockquote>
-<pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-json">&lt;script type=<span class="token string">"importmap"</span>><br>  <span class="token punctuation">{</span><br>    <span class="token property">"imports"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>      <span class="token property">"lodash@3/"</span><span class="token operator">:</span> <span class="token string">"https://unpkg.com/lodash-es@3.10.1/"</span><span class="token punctuation">,</span><br>      <span class="token property">"lodash@4/"</span><span class="token operator">:</span> <span class="token string">"https://unpkg.com/lodash-es@4.17.21/"</span><br>    <span class="token punctuation">}</span><br>  <span class="token punctuation">}</span><br>&lt;/script></code></pre>
+<pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-json">&lt;script type=<span class="token string">"importmap"</span>>
+  <span class="token punctuation">{</span>
+    <span class="token property">"imports"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"lodash@3/"</span><span class="token operator">:</span> <span class="token string">"https://unpkg.com/lodash-es@3.10.1/"</span><span class="token punctuation">,</span>
+      <span class="token property">"lodash@4/"</span><span class="token operator">:</span> <span class="token string">"https://unpkg.com/lodash-es@4.17.21/"</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+&lt;/script></code></pre>
 <p>So like how would that import statement have to look? If it's the following then I don't see how tyypescript would compile (not at my desk to check):</p>
-<pre><code>import _ from “lodash@4”
-</code></pre>
+<p>import _ from “lodash@4”</p>
 <p>I suppose it wouldn't be a sync import and maybe that's the deal. It would have to be:</p>
-<pre><code>// I hope there is a webpack plugin or something that can append the version so that we don't have mismatches of library versions
-const _ = await SystemJS.import(“lodash@4”)
-</code></pre>
+<p>// I hope there is a webpack plugin or something that can append the version so that we don't have mismatches of library versions
+const _ = await SystemJS.import(“lodash@4”)</p>
 <p>Note I saw this in this excellent article thanks to JSWeekly https://www.honeybadger.io/blog/import-maps/</p>
 </blockquote>
 <p>I think this is a fun topic to delve into a little! So first let's look at the import map.</p>
-<pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-json">&lt;script type=<span class="token string">"importmap"</span>><br>  <span class="token punctuation">{</span><br>    <span class="token property">"imports"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>      <span class="token property">"lodash@3/"</span><span class="token operator">:</span> <span class="token string">"https://unpkg.com/lodash-es@3.10.1/"</span><span class="token punctuation">,</span><br>      <span class="token property">"lodash@4/"</span><span class="token operator">:</span> <span class="token string">"https://unpkg.com/lodash-es@4.17.21/"</span><br>    <span class="token punctuation">}</span><br>  <span class="token punctuation">}</span><br>&lt;/script></code></pre>
+<pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-json">&lt;script type=<span class="token string">"importmap"</span>>
+  <span class="token punctuation">{</span>
+    <span class="token property">"imports"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"lodash@3/"</span><span class="token operator">:</span> <span class="token string">"https://unpkg.com/lodash-es@3.10.1/"</span><span class="token punctuation">,</span>
+      <span class="token property">"lodash@4/"</span><span class="token operator">:</span> <span class="token string">"https://unpkg.com/lodash-es@4.17.21/"</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+&lt;/script></code></pre>
 <p>The keys under <code>imports</code> that can be used by the importing application is called a <dfn>module specifier</dfn>. I've also taken to calling this a <dfn>bare specifier</dfn> because it looks more reminiscent of a locally installed module and not a fully qualified URL. It stood out me the <a href="https://wicg.github.io/import-maps/#:~:text=that%20specifier%20was%20a-,bare%20specifier,-%2C%20but%20was%20not">the import maps spec</a> but I'm unsure whether that is used or understood generally.</p>
 <p>The next thing to consider is the specifier string itself. Import map specifiers do not have the same <a href="https://wicg.github.io/import-maps/#normalize-a-specifier-key">naming requirements</a> as <a href="https://www.npmjs.com/package/validate-npm-package-name#naming-rules">npm's naming rules</a> so there seems to be a gap in the spec here with regards to the allowed naming that could lead to confusion or problems down the line. You can use a specifier like <code>lodash@4</code> if your code will not require a build step or interop with node at all, <strong>but</strong> if you need to use local tooling (such as TypeScript) you'll need to follow npm's naming rules by using <code>lodash-4</code> or similar. Exactly why will be explained later.</p>
 <p>Next, that specifier also looks a little different because it contains the version appended to it. And even the trailing slash is signficant because it denotes a <a href="https://github.com/systemjs/systemjs/blob/main/docs/import-maps.md#imports">package folder mapping</a>, which means that anything after that will simply be appended to it as part of the request to load the module.</p>
@@ -126,9 +146,10 @@ const _ = await SystemJS.import(“lodash@4”)
 <p>At this point, if you don't want this dependency included in your application and you use a bundler you'd also need additional configuration for <a href="https://webpack.js.org/configuration/externals/">externals</a>.</p>
 </Aside>
 <p>This allows for the module to be resolved at runtime! But without having this code locally you would lose things like IDE autocomplete or tooling interop. The simplest solution here would be to install the package locally as an alias.</p>
-<pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-shell"><span class="token function">npm</span> i lodash-4@4@npm:lodash-es@4.17.21<br><span class="token comment"># pnpm add lodash-4@npm:lodash-es@4.17.21</span></code></pre>
+<pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-shell"><span class="token function">npm</span> i lodash-4@4@npm:lodash-es@4.17.21
+<span class="token comment"># pnpm add lodash-4@npm:lodash-es@4.17.21</span></code></pre>
 <p>This will allow access to local node_modules, nice! Tht enables IDE autocomplete and interop with most of your JavaScript tooling.</p>
-<p><img src="/assets/lodash-4-autocomplete.6f5583da.png" alt="Screenshot of VS Code providing autocomplete and API information for lodash-4/get module."></p>
+<p><img src="./lodash-4-autocomplete.png" alt="Screenshot of VS Code providing autocomplete and API information for lodash-4/get module."></p>
 <p>Surpringly this also works with TypeScript out of the box too! I tested this with React 17 and TypeScript was still able to show me the correct typings.</p>
 
     </div>

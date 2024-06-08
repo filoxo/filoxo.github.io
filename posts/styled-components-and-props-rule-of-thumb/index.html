@@ -21,11 +21,19 @@
 <link rel="mask-icon" href="/favicon.svg" color="#4a5568"/>
 <meta name="theme-color" content="#4a5568"/>
 <!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
-
-
-  <script type="module" crossorigin src="/assets/main.2ac814e5.js"></script>
-  <link rel="stylesheet" href="/assets/main.94a13cab.css">
-</head>
+<link
+  crossorigin="anonymous"
+  rel="stylesheet"
+  href="/styles/style.css"
+  media="print"
+  onload="this.media='all'; this.onload=null;"/>
+<link
+  crossorigin="anonymous"
+  rel="stylesheet"
+  href="/styles/code.css"
+  media="print"
+  onload="this.media='all'; this.onload=null;"/>
+<script type="module" src="/static/main.js" defer></script></head>
   <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100"><header class="mx-auto mt-2 mb-8 max-w-2xl px-3 md:px-6">
   <nav class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between">
     <h1 class="text-2xl font-semibold tracking-wide">
@@ -105,7 +113,16 @@
 <p>Only use props that match a CSS property (eg. color, width, etc.), <strong>not</strong> DOM properties or HTML attributes.</p>
 </Aside>
 <p>Making CSS properties dynamic makes sense where some components need sensible default styles, but can be overriden based on context and usage. DOM properties and HTML attributes are typically used to store the current document state, and not using those values in dynamic styles yields improved performance, accessibility, and semantics.</p>
-<pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-jsx"><span class="token keyword">const</span> MyButton <span class="token operator">=</span> styled<span class="token punctuation">.</span>button<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"><br>  background: lightgrey;<br>  </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token punctuation">(</span><span class="token punctuation">{</span> width <span class="token operator">=</span> <span class="token string">'auto'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">width: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>width<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">;</span><span class="token template-punctuation string">`</span></span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"><br>  :disabled {<br>    opacity: 0.6;<br>  }<br>  &amp;[aria-pressed] {<br>    background: darkgrey;<br>  }<br></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span></code></pre>
+<pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-jsx"><span class="token keyword">const</span> MyButton <span class="token operator">=</span> styled<span class="token punctuation">.</span>button<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+  background: lightgrey;
+  </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token punctuation">(</span><span class="token punctuation">{</span> width <span class="token operator">=</span> <span class="token string">'auto'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">width: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>width<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">;</span><span class="token template-punctuation string">`</span></span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">
+  :disabled {
+    opacity: 0.6;
+  }
+  &amp;[aria-pressed] {
+    background: darkgrey;
+  }
+</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span></code></pre>
 <p>The code above shows how <code>width</code> is a prop available to a consumer of the button to provide a value if needed, and uses the <code>disabled</code> property and the <code>aria-pressed</code> attribute in a static way. This strikes a good balance that I think will make your styled-component styles much better.</p>
 
     </div>

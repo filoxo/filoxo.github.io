@@ -21,11 +21,19 @@
 <link rel="mask-icon" href="/favicon.svg" color="#4a5568"/>
 <meta name="theme-color" content="#4a5568"/>
 <!-- https://www.filamentgroup.com/lab/load-css-simpler/ -->
-
-
-  <script type="module" crossorigin src="/assets/main.2ac814e5.js"></script>
-  <link rel="stylesheet" href="/assets/main.94a13cab.css">
-</head>
+<link
+  crossorigin="anonymous"
+  rel="stylesheet"
+  href="/styles/style.css"
+  media="print"
+  onload="this.media='all'; this.onload=null;"/>
+<link
+  crossorigin="anonymous"
+  rel="stylesheet"
+  href="/styles/code.css"
+  media="print"
+  onload="this.media='all'; this.onload=null;"/>
+<script type="module" src="/static/main.js" defer></script></head>
   <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100"><header class="mx-auto mt-2 mb-8 max-w-2xl px-3 md:px-6">
   <nav class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between">
     <h1 class="text-2xl font-semibold tracking-wide">
@@ -109,9 +117,9 @@
 <p>No, it should have a <strong>design gallery</strong> - a baseline set of high quality components that are composible, and serve the business needs. Both of these are objectives that most open source design systems don't share</p>
 </blockquote>
 <p>expanding on those points</p>
-<h2 id="design-gallery"><a class="permalink" href="#design-gallery" aria-hidden="true">🔗</a> &quot;design gallery&quot;?</h2>
+<h2 id="%22design-gallery%22%3F"><a class="permalink" href="#%22design-gallery%22%3F" aria-hidden="true">🔗</a> &quot;design gallery&quot;?</h2>
 <p>to put it simply, this is a PR tactic. &quot;design system&quot; has no consistent definition across the realms of design, product, and engineering... and yet some how also generally share that it'd be a lot to build from the ground up. and pretty much the same if you say &quot;component library&quot;, very enterprise-y. <a href="https://bigmedium.com/ideas/design-system-ecosystem.html">this article does a good job mapping the breadth of a &quot;mature design system&quot;</a>. still, seems like a lot of that overhead could be avoided if spun as a 'gallery of ready-made components for us to use'. at least when you're a smaller stage organization. what do you think?</p>
-<h2 id="define-high-quality-components"><a class="permalink" href="#define-high-quality-components" aria-hidden="true">🔗</a> define &quot;high quality components&quot;</h2>
+<h2 id="define-%22high-quality-components%22"><a class="permalink" href="#define-%22high-quality-components%22" aria-hidden="true">🔗</a> define &quot;high quality components&quot;</h2>
 <p>&quot;design gallery&quot; also helps lend a perception that what you're making is more bespoke and tailor-made. and i really believe that to be very wise approach to take. be thoughtful of how your components are going to be used. <strong>curate</strong> it to the strengths and weaknesses of your business <a href="https://bigmedium.com/ideas/design-system-ecosystem.html">someday graduate that into <em>pacelayering</em></a>. also, <a href="https://bradfrost.com/blog/post/dont-put-crap-in-the-design-system/">no crap</a> goes in. my personal philosophy when it comes to components is that they should have sensible defaults, with escape hatches as needed.</p>
 <p>in practice, this means that we've placed bets on Tailwind, React &amp; Remix, and an emphasis on web basics and standards. i already see an roi on the current wave of tools to look at for inspiration. shout out to tailwindui, shadcn/ui, ark-ui, and v0.dev.</p>
 <h2 id="serve-the-needs"><a class="permalink" href="#serve-the-needs" aria-hidden="true">🔗</a> serve the needs</h2>
