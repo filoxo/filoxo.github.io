@@ -112,7 +112,7 @@
 <p>I'm sharing this first on my blog to get some external feedback, but I also think its a good discussion point in general. For context, our tech stack uses the following: TypeScript, React, Jest, and Storybook. The idea is that this code will be generated as part of a code generator (such as <a href="https://yeoman.io/">yeoman</a>).</p>
 <p>In the remainder of this document, <code>Foo</code> will be used to represent the user-supplied name.</p>
 <p>The pattern has the following file structure and naming:</p>
-<pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-sh"><span class="token punctuation">{</span>Foo<span class="token punctuation">}</span>/
+<pre class="not-prose"><code class="language-sh"><span class="token punctuation">{</span>Foo<span class="token punctuation">}</span>/
 ├──index.tsx
 ├──use<span class="token punctuation">{</span>Foo<span class="token punctuation">}</span>Logic.ts
 ├──use<span class="token punctuation">{</span>Foo<span class="token punctuation">}</span>Logic.test.tsx
@@ -129,7 +129,7 @@
 <p>To better illustrate the need for such a pattern, I've filled in the contents of the files below.</p>
 <h3 id="index.tsx"><a class="permalink" href="#index.tsx" aria-hidden="true">🔗</a> index.tsx</h3>
 <p>All this file does is export the hooked component, and creates a type for props.</p>
-<pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-tsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> FooComponent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./FooComponent'</span><span class="token punctuation">;</span>
+<pre class="not-prose"><code class="language-tsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> FooComponent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./FooComponent'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> useFooLogic <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./useFooLogic'</span><span class="token punctuation">;</span>
 
 <span class="token comment">// NOTE: having this into index.ts creates a circular dependency.</span>
@@ -141,13 +141,13 @@
 <span class="token keyword">export</span> <span class="token keyword">const</span> Foo <span class="token operator">=</span> <span class="token function">withHookHoc</span><span class="token punctuation">(</span>FooComponent<span class="token punctuation">,</span> useFooLogic<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <h3 id="use%7Bfoo%7Dlogic.ts"><a class="permalink" href="#use%7Bfoo%7Dlogic.ts" aria-hidden="true">🔗</a> use{Foo}Logic.ts</h3>
 <p>This file should only contain business logic. Its return value will be passed as props to the component. The extra &quot;Logic&quot; suffix can serve as a constant reminder, but may not actually be necessary as React hooks are intended to be thought of as containing component logic. TBD perhaps.</p>
-<pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-ts"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<pre class="not-prose"><code class="language-ts"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">useFooLogic</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <h3 id="use%7Bfoo%7Dlogic.test.ts"><a class="permalink" href="#use%7Bfoo%7Dlogic.test.ts" aria-hidden="true">🔗</a> use{Foo}Logic.test.ts</h3>
-<pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-ts"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<pre class="not-prose"><code class="language-ts"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> renderHook <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@testing-library/react-hooks'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> useFooLogic <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./useFooLogic'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token keyword">type</span> <span class="token punctuation">{</span> FooProps <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'.'</span><span class="token punctuation">;</span>
@@ -177,7 +177,7 @@
 </ul>
 <h3 id="%7Bfoo%7Dcomponent.tsx"><a class="permalink" href="#%7Bfoo%7Dcomponent.tsx" aria-hidden="true">🔗</a> {Foo}Component.tsx</h3>
 <p>The extra &quot;Component&quot; suffix helps remind the developer that only the component code should be here, though it does look a bit awkward at first glance. Alternative ways to think about this is that this is &quot;headless component&quot; that contains next-to-no logic (though not always avoidable).</p>
-<pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-tsx"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<pre class="not-prose"><code class="language-tsx"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> withHookHoc <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@jupiterone/web-apps-core'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> makeUseStyles <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@jupiterone/web-juno'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token keyword">type</span> <span class="token punctuation">{</span> FooProps <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'.'</span><span class="token punctuation">;</span>
@@ -191,7 +191,7 @@
   <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">></span></span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <h3 id="%7Bfoo%7Dcomponent.stories.tsx"><a class="permalink" href="#%7Bfoo%7Dcomponent.stories.tsx" aria-hidden="true">🔗</a> {Foo}Component.stories.tsx</h3>
-<pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-tsx"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<pre class="not-prose"><code class="language-tsx"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> storybookTemplate <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@jupiterone/web-apps-core'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> FooComponent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./FooComponent'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token keyword">type</span> <span class="token punctuation">{</span> FooProps <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'.'</span><span class="token punctuation">;</span>
@@ -206,12 +206,12 @@
 <span class="token keyword">export</span> <span class="token keyword">const</span> Default <span class="token operator">=</span> <span class="token function">template</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <h2 id="extra-credit%3A-condensed-file-structure"><a class="permalink" href="#extra-credit%3A-condensed-file-structure" aria-hidden="true">🔗</a> Extra credit: condensed file structure</h2>
 <p>If, say, you have a very simple component that doesn't need 5 files... just reduce it down to the one index file but retaining the file names for tests.</p>
-<pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-sh"><span class="token punctuation">{</span>Foo<span class="token punctuation">}</span>/
+<pre class="not-prose"><code class="language-sh"><span class="token punctuation">{</span>Foo<span class="token punctuation">}</span>/
 ├──index.tsx
 ├──use<span class="token punctuation">{</span>Foo<span class="token punctuation">}</span>Logic.test.tsx
 └──<span class="token punctuation">{</span>Foo<span class="token punctuation">}</span>Component.stories.tsx</code></pre>
 <h3 id="index.tsx-1"><a class="permalink" href="#index.tsx-1" aria-hidden="true">🔗</a> index.tsx</h3>
-<pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-tsx"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<pre class="not-prose"><code class="language-tsx"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> withHookHoc <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@jupiterone/web-apps-core'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> makeUseStyles <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@jupiterone/web-juno'</span><span class="token punctuation">;</span>
@@ -235,7 +235,7 @@
 
 <span class="token keyword">export</span> <span class="token keyword">const</span> Foo <span class="token operator">=</span> <span class="token function">withHookHoc</span><span class="token punctuation">(</span>FooComponent<span class="token punctuation">,</span> useFooLogic<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <h3 id="use%7Bfoo%7Dlogic.test.ts-1"><a class="permalink" href="#use%7Bfoo%7Dlogic.test.ts-1" aria-hidden="true">🔗</a> use{Foo}Logic.test.ts</h3>
-<pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-ts"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<pre class="not-prose"><code class="language-ts"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> renderHook <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@testing-library/react-hooks'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> useFooLogic <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'.'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token keyword">type</span> <span class="token punctuation">{</span> FooProps <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'.'</span><span class="token punctuation">;</span>
@@ -259,7 +259,7 @@
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <h3 id="%7Bfoo%7Dcomponent.stories.tsx-1"><a class="permalink" href="#%7Bfoo%7Dcomponent.stories.tsx-1" aria-hidden="true">🔗</a> {Foo}Component.stories.tsx</h3>
-<pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-tsx"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<pre class="not-prose"><code class="language-tsx"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> storybookTemplate <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@jupiterone/web-apps-core'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> FooComponent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'.'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token keyword">type</span> <span class="token punctuation">{</span> FooProps <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'.'</span><span class="token punctuation">;</span>

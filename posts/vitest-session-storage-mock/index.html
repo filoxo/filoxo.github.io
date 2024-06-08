@@ -109,7 +109,7 @@
   <div class="space-y-6">
     <div class="prose prose-headings:text-2xl prose-headings:font-normal prose-a:text-red-500 prose-code:rounded-sm prose-code:bg-gray-200 prose-code:px-1 prose-code:text-black prose-img:rounded-xl dark:prose-invert">
       <p>i needed to ensure what we were saving didn't contain sensitive credit card info so i had to write a mock.  this mock implements the sessionStorage api using a simple js map.</p>
-<pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-js"><span class="token comment">// mock sessionStorage to test react-hook-form-persist with vitest</span>
+<pre class="not-prose"><code class="language-js"><span class="token comment">// mock sessionStorage to test react-hook-form-persist with vitest</span>
 vi<span class="token punctuation">.</span><span class="token function">stubGlobal</span><span class="token punctuation">(</span><span class="token string">'sessionStorage'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
   <span class="token literal-property property">__sessionStorage</span><span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
   <span class="token function-variable function">getItem</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token function">mockedGetItem</span><span class="token punctuation">(</span><span class="token parameter">key</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>

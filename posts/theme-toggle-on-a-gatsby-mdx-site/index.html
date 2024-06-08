@@ -113,7 +113,7 @@
 <p>Before I started this feature, I had to update my blog... and its about <strong>2 years behind</strong> 😬. This meant Gatsby &amp; plugins needed two major version upgrades. While at it, I ditched CSS Modules for Tailwind and then refactored all the components to use these utility classes. With that out of the way...</p>
 <h2 id="step-1%3A-updating-html-in-gatsby"><a class="permalink" href="#step-1%3A-updating-html-in-gatsby" aria-hidden="true">🔗</a> Step 1: Updating HTML in Gatsby</h2>
 <p>Using the Gatsby SSR <code>setPreBodyComponents</code> technique Josh described, my implementation just had slightly different code to run on the client so for brevity that's all I'll include.</p>
-<pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-jsx"><span class="token keyword">const</span> codeToRunOnClient <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+<pre class="not-prose"><code class="language-jsx"><span class="token keyword">const</span> codeToRunOnClient <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
   window.theme = {
     init: () => {
       window.theme.set(window.theme.current())
@@ -141,7 +141,7 @@
 <p>The <code>set</code> logic was useful because I was seeing behavior where the <code>classList.toggle</code> would actually fail to add the class for whatever reason. This approach ensured the state was always correct based on the dom.</p>
 <h2 id="step-2%3A-crossing-the-chasm"><a class="permalink" href="#step-2%3A-crossing-the-chasm" aria-hidden="true">🔗</a> Step 2: Crossing the chasm</h2>
 <p>The helper functions are setup before any of the rest of the page so once React kicks in I simply wire it up to the ThemeToggle component:</p>
-<pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-jsx"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">ThemeToggle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="not-prose"><code class="language-jsx"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">ThemeToggle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> <span class="token punctuation">[</span>darkModeEnabled<span class="token punctuation">,</span> setDarkModeEnabled<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span>
     window<span class="token punctuation">.</span>theme<span class="token punctuation">.</span><span class="token function">current</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -163,7 +163,7 @@
 <p>Some code was omitted just to highlight the relevant parts. When the component mounts it syncs the <code>theme.current()</code> state, and onChange it calls <code>theme.toggle()</code> and updates local state.</p>
 <h3 id="ssr"><a class="permalink" href="#ssr" aria-hidden="true">🔗</a> SSR</h3>
 <p>Gatsby won't let you forget about SSR! <code>window</code> is not defined when server-side rendering so we have to handle it by checking if we're in a browser environment and short circuiting if true.</p>
-<pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-jsx"><span class="token comment">// Check if in browser environment</span>
+<pre class="not-prose"><code class="language-jsx"><span class="token comment">// Check if in browser environment</span>
 <span class="token keyword">const</span> isBrowser <span class="token operator">=</span> <span class="token keyword">typeof</span> window <span class="token operator">!==</span> <span class="token string">'undefined'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">ThemeToggle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>

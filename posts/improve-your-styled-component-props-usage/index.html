@@ -109,7 +109,7 @@
   <div class="space-y-6">
     <div class="prose prose-headings:text-2xl prose-headings:font-normal prose-a:text-red-500 prose-code:rounded-sm prose-code:bg-gray-200 prose-code:px-1 prose-code:text-black prose-img:rounded-xl dark:prose-invert">
       <p>I hadn't used styled-components until about a year ago when I started at my current job. I can't say its my favorite CSS-in-JS option for various reasons. One of those reasons is the pitfall of relying on props for styling, which can do a lot more damage than devs may realize.  Take a look at this example:</p>
-<pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-jsx"><span class="token keyword">const</span> Button <span class="token operator">=</span> styled<span class="token punctuation">.</span>button<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+<pre class="not-prose"><code class="language-jsx"><span class="token keyword">const</span> Button <span class="token operator">=</span> styled<span class="token punctuation">.</span>button<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
   background: steelblue;
 
   </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token operator">=></span>
@@ -135,7 +135,7 @@
 <h2 id="instead%2C-render-semantic-markup-and-use-as-selectors"><a class="permalink" href="#instead%2C-render-semantic-markup-and-use-as-selectors" aria-hidden="true">🔗</a> Instead, render semantic markup and use as selectors</h2>
 <p>For example, <code>isDisabled</code> should instead be renamed to <code>disabled</code> which would then be propagated to the DOM as the <a href="https://www.w3.org/TR/2014/REC-html5-20141028/forms.html#concept-fe-disabled"><code>disabled</code> attribute</a> on the button. The corresponding CSS could then be simplified to use the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:disabled"><code>:disabled</code> CSS pseudoselector</a>.</p>
 <p><code>isLoading</code> can instead be used to set the <a href="https://www.w3.org/TR/wai-aria-1.0/states_and_properties#aria-busy"><code>aria-busy</code> role</a>, and <code>isValid</code> used to set the <a href="https://www.w3.org/TR/wai-aria-1.0/states_and_properties#aria-invalid"><code>aria-invalid</code> role</a>; then, use those roles as your selectors in your css!</p>
-<pre class="px-4 py-2 rounded-lg overflow-auto not-prose"><code class="language-js"><span class="token keyword">const</span> StyledButton <span class="token operator">=</span> styled<span class="token punctuation">.</span>button<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+<pre class="not-prose"><code class="language-js"><span class="token keyword">const</span> StyledButton <span class="token operator">=</span> styled<span class="token punctuation">.</span>button<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
   background: steelblue;
 
   &amp;:disabled,
