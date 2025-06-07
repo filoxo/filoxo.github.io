@@ -113,7 +113,13 @@
     </ul>
   </nav>
 </header><div class="my-0 mx-auto max-w-2xl px-3 md:px-6">
-      <div><p>I hadn't used styled-components until about a year ago when I started at my current job. I can't say its my favorite CSS-in-JS option for various reasons. One of those reasons is the pitfall of relying on props for styling, which can do a lot more damage than devs may realize.  Take a look at this example:</p>
+      <div>
+<article class="mb-12">
+  <h1 class="mb-4 text-2xl text-red-600">Improve your styled-component props usage</h1>
+  <p class="mb-4 text-red-600">30 Nov 2019</p>
+  <div class="space-y-6">
+    <div class="prose prose-headings:text-2xl prose-headings:font-normal prose-a:text-red-500 prose-code:rounded-sm prose-code:bg-gray-200 prose-code:px-1 prose-code:text-black prose-img:rounded-xl dark:prose-invert">
+      <p>I hadn't used styled-components until about a year ago when I started at my current job. I can't say its my favorite CSS-in-JS option for various reasons. One of those reasons is the pitfall of relying on props for styling, which can do a lot more damage than devs may realize.  Take a look at this example:</p>
 <pre class="not-prose"><code class="language-jsx"><span class="token keyword">const</span> Button <span class="token operator">=</span> styled<span class="token punctuation">.</span>button<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
   background: steelblue;
 
@@ -171,6 +177,24 @@
 <li>Portable: if in some future we stop using styled-components, we don't need to modify the css to remove props</li>
 </ul>
 <p>This isn't to say that you should <em>never</em> use props in styles (perhaps the topic of another post), but do think through how your user experience should work and ensure the proper semantics are in place before simply reaching through to props in your styled components.</p>
+
+    </div>
+    <footer class="space-y-12">
+      <p>Tagged with:&nbsp;<a
+            href="/tags/css"
+            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">css</a>
+      ,&nbsp;<a
+            href="/tags/javascript"
+            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">javascript</a>
+      </p>
+      <div class="flex flex-row-reverse justify-between">
+        <a
+          class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out hover:text-red-600"
+          href="/">&larr; Back to home</a>
+      </div>
+    </footer>
+  </div>
+</article>
 </div>
     </div><hr class="mt-4 mb-2 mx-auto w-48 h-0.5 bg-red-600 rounded border-0"/>
 <footer class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between py-6 px-3 md:px-6">

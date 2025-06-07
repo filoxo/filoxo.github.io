@@ -113,7 +113,13 @@
     </ul>
   </nav>
 </header><div class="my-0 mx-auto max-w-2xl px-3 md:px-6">
-      <div><p>This post is inspired by a question someone asked in the single-spa Slack:</p>
+      <div>
+<article class="mb-12">
+  <h1 class="mb-4 text-2xl text-red-600">Some information about import map specifiers</h1>
+  <p class="mb-4 text-red-600">2 Aug 2022</p>
+  <div class="space-y-6">
+    <div class="prose prose-headings:text-2xl prose-headings:font-normal prose-a:text-red-500 prose-code:rounded-sm prose-code:bg-gray-200 prose-code:px-1 prose-code:text-black prose-img:rounded-xl dark:prose-invert">
+      <p>This post is inspired by a question someone asked in the single-spa Slack:</p>
 <blockquote>
 <p>I saw import-map syntax I've never seen before and I was wondering if single-spa (really more SystemJS) supported it.</p>
 </blockquote>
@@ -156,6 +162,30 @@ const _ = await SystemJS.import(“lodash@4”)</p>
 <p>This will allow access to local node_modules, nice! Tht enables IDE autocomplete and interop with most of your JavaScript tooling.</p>
 <p><img src="./lodash-4-autocomplete.png" alt="Screenshot of VS Code providing autocomplete and API information for lodash-4/get module."></p>
 <p>Surpringly this also works with TypeScript out of the box too! I tested this with React 17 and TypeScript was still able to show me the correct typings.</p>
+
+    </div>
+    <footer class="space-y-12">
+      <p>Tagged with:&nbsp;<a
+            href="/tags/javascript"
+            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">javascript</a>
+      ,&nbsp;<a
+            href="/tags/esm"
+            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">esm</a>
+      ,&nbsp;<a
+            href="/tags/systemjs"
+            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">systemjs</a>
+      ,&nbsp;<a
+            href="/tags/import maps"
+            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">import maps</a>
+      </p>
+      <div class="flex flex-row-reverse justify-between">
+        <a
+          class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out hover:text-red-600"
+          href="/">&larr; Back to home</a>
+      </div>
+    </footer>
+  </div>
+</article>
 </div>
     </div><hr class="mt-4 mb-2 mx-auto w-48 h-0.5 bg-red-600 rounded border-0"/>
 <footer class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between py-6 px-3 md:px-6">

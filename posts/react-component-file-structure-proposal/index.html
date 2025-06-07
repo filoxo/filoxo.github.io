@@ -113,7 +113,13 @@
     </ul>
   </nav>
 </header><div class="my-0 mx-auto max-w-2xl px-3 md:px-6">
-      <div><p>This is an attempt at a proposal for organizing a React component file structure based on the needs and current patterns at JupiterOne.</p>
+      <div>
+<article class="mb-12">
+  <h1 class="mb-4 text-2xl text-red-600">React component file structure proposal</h1>
+  <p class="mb-4 text-red-600">12 Aug 2022</p>
+  <div class="space-y-6">
+    <div class="prose prose-headings:text-2xl prose-headings:font-normal prose-a:text-red-500 prose-code:rounded-sm prose-code:bg-gray-200 prose-code:px-1 prose-code:text-black prose-img:rounded-xl dark:prose-invert">
+      <p>This is an attempt at a proposal for organizing a React component file structure based on the needs and current patterns at JupiterOne.</p>
 <p>I'm sharing this first on my blog to get some external feedback, but I also think its a good discussion point in general. For context, our tech stack uses the following: TypeScript, React, Jest, and Storybook. The idea is that this code will be generated as part of a code generator (such as <a href="https://yeoman.io/">yeoman</a>).</p>
 <p>In the remainder of this document, <code>Foo</code> will be used to represent the user-supplied name.</p>
 <p>The pattern has the following file structure and naming:</p>
@@ -278,6 +284,27 @@
 <span class="token keyword">export</span> <span class="token keyword">default</span> meta<span class="token punctuation">;</span>
 <span class="token keyword">export</span> <span class="token keyword">const</span> Default <span class="token operator">=</span> <span class="token function">template</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>What do you think? Would you use a codebase structured like this?</p>
+
+    </div>
+    <footer class="space-y-12">
+      <p>Tagged with:&nbsp;<a
+            href="/tags/react"
+            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">react</a>
+      ,&nbsp;<a
+            href="/tags/typescript"
+            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">typescript</a>
+      ,&nbsp;<a
+            href="/tags/testing"
+            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">testing</a>
+      </p>
+      <div class="flex flex-row-reverse justify-between">
+        <a
+          class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out hover:text-red-600"
+          href="/">&larr; Back to home</a>
+      </div>
+    </footer>
+  </div>
+</article>
 </div>
     </div><hr class="mt-4 mb-2 mx-auto w-48 h-0.5 bg-red-600 rounded border-0"/>
 <footer class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between py-6 px-3 md:px-6">
