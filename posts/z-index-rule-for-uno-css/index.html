@@ -20,7 +20,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="192x192"/>
 <link rel="mask-icon" href="/favicon.svg" color="#4a5568"/>
 <meta name="theme-color" content="#4a5568"/>
-<link crossorigin="anonymous" rel="stylesheet" href="/styles/style.css"/>
+<link rel="stylesheet" href="/styles/style.build.css" />
 <link
   crossorigin="anonymous"
   rel="stylesheet"
@@ -30,7 +30,7 @@
   onload="this.media='all'; this.onload=null;"/>
 <script type="module" src="/static/main.js" defer></script>
 <!-- https://www.filamentgroup.com/lab/load-css-simpler/ --></head>
-  <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 relative">
+  <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 relative font-sourcecodepro">
     <div class="absolute z-[-1] inset-0 h-full min-h-screen w-full min-w-screen bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#efefef22_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div><header class="mx-auto py-4 mb-8 max-w-2xl px-3 md:px-6">
   <nav class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between">
     <h1 class="text-2xl font-semibold tracking-wide">
@@ -100,12 +100,7 @@
     </ul>
   </nav>
 </header><div class="my-0 mx-auto max-w-2xl px-3 md:px-6">
-      <div><article class="mb-12">
-  <h1 class="mb-4 text-2xl text-red-600">z-index rule for UnoCSS</h1>
-  <p class="mb-4 text-red-600">30 May 2024</p>
-  <div class="space-y-6">
-    <div class="prose prose-headings:text-2xl prose-headings:font-normal prose-a:text-red-500 prose-code:rounded-sm prose-code:bg-gray-200 prose-code:px-1 prose-code:text-black prose-img:rounded-xl dark:prose-invert">
-      <p>i've developed an <a href="https://unocss.dev/config/rules">unocss rule</a> for managing the z-index rules in a scalable way. unfortunately i feel like its still too early to introduce so i wanted to record it somewhere.  i'll channel my inner antfu-spirit... but publishing as a package would actually take me like a week so in order to ship it fast, its all contained here in this post 👇</p>
+      <div><p>i've developed an <a href="https://unocss.dev/config/rules">unocss rule</a> for managing the z-index rules in a scalable way. unfortunately i feel like its still too early to introduce so i wanted to record it somewhere.  i'll channel my inner antfu-spirit... but publishing as a package would actually take me like a week so in order to ship it fast, its all contained here in this post 👇</p>
 <pre class="not-prose"><code class="language-ts"><span class="token keyword">const</span> <span class="token constant">Z_INDEX_LAYERS</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
   drawer<span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
   menu<span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
@@ -161,24 +156,7 @@
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">popover</span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>react-portal</span><span class="token punctuation">></span></span></code></pre>
 <p>if youre in the same boat, <a href="https://www.joshwcomeau.com/css/stacking-contexts/">ensure that app root is styled with <code>isolate</code></a> and then you're <span class="font-bold dark:text-yellow-400">golden</span> 🏆</p>
-
-    </div>
-    <footer class="space-y-12">
-      <p>Tagged with:&nbsp;<a
-            href="/tags/css"
-            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">css</a>
-      ,&nbsp;<a
-            href="/tags/architecture"
-            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">architecture</a>
-      </p>
-      <div class="flex flex-row-reverse justify-between">
-        <a
-          class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out hover:text-red-600"
-          href="/">&larr; Back to home</a>
-      </div>
-    </footer>
-  </div>
-</article></div>
+</div>
     </div><hr class="mt-4 mb-2 mx-auto w-48 h-0.5 bg-red-600 rounded border-0"/>
 <footer class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between py-6 px-3 md:px-6">
   <p>

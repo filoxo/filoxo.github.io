@@ -20,7 +20,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="192x192"/>
 <link rel="mask-icon" href="/favicon.svg" color="#4a5568"/>
 <meta name="theme-color" content="#4a5568"/>
-<link crossorigin="anonymous" rel="stylesheet" href="/styles/style.css"/>
+<link rel="stylesheet" href="/styles/style.build.css" />
 <link
   crossorigin="anonymous"
   rel="stylesheet"
@@ -30,7 +30,7 @@
   onload="this.media='all'; this.onload=null;"/>
 <script type="module" src="/static/main.js" defer></script>
 <!-- https://www.filamentgroup.com/lab/load-css-simpler/ --></head>
-  <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 relative">
+  <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 relative font-sourcecodepro">
     <div class="absolute z-[-1] inset-0 h-full min-h-screen w-full min-w-screen bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#efefef22_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div><header class="mx-auto py-4 mb-8 max-w-2xl px-3 md:px-6">
   <nav class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between">
     <h1 class="text-2xl font-semibold tracking-wide">
@@ -100,12 +100,7 @@
     </ul>
   </nav>
 </header><div class="my-0 mx-auto max-w-2xl px-3 md:px-6">
-      <div><article class="mb-12">
-  <h1 class="mb-4 text-2xl text-red-600">Tailwind not at odds with semantic class naming</h1>
-  <p class="mb-4 text-red-600">6 Nov 2024</p>
-  <div class="space-y-6">
-    <div class="prose prose-headings:text-2xl prose-headings:font-normal prose-a:text-red-500 prose-code:rounded-sm prose-code:bg-gray-200 prose-code:px-1 prose-code:text-black prose-img:rounded-xl dark:prose-invert">
-      <p>i find that many devs feel they need to align absolutely with Tailwind, or BEM, or [insert design system here] ideologies. i really think this is a misundestanding of how to use all the tools in a frontend dev's toolbox. this leads me to this thesis: Tailwind is not at odds with semantic class naming.</p>
+      <div><p>i find that many devs feel they need to align absolutely with Tailwind, or BEM, or [insert design system here] ideologies. i really think this is a misundestanding of how to use all the tools in a frontend dev's toolbox. this leads me to this thesis: Tailwind is not at odds with semantic class naming.</p>
 <h2 id="define-'semantic-class-naming'"><a class="permalink" href="#define-'semantic-class-naming'" aria-hidden="true">🔗</a> define 'semantic class naming'</h2>
 <p>loosely, this refers to class names that are meaningful and descriptive of the element they are styling that the dev needs to memorize. ie. bootstrap's way of naming 'widget' components.</p>
 <p>contrast this with Tailwind, where the class names are utility-based and map to the CSS properties they apply (mostly).</p>
@@ -160,21 +155,7 @@ h4</span> <span class="token punctuation">{</span>
   @apply text-xl font-bold text-slate-800 text-center<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <p>this gives you a headstart to styling your document without needing anything extra while still being extensible. this also leverages semantic HTML concepts, and should resolve the concern for those who really hate memorizing class names.</p>
-
-    </div>
-    <footer class="space-y-12">
-      <p>Tagged with:&nbsp;<a
-            href="/tags/css"
-            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">css</a>
-      </p>
-      <div class="flex flex-row-reverse justify-between">
-        <a
-          class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out hover:text-red-600"
-          href="/">&larr; Back to home</a>
-      </div>
-    </footer>
-  </div>
-</article></div>
+</div>
     </div><hr class="mt-4 mb-2 mx-auto w-48 h-0.5 bg-red-600 rounded border-0"/>
 <footer class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between py-6 px-3 md:px-6">
   <p>

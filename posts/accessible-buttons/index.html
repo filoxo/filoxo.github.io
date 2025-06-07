@@ -20,7 +20,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="192x192"/>
 <link rel="mask-icon" href="/favicon.svg" color="#4a5568"/>
 <meta name="theme-color" content="#4a5568"/>
-<link crossorigin="anonymous" rel="stylesheet" href="/styles/style.css"/>
+<link rel="stylesheet" href="/styles/style.build.css" />
 <link
   crossorigin="anonymous"
   rel="stylesheet"
@@ -30,7 +30,7 @@
   onload="this.media='all'; this.onload=null;"/>
 <script type="module" src="/static/main.js" defer></script>
 <!-- https://www.filamentgroup.com/lab/load-css-simpler/ --></head>
-  <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 relative">
+  <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 relative font-sourcecodepro">
     <div class="absolute z-[-1] inset-0 h-full min-h-screen w-full min-w-screen bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#efefef22_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div><header class="mx-auto py-4 mb-8 max-w-2xl px-3 md:px-6">
   <nav class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between">
     <h1 class="text-2xl font-semibold tracking-wide">
@@ -100,12 +100,7 @@
     </ul>
   </nav>
 </header><div class="my-0 mx-auto max-w-2xl px-3 md:px-6">
-      <div><article class="mb-12">
-  <h1 class="mb-4 text-2xl text-red-600">Accessible Buttons</h1>
-  <p class="mb-4 text-red-600">20 Mar 2019</p>
-  <div class="space-y-6">
-    <div class="prose prose-headings:text-2xl prose-headings:font-normal prose-a:text-red-500 prose-code:rounded-sm prose-code:bg-gray-200 prose-code:px-1 prose-code:text-black prose-img:rounded-xl dark:prose-invert">
-      <p>It's 2019 and I still see new code being written which uses non-interactive elements as buttons. Let's rehash why this is a problem.  Take this example code of a <code>div</code> that has a click handler bound to it:</p>
+      <div><p>It's 2019 and I still see new code being written which uses non-interactive elements as buttons. Let's rehash why this is a problem.  Take this example code of a <code>div</code> that has a click handler bound to it:</p>
 <pre class="not-prose"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>myBtn<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Do the thing<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
@@ -187,24 +182,7 @@
 <p>For most use cases, you can actually use a button as a container; one such example is for a clickable card. It can contain an image and a heading and may display additional text when clicked. One possible limitation of this is that technically <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button">only phrasing content is permitted within a button</a> so no divs or other block-level elements and no other interactive elements (no buttons or anchors inside buttons, duh) can be children. The gotcha here is that when I tested that in current versions of Chrome, Firefox, and Safari, none of them failed to render the div inside the button. Kind of weird, so shy away from it if you can.</p>
 <p>Also, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type">the default button type is &quot;submit&quot;</a> so when creating something like a reusable toggle button component using any modern framework, keep this in mind. If your component may be rendered inside a form and does not have a default set to something other than &quot;submit&quot;, it may trigger a submit.</p>
 <p>And lastly, <strong><a href="https://developer.paciellogroup.com/blog/2011/04/html5-accessibility-chops-just-use-a-button/">just</a> <a href="https://www.youtube.com/watch?v=CZGqnp06DnI">use a</a> <a href="https://formidable.com/blog/2014/05/08/anchors-buttons-and-accessibility/">button</a></strong>.</p>
-
-    </div>
-    <footer class="space-y-12">
-      <p>Tagged with:&nbsp;<a
-            href="/tags/javascript"
-            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">javascript</a>
-      ,&nbsp;<a
-            href="/tags/a11y"
-            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">a11y</a>
-      </p>
-      <div class="flex flex-row-reverse justify-between">
-        <a
-          class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out hover:text-red-600"
-          href="/">&larr; Back to home</a>
-      </div>
-    </footer>
-  </div>
-</article></div>
+</div>
     </div><hr class="mt-4 mb-2 mx-auto w-48 h-0.5 bg-red-600 rounded border-0"/>
 <footer class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between py-6 px-3 md:px-6">
   <p>

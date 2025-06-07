@@ -20,7 +20,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="192x192"/>
 <link rel="mask-icon" href="/favicon.svg" color="#4a5568"/>
 <meta name="theme-color" content="#4a5568"/>
-<link crossorigin="anonymous" rel="stylesheet" href="/styles/style.css"/>
+<link rel="stylesheet" href="/styles/style.build.css" />
 <link
   crossorigin="anonymous"
   rel="stylesheet"
@@ -30,7 +30,7 @@
   onload="this.media='all'; this.onload=null;"/>
 <script type="module" src="/static/main.js" defer></script>
 <!-- https://www.filamentgroup.com/lab/load-css-simpler/ --></head>
-  <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 relative">
+  <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 relative font-sourcecodepro">
     <div class="absolute z-[-1] inset-0 h-full min-h-screen w-full min-w-screen bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#efefef22_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div><header class="mx-auto py-4 mb-8 max-w-2xl px-3 md:px-6">
   <nav class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between">
     <h1 class="text-2xl font-semibold tracking-wide">
@@ -100,12 +100,7 @@
     </ul>
   </nav>
 </header><div class="my-0 mx-auto max-w-2xl px-3 md:px-6">
-      <div><article class="mb-12">
-  <h1 class="mb-4 text-2xl text-red-600">Theme toggle on a Gatsby + MDX site</h1>
-  <p class="mb-4 text-red-600">27 Nov 2021</p>
-  <div class="space-y-6">
-    <div class="prose prose-headings:text-2xl prose-headings:font-normal prose-a:text-red-500 prose-code:rounded-sm prose-code:bg-gray-200 prose-code:px-1 prose-code:text-black prose-img:rounded-xl dark:prose-invert">
-      <p>I recently read <a href="https://www.joshwcomeau.com/react/dark-mode/">Josh Comeau's excellent article</a> on how he was able to achieve a theme toggle on his Gatsby site. I find his solution to be excellent! However my Gatsby site is, for better or worse, pretty tied to MDX and React. I implemented a solution based on his for my current site theme.</p>
+      <div><p>I recently read <a href="https://www.joshwcomeau.com/react/dark-mode/">Josh Comeau's excellent article</a> on how he was able to achieve a theme toggle on his Gatsby site. I find his solution to be excellent! However my Gatsby site is, for better or worse, pretty tied to MDX and React. I implemented a solution based on his for my current site theme.</p>
 <h2 id="prereq%3A-update-libraries"><a class="permalink" href="#prereq%3A-update-libraries" aria-hidden="true">🔗</a> Prereq: Update libraries</h2>
 <p>Before I started this feature, I had to update my blog... and its about <strong>2 years behind</strong> 😬. This meant Gatsby &amp; plugins needed two major version upgrades. While at it, I ditched CSS Modules for Tailwind and then refactored all the components to use these utility classes. With that out of the way...</p>
 <h2 id="step-1%3A-updating-html-in-gatsby"><a class="permalink" href="#step-1%3A-updating-html-in-gatsby" aria-hidden="true">🔗</a> Step 1: Updating HTML in Gatsby</h2>
@@ -175,30 +170,7 @@
 <h3 id="step-3%3A-adding-a-toggle"><a class="permalink" href="#step-3%3A-adding-a-toggle" aria-hidden="true">🔗</a> Step 3: Adding a toggle</h3>
 <p>Last step is to build the markup for the theme toggle. I found this great <a href="https://medium.com/front-end-weekly/build-a-css-only-toggle-switch-using-tailwindcss-d2739882934">Build a CSS only toggle switch using TailwindCSS</a> article that was very well executed, built with accessibility and semantics in mind. I just copy-and-pasted the code and modified the colors and sizing.</p>
 <p>That's it! I'm pretty happy with my site redesign, and this ThemeToggle was a huge bonus!</p>
-
-    </div>
-    <footer class="space-y-12">
-      <p>Tagged with:&nbsp;<a
-            href="/tags/javascript"
-            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">javascript</a>
-      ,&nbsp;<a
-            href="/tags/react"
-            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">react</a>
-      ,&nbsp;<a
-            href="/tags/gatsby"
-            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">gatsby</a>
-      ,&nbsp;<a
-            href="/tags/mdx"
-            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">mdx</a>
-      </p>
-      <div class="flex flex-row-reverse justify-between">
-        <a
-          class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out hover:text-red-600"
-          href="/">&larr; Back to home</a>
-      </div>
-    </footer>
-  </div>
-</article></div>
+</div>
     </div><hr class="mt-4 mb-2 mx-auto w-48 h-0.5 bg-red-600 rounded border-0"/>
 <footer class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between py-6 px-3 md:px-6">
   <p>

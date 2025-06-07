@@ -20,7 +20,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="192x192"/>
 <link rel="mask-icon" href="/favicon.svg" color="#4a5568"/>
 <meta name="theme-color" content="#4a5568"/>
-<link crossorigin="anonymous" rel="stylesheet" href="/styles/style.css"/>
+<link rel="stylesheet" href="/styles/style.build.css" />
 <link
   crossorigin="anonymous"
   rel="stylesheet"
@@ -30,7 +30,7 @@
   onload="this.media='all'; this.onload=null;"/>
 <script type="module" src="/static/main.js" defer></script>
 <!-- https://www.filamentgroup.com/lab/load-css-simpler/ --></head>
-  <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 relative">
+  <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 relative font-sourcecodepro">
     <div class="absolute z-[-1] inset-0 h-full min-h-screen w-full min-w-screen bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#efefef22_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div><header class="mx-auto py-4 mb-8 max-w-2xl px-3 md:px-6">
   <nav class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between">
     <h1 class="text-2xl font-semibold tracking-wide">
@@ -100,12 +100,7 @@
     </ul>
   </nav>
 </header><div class="my-0 mx-auto max-w-2xl px-3 md:px-6">
-      <div><article class="mb-12">
-  <h1 class="mb-4 text-2xl text-red-600">migrating to slinkity</h1>
-  <p class="mb-4 text-red-600">15 Feb 2023</p>
-  <div class="space-y-6">
-    <div class="prose prose-headings:text-2xl prose-headings:font-normal prose-a:text-red-500 prose-code:rounded-sm prose-code:bg-gray-200 prose-code:px-1 prose-code:text-black prose-img:rounded-xl dark:prose-invert">
-      <p>in typical bored developer fashion, i took these extra vacation days to update my blog. this post is my brain dump during this migration from gatsby to slinkity, which brings together 11ty &amp; vite. wish me luck!  this time i felt like even Gatsby was too hefty for what i need... and mdx has not proven to be as useful as i had hoped, so i'm going to drop it during this migration too. i'll still have to figure out how to work with 11ty, port my syntax highlighting theme, and rewrite any dynamic components. <a href="#tldr">tldr at the bottom</a>.</p>
+      <div><p>in typical bored developer fashion, i took these extra vacation days to update my blog. this post is my brain dump during this migration from gatsby to slinkity, which brings together 11ty &amp; vite. wish me luck!  this time i felt like even Gatsby was too hefty for what i need... and mdx has not proven to be as useful as i had hoped, so i'm going to drop it during this migration too. i'll still have to figure out how to work with 11ty, port my syntax highlighting theme, and rewrite any dynamic components. <a href="#tldr">tldr at the bottom</a>.</p>
 <h2 id="getting-started"><a class="permalink" href="#getting-started" aria-hidden="true">🔗</a> getting started</h2>
 <p>i reviewed the slinkity tutorial and then the 11ty tutorial. the first major step was creating a collection from a <code>/posts</code> directory. i did so by adding <code>src/posts/posts.json</code> containing <code>&quot;tags&quot;: &quot;posts&quot;</code>, i think this means everything inside of this directory will be tagged as &quot;posts&quot;. Which then allows me to iterate over the collection in <code>src/index.md</code>.</p>
 <p>next i created a <code>post.njk</code> layout to use with my post pages. i ported over what i could, and then added <code>&quot;layout&quot;: &quot;post.html&quot;</code> to <code>src/posts/posts.json</code> so that each page in this directory would use this layout. nice!</p>
@@ -137,21 +132,7 @@ at this point i struggled between 11ty's liquid syntax, nunjucks syntax that sli
 </li>
 <li><a href="https://slinkity.dev/">slinkity</a> is a really well-designed package. the docs are very simple. i can see pretty easily where it and 11ty's apis apply/differ, and it worked very easily out of the box.</li>
 </ul>
-
-    </div>
-    <footer class="space-y-12">
-      <p>Tagged with:&nbsp;<a
-            href="/tags/javascript"
-            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">javascript</a>
-      </p>
-      <div class="flex flex-row-reverse justify-between">
-        <a
-          class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out hover:text-red-600"
-          href="/">&larr; Back to home</a>
-      </div>
-    </footer>
-  </div>
-</article></div>
+</div>
     </div><hr class="mt-4 mb-2 mx-auto w-48 h-0.5 bg-red-600 rounded border-0"/>
 <footer class="my-0 mx-auto flex max-w-2xl flex-wrap items-center justify-between py-6 px-3 md:px-6">
   <p>

@@ -1,1 +1,51 @@
-code[class*=language-],pre[class*=language-]{background:0 0;color:#fff}pre.not-prose{overflow:auto;border-radius:.5rem;--un-bg-opacity:1;background-color:rgb(31 41 55/var(--un-bg-opacity));padding:.5rem 1rem}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;border-radius:.5em}.token.source{color:#fff;background-color:#1f2937}.token.comment,.token.punctuation{color:#fecaca;font-style:italic}.token.attr-name,.token.constant,.token.deleted,.token.function,.token.inserted,.token.string,.token.symbol,.token.tag,.token.variable{color:#dc2626}.token.keyword,.token.operator{color:#f87171}.token.builtin,.token.changed,.token.char,.token.number{color:#fff}
+@reference "./style.css";
+
+/* redline theme */
+code[class*="language-"],
+pre[class*="language-"] {
+  background: transparent;
+  color: #ffffff;
+}
+
+pre.not-prose {
+  @apply bg-gray-800 px-4 py-2 rounded-lg overflow-auto;
+}
+
+/* Properties specific to code blocks */
+pre[class*="language-"] {
+  padding: 1em; /* this is standard */
+  margin: 0.5em 0; /* this is the default */
+  overflow: auto; /* this is standard */
+  border-radius: 0.5em;
+}
+
+.token.source {
+  color: #ffffff;
+  background-color: #1F2937;
+}
+.token.comment,
+.token.punctuation {
+  color: #FECACA;
+  font-style: italic;
+}
+.token.function,
+.token.variable,
+.token.constant,
+.token.tag,
+.token.deleted,
+.token.string,
+.token.symbol,
+.token.inserted,
+.token.attr-name {
+  color: #DC2626;
+}
+.token.keyword,
+.token.operator {
+  color: #F87171;
+}
+.token.builtin,
+.token.number,
+.token.char,
+.token.changed {
+  color: rgb(255, 255, 255);
+}
