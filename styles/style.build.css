@@ -1344,11 +1344,6 @@
     }
   }
 }
-@layer base {
-  *:hover > .permalink, .permalink:hover, .permalink:focus {
-    opacity: 1;
-  }
-}
 @layer components {
   .twitter-tweet {
     margin: 0 auto;
@@ -1363,6 +1358,9 @@
     font-size: 0.75em;
     margin-left: -28px;
     opacity: 0;
+  }
+  *:hover > .permalink, .permalink:hover, .permalink:focus {
+    opacity: 1;
   }
   .site-link {
     border-bottom-style: var(--tw-border-style);
