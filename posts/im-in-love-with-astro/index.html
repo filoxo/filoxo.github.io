@@ -4,16 +4,15 @@
 
 
 
-
-  <meta charset="UTF-8"/>
+<meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-<title>Posts tagged with “microfrontends”</title>
-<link rel="canonical" href="https://filoxo.github.io/tags/microfrontends/"/>
+<title>i&#39;m in love with astro - Filoblog</title>
+<link rel="canonical" href="https://filoxo.github.io/posts/im-in-love-with-astro/"/>
 <meta property="og:site_name" content="Filoblog"/>
-<meta property="og:title" content="Posts tagged with “microfrontends”"/>
+<meta property="og:title" content="i&#39;m in love with astro - Filoblog"/>
 <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://filoxo.github.io/tags/microfrontends/"/>
+<meta property="og:url" content="https://filoxo.github.io/posts/im-in-love-with-astro/"/>
 
 
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
@@ -115,20 +114,41 @@
   </nav>
 </header><div class="my-0 mx-auto max-w-2xl px-3 md:px-6">
       <div>
+<article class="mb-12">
+  <h1 class="mb-4 text-2xl text-red-600">i&#39;m in love with astro</h1>
+  <p class="mb-4 text-red-600">6 Aug 2025</p>
+  <div class="space-y-6">
+    <div class="prose prose-headings:text-2xl prose-headings:font-normal prose-a:text-red-500 prose-code:rounded-sm prose-code:bg-gray-200 prose-code:px-1 prose-code:text-black prose-img:rounded-xl dark:prose-invert">
+      <p>i've challenged myself to try learning something new, and this time around i'm learning <a href="https://astro.build">astro</a>. however, i don't have a current project to build with it so i'm learning first by reading the documentation thoroughly. and... i gotta, i'm already in love. here's a bit about what i'm reading that has be convinced.</p>
+<blockquote>
+<p><strong>Server-first:</strong> Websites run faster when they render HTML on the server.</p>
+</blockquote>
+<p>this is a truth that many a React dev doesn't seem to remember. i primarily work with React for my job and so i keep up with the current trends. one thing that i've still not understood is <a href="https://filoxo.github.io/posts/reacting-to-react/#why-do-i-need-react-on-the-server-to-render-html%3F">why javascript/react is a good choice for rendering on the server</a>. i'm not convinced it is, and i truly think that many orgs would be better off if the responsibility of rendering on the server was in the hands of a more-capable framework.</p>
+<blockquote>
+<p>Astro is only a successful project if people love using it</p>
+</blockquote>
+<p>stemming from when i used to maintain an open-source library, i believe that developer experience is something that many frameworks don't focus on enough. right now the react ecosystem feels like a ride i don't want to be on, and a large part of that is because of my own dissatisfaction with react's features that don't give me the promised benefits (suspense, compiler, hydration/ssr)... at least not without significant investment. i wish react was easier to &quot;get right.&quot;</p>
+<blockquote>
+<p>An island always runs in isolation from other islands on the page, and multiple islands can exist on a page. ...
+Because they are independent, you can even mix several frameworks on each page.</p>
+</blockquote>
+<p>i used to use and maintain <a href="https://single-spa.js.org/">single-spa</a>, a microfrontends library that helped people accomplish an architecture which is a composition of smaller SPAs, while Astro takes a Multi Page App approach. while it doesn't share the same focus on ssr, single-spa pioneered an approach with a concept of a <a href="https://single-spa.js.org/docs/getting-started-overview/#create-a-root-config">root config</a> (could also be called an App Shell) which, to borrow Astro terms, basically server-renders an island placeholder for each microfrontend to know where and when it should mount on the page. this allowed us to make <a href="https://docs.astro.build/en/concepts/islands/#client-islands">client islands</a> out of individual SPAs, each being independently developed and deployed. i feel like Astro is a continuation and maturation of this concept - which makes this also feel familiar.</p>
 
-<h1 class="mb-12 text-3xl">1 post tagged with “microfrontends”</h1>
-<div class="space-y-16 mb-12"><section>
-    <h1 class="mb-4 text-2xl text-red-600">
-      <a href="/posts/microfrontends-resources/">Microfrontends Resources</a>
-    </h1>
-    <div class="text-red-600 mb-4">8 Jul 2020</div>
-    <div>
-      <p class="prose dark:prose-invert">
-This post is just an accumulation of a few introductory and valuable resources for learning about and getting started with microfrontends. I&#39;ll try to keep this resource as up-to-date as possible. 
-        <a class="text-red-600" href="/posts/microfrontends-resources/">Read&nbsp;more</a>
-      </p>
     </div>
-  </section></div></div>
+    <footer class="space-y-12">
+      <p>Tagged with:&nbsp;<a
+            href="/tags/javascript"
+            class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out visited:border-red-900 hover:text-red-600">javascript</a>
+      </p>
+      <div class="flex flex-row-reverse justify-between">
+        <a
+          class="border-b border-current text-red-500 no-underline transition-colors duration-300 ease-in-out hover:text-red-600"
+          href="/">&larr; Back to home</a>
+      </div>
+    </footer>
+  </div>
+</article>
+</div>
     </div><hr class="mt-4 mb-2 mx-auto w-48 h-0.5 bg-red-600 rounded border-0"/>
 <footer class="my-0 mx-auto max-w-2xl py-6 px-3 md:px-6">
   <p class="text-center">
